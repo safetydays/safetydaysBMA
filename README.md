@@ -1,1 +1,3 @@
 # safetydaysBMA
+
+Virtuelle Brandmeldeanlage
