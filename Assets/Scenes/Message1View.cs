@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ChangeColour : MonoBehaviour
+public class Message1View : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,11 +14,5 @@ public class ChangeColour : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void ChangeColourButton()
-    {
-        this.gameObject.SetActive(false);
-        //this.GetComponent<Button>().colors.normalColor = Color.red;
     }
 }
