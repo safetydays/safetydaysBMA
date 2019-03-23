@@ -19,6 +19,8 @@ public class FATController : MonoBehaviour
     private State fatState;
     private bool faultFlag;     // Flag für die Störungs-Anzeige
     private bool offFlag;       // Flag für die Abschalten-Anzeige
+    private static float ResetTimeInSeconds = 17;
+    private float lastInputTime;
 
 
 
@@ -30,10 +32,17 @@ public class FATController : MonoBehaviour
         fatState = State.Alarmanzeige;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Nach der ResetTime ohne Input die Anzeige resetten 
+    /// </summary>
     void Update()
     {
-        
+        if(Time.time - lastInputTime > ResetTimeInSeconds)
+        {
+            cursorPosition = 0;
+            fatState = State.Alarmanzeige;
+            updateDisplay();
+        }
     }
 
     /// <summary>
@@ -132,7 +141,7 @@ public class FATController : MonoBehaviour
         else
             buttonMessageDown.turnOff();
 
-        
+        lastInputTime = Time.time;
     }
 
     /// <summary>
@@ -156,7 +165,7 @@ public class FATController : MonoBehaviour
         else
             buttonMessageUp.turnOff();
 
-        
+        lastInputTime = Time.time;
     }
 
     public void displayNextMode()
@@ -177,6 +186,7 @@ public class FATController : MonoBehaviour
                 break;
         }
         this.updateDisplay();
+        lastInputTime = Time.time;
     }
 
 }
