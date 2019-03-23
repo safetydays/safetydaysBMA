@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class inputScreen : MonoBehaviour
 {
 
-    List<string> melderart_list = new List<string> { "Rauch", "Gas", "Wasser" };
+    List<string> melderart_list = new List<string> { "Brand", "Rauch", "CO" };
     List<string> timedelay_list = new List<string> { "0", "30", "60", "90" };
 
     public Dropdown m_Dropdown_Melderart;
@@ -45,6 +45,8 @@ public class inputScreen : MonoBehaviour
         m_handmelder.isOn = false;
         m_loeschanlage.isOn = false;
         m_automatisch.isOn = true;
+
+        m_fehlalarm.isOn = false;
 
         m_hinweistext.text = "Brandalarm";
 
@@ -103,6 +105,7 @@ public class inputScreen : MonoBehaviour
         alarmList.gameObject.SetActive(true);
         alarmList.addAlarm(new Alarm(alarmid, timedelay, meldertyp, m_hinweistext.text, m_freitext.text, alarmtyp));
         infoText.text = "Meldung wurde der Alarm-Liste hinzugefügt.";
+
     }
 
     public void saveData()
