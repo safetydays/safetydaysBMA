@@ -7,6 +7,9 @@ public class FATController : MonoBehaviour
     public enum State { Alarmanzeige, Stoerung, Abschaltung, Historie};
     public FATList fatList;
     public MessageView messageView;
+    public LEDView ledView;
+    public ButtonMessageUpDown buttonMessageUp;
+    public ButtonMessageUpDown buttonMessageDown;
 
     public string stoerungMessage0 = "** Keine Störung **";
     public string stoerungMessage1 = "* Störungsmeldung *";
@@ -14,10 +17,15 @@ public class FATController : MonoBehaviour
 
     private int cursorPosition;
     private State fatState;
+    private bool faultFlag;     // Flag für die Störungs-Anzeige
+    private bool offFlag;       // Flag für die Abschalten-Anzeige
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+
         cursorPosition = 0;
         fatState = State.Alarmanzeige;
     }
@@ -28,13 +36,25 @@ public class FATController : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Display-Nachrichten anzeigen, je nach State
+    /// Flags setzen bei bestimmten AlarmTypes
+    /// </summary>
     public void updateDisplay()
     {
-        // States wechseln
+        // States wechseln - Strörungsmeldung
         if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
         {
-            fatState = State.Stoerung;
+            faultFlag = true;
+            ledView.triggerAlarmBlinking();
         }
+        // States wechseln - Abschalten
+        if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
+        {
+            offFlag = true;
+        }
+
+
 
         // Anzeige aktualisieren je nach State
         switch (fatState)
@@ -47,47 +67,116 @@ public class FATController : MonoBehaviour
 
                 // Letztes Element
                 messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
-                return;
+                break;
             case State.Stoerung:
-                messageView.updateText1("", stoerungMessage0);
+                if (faultFlag)
+                {
+                    messageView.updateText1("", stoerungMessage1);
+                    ledView.stopErrorBlinking();
+                }
+                else
+                    messageView.updateText1("", stoerungMessage0);
                 messageView.updateText2("", "");
-                return;
+                break;
             case State.Abschaltung:
+                if(offFlag)
+                {
+                    ledView.stopOffModeBlinking();
+                }
                 messageView.updateText1("", abschaltungMessage);
                 messageView.updateText2("", "");
-                return;
+                break;
+            case State.Historie:
+                messageView.updateText1("", "");
+                messageView.updateText2("", "");
+                break;
         }
-        
+
+        // Weitere LEDs setzen
+        if (fatList.getAlarmCount() > 0)
+        {
+            ledView.triggerAlarmBlinking();
+        }
+        if (fatList.getAlarmCount() > cursorPosition + 2)
+            buttonMessageDown.turnOn();
     }
 
+    /// <summary>
+    /// Internen State auf Alarmanzeige setzen
+    /// </summary>
+    public void switchToAlarmanzeige()
+    {
+        fatState = State.Alarmanzeige;
+    }
+
+    /// <summary>
+    /// Die nächste Meldung anzeigen
+    /// </summary>
     public void displayNextMessageInHistory()
     {
         // CursorPosition ändern und Anzeige updaten
         if (fatList.getAlarmCount() > cursorPosition + 2)
+        {
             cursorPosition++;
+
+            // Previous-LED aktivieren
+            buttonMessageUp.turnOn();
+        }
         updateDisplay();
+
+        ledView.stopAlarmBlinking();
 
         // Next-LED-Anzeige aktualisieren
         if (fatList.getAlarmCount() > cursorPosition + 2)
-            ; // Aktivieren
+            buttonMessageDown.turnOn();
         else
-            ; // Deaktivieren
+            buttonMessageDown.turnOff();
 
-        // Previous-LED aktivieren
+        
     }
 
+    /// <summary>
+    /// Die vorherige Meldung anzeigen
+    /// </summary>
     public void displayPreviousMessageInHistory()
     {
         if (cursorPosition > 0)
+        {
             cursorPosition--;
+
+            // Next LED
+            buttonMessageDown.turnOn();
+        }
         updateDisplay();
 
-        if (cursorPosition > 0)
-            ; // aktivieren
-        else
-            ; // deaktivieren
+        ledView.stopAlarmBlinking();
 
-        // Next-Led aktivieren
+        if (cursorPosition > 0)
+            buttonMessageUp.turnOn();
+        else
+            buttonMessageUp.turnOff();
+
+        
+    }
+
+    public void displayNextMode()
+    {
+        switch (fatState)
+        {
+            case State.Alarmanzeige:
+                fatState = State.Stoerung;
+                break;
+            case State.Stoerung:
+                fatState = State.Abschaltung;
+                break;
+            case State.Abschaltung:
+                fatState = State.Historie;
+                break;
+            case State.Historie:
+                fatState = State.Alarmanzeige;
+                break;
+        }
+        this.updateDisplay();
     }
 
 }
