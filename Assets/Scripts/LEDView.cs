@@ -44,15 +44,6 @@ public class LEDView : MonoBehaviour
         img.color = Color.green;
     }
 
-    public void switchErrorOff()
-    {
-        imageError.color = Color.yellow;
-    }
-    public void disableOffMode()
-    {
-        imageOff.color = Color.grey;
-    }
-
     public void triggerErrorBlinking()
     {
         StopCoroutine("BlinkError");
@@ -71,6 +62,7 @@ public class LEDView : MonoBehaviour
     /// </summary>
     public void disableErrorLED()
     {
+        StopCoroutine("BlinkError");
         imageError.color = Color.grey;
     }
     /// <summary>
