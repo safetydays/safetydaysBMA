@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using static Alarm;
 
 /// <summary>
 /// Nachrichten senden zwischen Client und Server
 /// </summary>
 public class ServerClientConnectionController : NetworkBehaviour
 {
-    public enum AlarmType { Alarm, Fault, Off};
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class ServerClientConnectionController : NetworkBehaviour
     {
         if (this.isServer)
         {
-            RpcSendStringsToServer("0", "0:00", "Melder 1", "Meldung 1", "Meldung 2", AlarmType.Alarm);
+            
         }
     }
 
@@ -31,8 +32,14 @@ public class ServerClientConnectionController : NetworkBehaviour
     /// <param name="string2"></param>
     /// <param name="string3"></param>
     [ClientRpc]
-    public void RpcSendStringsToServer(string id, string time, string melderTyp, string meldung1, string meldung2, AlarmType alarmType)
+    public void RpcSendStringsToServer(Alarm alarm)
     {
-        Debug.Log("Test: " + string1);
+        Debug.Log("Meldung: " + alarm.meldung1);
+    }
+
+    public void Test()
+    {
+        Alarm alarm = new Alarm(0, 0, "Melder 1", "Meldung 1", "Meldung 2", AlarmType.Alarm);
+        RpcSendStringsToServer(alarm);
     }
 }
