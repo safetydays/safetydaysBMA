@@ -1473,12 +1473,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 5ca9b35af8c9fcf4dafc62e19f37eda8, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 1584133449}
+        m_MethodName: switchOnUEExecutedLED
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1711,8 +1711,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1837710249}
   m_HandleRect: {fileID: 1837710248}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.72814816
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2515,12 +2515,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 402da74f587980b4fafe66a67a837a86, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 248006240}
+        m_MethodName: switchOnAcoustigSignalLED
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2643,7 +2643,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: e1d8d343a928bcf448db55002fe83462, type: 3}
+      - m_Target: {fileID: 1584133447}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
