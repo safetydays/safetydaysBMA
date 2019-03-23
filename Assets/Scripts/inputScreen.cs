@@ -9,17 +9,23 @@ using UnityEditor;
 public class inputScreen : MonoBehaviour
 {
 
-    List<string> melderart_list = new List<string> { "Rauch", "Gas", "Wasser"};
-    List<string> timedelay_list = new List<string> { "30", "60", "90"    };
+    List<string> melderart_list = new List<string> { "Rauch", "Gas", "Wasser" };
+    List<string> timedelay_list = new List<string> { "30", "60", "90" };
+
     public Dropdown m_Dropdown_Melderart;
     public Dropdown m_Dropdown_TimeDelay;
+
     public Toggle m_automatisch;
     public Toggle m_handmelder;
     public Toggle m_loeschanlage;
+    public Toggle m_fehlalarm;
+
     public InputField m_meldergruppe;
     public InputField m_meldernummer;
     public InputField m_hinweistext;
     public InputField m_freitext;
+
+    public int alarmid;
 
     public int firstRun = 0;
 
@@ -58,7 +64,30 @@ public class inputScreen : MonoBehaviour
 
     void generateScenarioFromInput()
     {
+        //count up alarmid
+        alarmid++;
+        //extract meldertyp from checkboxes
+        if (m_handmelder.isOn == true)
+        {
 
+        }
+        if (m_loeschanlage.isOn == true)
+        {
+
+        }
+        if (m_automatisch.isOn == true)
+        {
+
+        }
+
+        //check if fehlalarm is active
+        if (m_fehlalarm.isOn == true)
+        {
+
+        }
+
+        int timedelay = 0;
+        timedelay = System.Convert.ToInt32(m_Dropdown_TimeDelay.value);
     }
 
     public void saveData()
@@ -66,11 +95,12 @@ public class inputScreen : MonoBehaviour
         //check if neccessary fields are filled
         if (m_meldernummer.text == "" || m_meldergruppe.text == "" || m_freitext.text == "" || m_hinweistext.text == "")
         {
-            EditorUtility.DisplayDialog("Du Idiot!", "Felder füllen", "OKAY");
+            EditorUtility.DisplayDialog("Oh man!", "Felder füllen", "OKAY");
         }
         else
         {
             // go!
+            //EditorUtility.DisplayDialog("Oh man!", m_Dropdown_Melderart., "OKAY");
             generateScenarioFromInput();
         }
 
