@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Message2View : MonoBehaviour
+public class Message1View : MonoBehaviour
 {
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,16 @@ public class Message2View : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void updateText1(string text)
+    {
+
+
+    }
+
+    public void updateText1(string text)
+    {
+
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonAnzeigeebene : MonoBehaviour
+public class ButtonMessageUpDown : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,13 @@ public class ButtonAnzeigeebene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }
+    public void displayNextMessageInHistory()
+    {
+
+    }
+    public void displayPreviousMessageInHistory()
+    {
+
     }
 }
