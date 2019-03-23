@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class MessageView : MonoBehaviour
 {
-    public Text message1;
-    public Text message2;
+    public Text message1Line1;
+    public Text message1Line2;
+    public Text message2Line1;
+    public Text message2Line2;
+
 
 
     // Start is called before the first frame update
@@ -21,14 +24,15 @@ public class MessageView : MonoBehaviour
         
     }
 
-    public void updateText1(string text)
+    public void updateText1(string textLine1, string textLine2)
     {
-        message1.text = text;
-
+        message1Line1.text = textLine1;
+        message1Line2.text = textLine2;
     }
 
-    public void updateText2(string text)
+    public void updateText2(string textLine1, string textLine2)
     {
-        message2.text = text;
+        message2Line1.text = textLine1;
+        message2Line2.text = textLine2;
     }
 }
