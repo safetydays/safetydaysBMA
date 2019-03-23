@@ -10,7 +10,7 @@ public struct Alarm
 {
     // FalseAlarm: Fehlalarm, Alarm: Echter Alarm
     public enum AlarmType { FalseAlarm, Alarm, Fault, Off };
-    public enum MelderType { Melder, Löschanlage};
+    public enum MelderType { Melder, Loeschanlage };
 
     public int id;
     public int deltatime;
@@ -48,6 +48,8 @@ public class AlarmList : NetworkBehaviour
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/1", "Melder Attrium", Alarm.AlarmType.Alarm));
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/4", "Melder WC", Alarm.AlarmType.Alarm));
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/5", "Melder Küche", Alarm.AlarmType.Alarm));
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using UnityEditor;
+
 public class buttonClick : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -25,30 +25,34 @@ public class buttonClick : MonoBehaviour
         {
             //Main Menu
             case "Simulate_Btn":
-                EditorUtility.DisplayDialog("Button Name", "Simulation", "OKAY");
+                //EditorUtility.DisplayDialog("Button Name", "Simulation", "OKAY");
                 SceneManager.LoadScene("Simulation_Scrn");
                 break;
             case "Learn_Btn":
-                EditorUtility.DisplayDialog("Button Name", "Lernen", "OKAY");
+                //EditorUtility.DisplayDialog("Button Name", "Lernen", "OKAY");
                 break;
             case "Evaluate_Btn":
-                EditorUtility.DisplayDialog("Button Name", "Evaluation", "OKAY");
+                //EditorUtility.DisplayDialog("Button Name", "Evaluation", "OKAY");
                 break;
             case "Input_Btn":
-                EditorUtility.DisplayDialog("Button Name", "Eingabe", "OKAY");
+                //EditorUtility.DisplayDialog("Button Name", "Eingabe", "OKAY");
                 break;
             case "Instruction_Btn":
-                EditorUtility.DisplayDialog("Button Name", "Handbuch", "OKAY");
+                //EditorUtility.DisplayDialog("Button Name", "Handbuch", "OKAY");
                 break;
             //Simulation Menu
             case "Team_Btn":
-                EditorUtility.DisplayDialog("Button Name", "Team", "OKAY");
+                //EditorUtility.DisplayDialog("Button Name", "Team", "OKAY");
+                SceneManager.LoadScene("Teacher_Student_Scrn");
                 break;
             case "Single_Btn":
-                EditorUtility.DisplayDialog("Button Name", "Single", "OKAY");
+                //EditorUtility.DisplayDialog("Button Name", "Single", "OKAY");
                 break;
             case "Partner_Btn":
-                EditorUtility.DisplayDialog("Button Name", "Partner", "OKAY");
+                //EditorUtility.DisplayDialog("Button Name", "Partner", "OKAY");
+                break;
+            case "Trainer_Btn":
+                SceneManager.LoadScene("ScenarioInput_Scrn");
                 break;
             default:
                 break;
