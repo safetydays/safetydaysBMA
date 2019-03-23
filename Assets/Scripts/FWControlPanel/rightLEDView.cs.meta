@@ -3,7 +3,12 @@ guid: 5ca9b35af8c9fcf4dafc62e19f37eda8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - panelUEexecuted: {fileID: 2073383751050143158, guid: c9101a83d979c8a47bacc2f429d5d31d,
+      type: 3}
+  - panelBrandfallControlAb: {instanceID: 0}
+  - panelLEDAcoustigSignal: {instanceID: 0}
+  - panelBMZReset: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
