@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,14 @@ public class FATController : MonoBehaviour
     public FATList fatList;
     public MessageView messageView;
     public LEDView ledView;
+    public LeftLEDView fwControlPanelLeftLEDView;
+    public RightLEDView fwControlPanelRightLEDView;
+
     public ButtonMessageUpDown buttonMessageUp;
     public ButtonMessageUpDown buttonMessageDown;
     public ButtonMultipleSoundsView hausalarmSound;
     public ButtonMultipleSoundsView buzzerSound;
+
 
     public string stoerungMessage0 = "** Keine Störung **";
     public string stoerungMessage1 = "* Störungsmeldung *";
@@ -204,6 +209,15 @@ public class FATController : MonoBehaviour
         }
         this.updateDisplay();
         lastInputTime = Time.time;
+    }
+
+    public void switchOnAcousticSignalLED()
+    {
+        fwControlPanelLeftLEDView.switchLEDAcoustigSignalOn();
+    }
+    public void switchOnUESignalLED()
+    {
+        fwControlPanelRightLEDView.switchLEDUEExecutedOn();
     }
 
     public void shutDownBuzzer()

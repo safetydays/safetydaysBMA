@@ -311,9 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402da74f587980b4fafe66a67a837a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnExtinguishSysExecuted: {fileID: 1928242769}
-  btnAcousticAudioSignalsAb: {fileID: 1367709146}
-  UEAb: {fileID: 254483299}
+  fatController: {fileID: 1763267611}
 --- !u!1 &254483297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1111,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 537907581}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: e1d8d343a928bcf448db55002fe83462, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &537907581
@@ -1230,7 +1239,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 548744926}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 5ca9b35af8c9fcf4dafc62e19f37eda8, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &548744926
@@ -1821,6 +1841,16 @@ PrefabInstance:
       propertyPath: buzzerSound
       value: 
       objectReference: {fileID: 410202755}
+    - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: fwControlPanelLeftLEDView
+      value: 
+      objectReference: {fileID: 1524371193}
+    - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: fwControlPanelRightLEDView
+      value: 
+      objectReference: {fileID: 1968156829}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9101a83d979c8a47bacc2f429d5d31d, type: 3}
 --- !u!1 &1359520847
@@ -1979,7 +2009,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1367709147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 402da74f587980b4fafe66a67a837a86, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1367709147
@@ -2096,7 +2137,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1393909501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: e1d8d343a928bcf448db55002fe83462, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1393909501
@@ -2523,6 +2575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596e5371cee1e4f4d9d780767e984d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fatController: {fileID: 1763267611}
   panelLEDRunning: {fileID: 86004506}
   panelLEDExtinguishTriggered: {fileID: 280969676}
   panelLEDAcoustigSignal: {fileID: 1584960621}
@@ -2652,9 +2705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d8d343a928bcf448db55002fe83462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnBrandfallControlAb: {fileID: 1393909500}
-  btnBMZReset: {fileID: 537907580}
-  UECheck: {fileID: 548744925}
+  fatController: {fileID: 1763267611}
 --- !u!1 &1584960621
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,10 +2948,10 @@ RectTransform:
   m_Father: {fileID: 1503284349}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -166.8, y: -265.4}
-  m_SizeDelta: {x: 937.5, y: 896}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -271, y: 115}
+  m_SizeDelta: {x: 937.5, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756641223
 MonoBehaviour:
@@ -3653,7 +3704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelUEexecuted: {fileID: 1570677599}
   panelBrandfallControlAb: {fileID: 435946485}
-  panelLEDAcoustigSignal: {fileID: 0}
+  panelLEDAcoustigSignal: {fileID: 1584960621}
   panelBMZReset: {fileID: 585046475}
 --- !u!1 &2061148405
 GameObject:
