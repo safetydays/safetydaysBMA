@@ -115,6 +115,12 @@ public class inputScreen : MonoBehaviour
         }
     }
 
+    public void readyButton()
+    {
+        saveData();
+
+    }
+
     public void setOnlyOneToggleActive() {
         if (firstRun > 0)
         {
