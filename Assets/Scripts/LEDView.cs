@@ -20,7 +20,7 @@ public class LEDView : MonoBehaviour
         imageAlarm = panelLEDAlarm.GetComponent<Image>();
         imageAlarm.color = Color.grey;
 
-        imageError = panelLEDRunning.GetComponent<Image>();
+        imageError = panelLEDError.GetComponent<Image>();
         imageError.color = Color.grey;
 
         imageOff = panelLEDOff.GetComponent<Image>();
