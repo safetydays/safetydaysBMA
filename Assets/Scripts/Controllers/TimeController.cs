@@ -33,7 +33,7 @@ public class TimeController : MonoBehaviour
         if (alarmList.getAlarmCount() > lastIDUpdatet)
         {
             Alarm nextAlarm = alarmList.getAlarm(lastIDUpdatet);
-            if (nextAlarm.time < Time.time - timeSinceLastUpdate)
+            if (nextAlarm.deltatime < Time.time - timeSinceLastUpdate)
             {
                 lastIDUpdatet++;
                 timeSinceLastUpdate = Time.time;

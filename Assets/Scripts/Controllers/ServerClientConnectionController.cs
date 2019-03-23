@@ -43,6 +43,7 @@ public class ServerClientConnectionController : NetworkBehaviour
     public void Test()
     {
         Alarm alarm = new Alarm(0, 0, Alarm.MelderType.Melder, "Meldung 1", "Meldung 2", AlarmType.Alarm);
-        RpcSendStringsToServer(alarm);
+        //RpcSendStringsToServer(alarm);
+        alarmList.addAlarm(alarm);
     }
 }
