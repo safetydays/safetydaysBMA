@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class rightLEDView : MonoBehaviour
+public class RightLEDView : MonoBehaviour
 {
     public GameObject panelUEexecuted;
     public GameObject panelBrandfallControlAb;
