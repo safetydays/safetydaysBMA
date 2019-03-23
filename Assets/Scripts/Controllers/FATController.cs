@@ -129,7 +129,7 @@ public class FATController : MonoBehaviour
         // Weitere LEDs setzen
         if (fatList.getAlarmCount() > 0)
         {
-            ledView.triggerAlarmBlinking();
+            ledView.stopAlarmBlinking();
         }
         if (fatList.getAlarmCount() > cursorPosition + 2)
             buttonMessageDown.turnOn();
