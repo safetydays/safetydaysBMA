@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LEDView : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class LEDView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        turnOn();
     }
 
     // Update is called once per frame
@@ -24,6 +25,6 @@ public class LEDView : MonoBehaviour
     public void turnOn()
     {
         Image img = panelLEDRunning.GetComponent<Image>();
-        img.Color = UnityEngine.Color.green;
+        img.color = Color.green;
     }
 }
