@@ -11,6 +11,7 @@ public class FATController : MonoBehaviour
     public ButtonMessageUpDown buttonMessageUp;
     public ButtonMessageUpDown buttonMessageDown;
     public ButtonMultipleSoundsView hausalarmSound;
+    public ButtonMultipleSoundsView buzzerSound;
 
     public string stoerungMessage0 = "** Keine Störung **";
     public string stoerungMessage1 = "* Störungsmeldung *";
@@ -26,6 +27,7 @@ public class FATController : MonoBehaviour
     
     private static float ResetTimeInSeconds = 17;
     private float lastInputTime;
+    private int lastBuzzerMessage;
 
 
 
@@ -49,6 +51,15 @@ public class FATController : MonoBehaviour
             cursorPosition = 0;
             fatState = State.Alarmanzeige;
             updateDisplay();
+        }
+
+        if (!acousticsFlag)
+        {
+            hausalarmSound.PlaySecondClick();
+            if (lastBuzzerMessage < fatList.getAlarmCount() - 1)
+                buzzerSound.PlaySecondClick();
+            else
+                buzzerSound.StopSecondClick();
         }
     }
 
@@ -187,10 +198,7 @@ public class FATController : MonoBehaviour
             case State.Stoerung:
                 fatState = State.Abschaltung;
                 break;
-            case State.Abschaltung:
-                fatState = State.Historie;
-                break;
-            case State.Historie:
+            default:
                 fatState = State.Alarmanzeige;
                 break;
         }
@@ -198,4 +206,8 @@ public class FATController : MonoBehaviour
         lastInputTime = Time.time;
     }
 
+    public void shutDownBuzzer()
+    {
+        lastBuzzerMessage = fatList.getAlarmCount()-1;
+    }
 }
