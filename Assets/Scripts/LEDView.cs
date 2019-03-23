@@ -35,22 +35,13 @@ public class LEDView : MonoBehaviour
     }
 
     /// <summary>
-    /// Betriebsbereit, dauerhaft grün leuchtend
+    /// Running, always green color
     /// </summary>
     public void turnOn()
     {
         //always on
         Image img = panelLEDRunning.GetComponent<Image>();
         img.color = Color.green;
-    }
-
-
-    /// <summary>
-    /// Errormodus on, yellow lighthing
-    /// </summary>
-    public void switchErrorOn()
-    {
-        imageError.color = Color.yellow;
     }
 
     public void switchErrorOff()
@@ -64,41 +55,75 @@ public class LEDView : MonoBehaviour
 
     public void triggerErrorBlinking()
     {
-        BlinkError();
+        StopCoroutine("BlinkError");
+        StartCoroutine("BlinkError");
     }
+    /// <summary>
+    /// stop blinking, set color to yellow
+    /// </summary>
     public void stopErrorBlinking()
     {
         StopCoroutine("BlinkError");
-        imageError.color = Color.yellow;   
+        imageError.color = Color.yellow;
     }
+    /// <summary>
+    /// disable error LED, color to grey
+    /// </summary>
+    public void disableErrorLED()
+    {
+        imageError.color = Color.grey;
+    }
+    /// <summary>
+    /// Abschaltmodus blinking starts,
+    /// </summary>
     public void triggerOffModeBlinking()
     {
-        StopCoroutine("BlinkError");
-        StartCoroutine("BlinkError");
-       
+        imageOff.color = Color.yellow;
+        StopCoroutine("BlinkOffMode");
+        StartCoroutine("BlinkOffMode");
     }
+    /// <summary>
+    /// Stop Abschaltmodus blinking, color to yellow 
+    /// </summary>
     public void stopOffModeBlinking()
     {
-        StopCoroutine("BlinkError");
+        StopCoroutine("BlinkOffMode");
+        imageOff.color = Color.yellow;
+    }
+    /// <summary>
+    /// Disable Abschaltmodus LED, color to grey
+    /// </summary>
+    public void disableOffModeLED()
+    {
+        StopCoroutine("BlinkOffMode");
+        imageOff.color = Color.grey;
     }
 
+    /// <summary>
+    /// Set alarm color to red, start blinking
+    /// </summary>
     public void triggerAlarmBlinking()
     {
         imageAlarm.color = new Color(255, 0, 0, 1);
-        StartAlarmBlinking();
+        StopCoroutine("BlinkAlarm");
+        StartCoroutine("BlinkAlarm");
     }
+    /// <summary>
+    /// Stop blinking, red light on
+    /// </summary>
     public void stopAlarmBlinking()
+    {
+        StopCoroutine("BlinkAlarm");
+        imageAlarm.color = Color.red;
+    }
+    /// <summary>
+    /// Disables the alarm LED,  color to grey
+    /// </summary>
+    public void disableAlarmLED()
     {
         StopCoroutine("BlinkAlarm");
         imageAlarm.color = Color.grey;
     }
-
-    void StartAlarmBlinking()
-    {
-        StopCoroutine("BlinkAlarm");
-        StartCoroutine("BlinkAlarm");
-    }
-
 
     IEnumerator BlinkAlarm()
     {
