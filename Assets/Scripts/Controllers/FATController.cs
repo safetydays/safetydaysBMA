@@ -30,7 +30,14 @@ public class FATController : MonoBehaviour
 
     public void updateDisplay()
     {
-        switch(fatState)
+        // States wechseln
+        if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
+        {
+            fatState = State.Stoerung;
+        }
+
+        // Anzeige aktualisieren je nach State
+        switch (fatState)
         {
             case State.Alarmanzeige:
                 Debug.Log("Meldung zur Anzeige übergeben");
@@ -42,7 +49,7 @@ public class FATController : MonoBehaviour
                 messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
                 return;
             case State.Stoerung:
-                messageView.updateText1("", stoerungMessage);
+                messageView.updateText1("", stoerungMessage0);
                 messageView.updateText2("", "");
                 return;
             case State.Abschaltung:
