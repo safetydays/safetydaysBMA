@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 06db00c2243ddcd468da1a03fe6ba852
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScenarioInput_Scrn.unity
     guid: 90d7f8442ea3af7469fc748bbd59f6f0
   - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 06db00c2243ddcd468da1a03fe6ba852
+  - enabled: 0
     path: Assets/Scenes/MainMenu_Scrn.unity
     guid: 9da167ef028758a4fa0f1cc3313d9caa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Teacher_Student_Scrn.unity
     guid: 18770efe70a816b439594ef9d0b72144
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Simulation_Scrn.unity
     guid: 093016b6b7bb0ce459937a80a45f6d9d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IP_Adress_Scrn.unity
     guid: c34fe0b5c25086e45be505d1eafd30b0
   m_configObjects: {}
