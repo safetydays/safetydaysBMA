@@ -9,7 +9,9 @@ using static Alarm;
 /// </summary>
 public class ServerClientConnectionController : NetworkBehaviour
 {
-    
+    public AlarmList alarmList;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +37,12 @@ public class ServerClientConnectionController : NetworkBehaviour
     public void RpcSendStringsToServer(Alarm alarm)
     {
         Debug.Log("Meldung: " + alarm.meldung1);
+        alarmList.addAlarm(alarm);
     }
 
     public void Test()
     {
-        Alarm alarm = new Alarm(0, 0, "Melder 1", "Meldung 1", "Meldung 2", AlarmType.Alarm);
+        Alarm alarm = new Alarm(0, 0, Alarm.MelderType.Melder, "Meldung 1", "Meldung 2", AlarmType.Alarm);
         RpcSendStringsToServer(alarm);
     }
 }

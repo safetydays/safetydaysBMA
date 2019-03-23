@@ -30,12 +30,17 @@ public class TimeController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Alarm nextAlarm = alarmList.getAlarm(lastIDUpdatet);
-        if (nextAlarm.time < Time.time - timeSinceLastUpdate)
+        if (alarmList.getAlarmCount() > lastIDUpdatet)
         {
-            lastIDUpdatet++;
-            timeSinceLastUpdate = Time.time;
-            fatList.addAlarm(nextAlarm);
+            Alarm nextAlarm = alarmList.getAlarm(lastIDUpdatet);
+            if (nextAlarm.time < Time.time - timeSinceLastUpdate)
+            {
+                lastIDUpdatet++;
+                timeSinceLastUpdate = Time.time;
+                fatList.addAlarm(nextAlarm);
+                Debug.Log("Element ins FAT übernommen - " + nextAlarm.id);
+                fatController.updateDisplay();
+            }
         }
     }
 }

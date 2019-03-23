@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ButtonMessageUpDown : MonoBehaviour
 {
+    public FATController fatController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +18,11 @@ public class ButtonMessageUpDown : MonoBehaviour
     }
     public void displayNextMessageInHistory()
     {
-
+        fatController.displayNextMessageInHistory();
     }
+
     public void displayPreviousMessageInHistory()
     {
-
+        fatController.displayPreviousMessageInHistory();
     }
 }

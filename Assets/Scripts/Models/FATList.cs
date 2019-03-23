@@ -9,7 +9,7 @@ public class FATList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        internAlarmList = new List<Alarm>();
     }
 
     // Update is called once per frame
