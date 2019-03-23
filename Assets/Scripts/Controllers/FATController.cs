@@ -86,6 +86,11 @@ public class FATController : MonoBehaviour
             offFlag = true;
         }
 
+        //Löschanlage ausgelöst? -> Lampe anmachen
+        if(fatList.getAlarm(fatList.getAlarmCount() - 1).melderTyp == Alarm.MelderType.Loeschanlage)
+        {
+            fwControlPanelLeftLEDView.switchLEDExtinguishOn();
+        }
 
 
         // Anzeige aktualisieren je nach State
