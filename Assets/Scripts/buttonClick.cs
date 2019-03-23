@@ -52,7 +52,25 @@ public class buttonClick : MonoBehaviour
                 //EditorUtility.DisplayDialog("Button Name", "Partner", "OKAY");
                 break;
             case "Trainer_Btn":
+                //Trainer-Rolle speichern
+
+                //nächsten Screen aufrufen
+                SceneManager.LoadScene("IP_Adress_Scrn");
+                break;
+            case "Student_Btn":
+                //Schüler-Rolle speichern
+
+                //nächsten Screen aufrufen
+                SceneManager.LoadScene("IP_Adress_Scrn");
+                break;
+            case "SaveIP_Btn":
+                //wenn Trainer
                 SceneManager.LoadScene("ScenarioInput_Scrn");
+                //wenn Schüler
+                SceneManager.LoadScene("SampleScene");  
+                break;
+            case "Home_Btn":
+                SceneManager.LoadScene("MainMenu_Scrn");
                 break;
             default:
                 break;

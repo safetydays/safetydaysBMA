@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ButtonSummerVew : MonoBehaviour
 {
+    public FATController fatController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +18,9 @@ public class ButtonSummerVew : MonoBehaviour
         
     }
 
-    
+    public void shutDownBuzzer()
+    {
+        fatController.shutDownBuzzer();
+    }
+
 }

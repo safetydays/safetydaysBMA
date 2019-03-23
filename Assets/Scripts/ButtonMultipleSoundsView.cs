@@ -19,4 +19,18 @@ public class ButtonMultipleSoundsView : MonoBehaviour, IPointerClickHandler
         AudioSource.PlayOneShot(ClickSound);
         AudioSource.PlayOneShot(secondClip);
     }
+
+    public void PlaySecondClick()
+    {
+        if (!AudioSource.isPlaying)
+        {
+            AudioSource.loop = true;
+            AudioSource.PlayOneShot(secondClip);
+        }
+    }
+
+    public void StopSecondClick()
+    {
+        AudioSource.Stop();
+    }
 }
