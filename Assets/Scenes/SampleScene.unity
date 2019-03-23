@@ -966,6 +966,21 @@ PrefabInstance:
       propertyPath: messageView
       value: 
       objectReference: {fileID: 1685760204}
+    - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: ledView
+      value: 
+      objectReference: {fileID: 1905784521}
+    - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: buttonMessageUp
+      value: 
+      objectReference: {fileID: 1938340940}
+    - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: buttonMessageDown
+      value: 
+      objectReference: {fileID: 1479819242}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9101a83d979c8a47bacc2f429d5d31d, type: 3}
 --- !u!1 &1359520847
@@ -1524,7 +1539,6 @@ GameObject:
   - component: {fileID: 1756641225}
   - component: {fileID: 1756641224}
   - component: {fileID: 1756641223}
-  - component: {fileID: 1756641226}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1612,18 +1626,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1756641226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756641221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c32a1665cac4e641b8c0350050ac10d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1760222080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1728,7 @@ GameObject:
   - component: {fileID: 1905784520}
   - component: {fileID: 1905784521}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: LEDView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1980,7 +1982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66270c293a8e904780bf87a9360930a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameAsdf: {fileID: 0}
+  fatController: {fileID: 0}
 --- !u!114 &2061148408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,7 +2023,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 4c32a1665cac4e641b8c0350050ac10d, type: 3}
+      - m_Target: {fileID: 2061148405}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
