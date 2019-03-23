@@ -10,7 +10,7 @@ public struct Alarm
 {
     // FalseAlarm: Fehlalarm, Alarm: Echter Alarm
     public enum AlarmType { FalseAlarm, Alarm, Fault, Off };
-    public enum MelderType { Melder, Löschanlage};
+    public enum MelderType { Melder, Loeschanlage };
 
     public int id;
     public int deltatime;
