@@ -58,10 +58,10 @@ public class AlarmList : NetworkBehaviour
     {
         //internAlarmList = new List<Alarm>();
         internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/3", "Melder Flur O", Alarm.AlarmType.Alarm));
-        internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.Alarm));
+        /*internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.Alarm));
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/1", "Melder Attrium", Alarm.AlarmType.Alarm));
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/4", "Melder WC", Alarm.AlarmType.Alarm));
-        internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/5", "Melder Küche", Alarm.AlarmType.Alarm));
+        internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/5", "Melder Küche", Alarm.AlarmType.Alarm));*/
         
     }
 

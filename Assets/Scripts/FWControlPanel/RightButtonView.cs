@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class RightButtonView : MonoBehaviour
 {
-    public Button btnBrandfallControlAb;
-    public Button btnBMZReset;
-    public Button UECheck;
+    public FATController fatController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +17,10 @@ public class RightButtonView : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void switchOnUEExecutedLED()
+    {
+        fatController.switchOnUESignalLED();
     }
 }

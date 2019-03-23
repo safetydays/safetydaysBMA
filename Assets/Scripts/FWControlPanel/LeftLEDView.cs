@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class LeftLEDView : MonoBehaviour
 {
+
+
+    public FATController fatController;
+
     public GameObject panelLEDRunning;
     public GameObject panelLEDExtinguishTriggered;
     public GameObject panelLEDAcoustigSignal;
@@ -20,7 +24,7 @@ public class LeftLEDView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        imageLEDRunning = panelLEEUe.GetComponent<Image>();
+        imageLEDRunning = panelLEDRunning.GetComponent<Image>();
         imageLEDExtinguish = panelLEDExtinguishTriggered.GetComponent<Image>();
         imageLEDAcoustigSignal = panelLEDAcoustigSignal.GetComponent<Image>();
         imageLEDUEAb = panelLEEUe.GetComponent<Image>();
@@ -62,4 +66,5 @@ public class LeftLEDView : MonoBehaviour
     {
         imageLEDUEAb.color = Color.grey;
     }
+
 }
