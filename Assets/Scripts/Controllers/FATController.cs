@@ -219,6 +219,7 @@ public class FATController : MonoBehaviour
     public void switchOnAcousticSignalLED()
     {
         fwControlPanelLeftLEDView.switchLEDAcoustigSignalOn();
+        
     }
     public void switchOnUESignalLED()
     {

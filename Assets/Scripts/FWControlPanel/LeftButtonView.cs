@@ -7,7 +7,7 @@ public class LeftButtonView : MonoBehaviour
 {
 
     public FATController fatController;
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,10 @@ public class LeftButtonView : MonoBehaviour
     {
         fatController.switchOnAcousticSignalLED();
     }
-
+    public void UEAbClicked()
+    {
+        //TODO
+    }
 }
 
     
