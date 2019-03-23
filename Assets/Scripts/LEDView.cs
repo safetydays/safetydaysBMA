@@ -16,7 +16,7 @@ public class LEDView : MonoBehaviour
     {
         turnOn();
         imageAlarm = panelLEDAlarm.GetComponent<Image>();
-        imageAlarm.color = new Color(255, 0, 0, 1);
+        imageAlarm.color = Color.grey;
         // triggerAlarmBlinking(); only for testing
     }
 
@@ -35,6 +35,7 @@ public class LEDView : MonoBehaviour
     {
         Image img = panelLEDRunning.GetComponent<Image>();
         img.color = Color.yellow;
+
     }
     public void turnErrorOn()
     {
@@ -44,8 +45,14 @@ public class LEDView : MonoBehaviour
 
     public void triggerAlarmBlinking()
     {
+        imageAlarm.color = new Color(255, 0, 0, 1);
         StartBlinking();
     }
+    public void stopAlarmBlinking()
+    {
+        imageAlarm.color = Color.grey;
+    }
+
     void StartBlinking()
     {
         StopAllCoroutines();
