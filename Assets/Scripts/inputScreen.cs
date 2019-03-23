@@ -32,6 +32,8 @@ public class inputScreen : MonoBehaviour
 
     public int firstRun = 0;
 
+    public int currentID = 0;
+
     public AlarmList alarmList;
 
     public List<Alarm> localAlarmList = new List<Alarm>();
@@ -49,7 +51,7 @@ public class inputScreen : MonoBehaviour
 
         m_hinweistext.text = "Brandalarm";
 
-        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.Alarm));
+        localAlarmList.Clear();
 
         m_handmelder.isOn = false;
         m_loeschanlage.isOn = false;
@@ -111,7 +113,7 @@ public class inputScreen : MonoBehaviour
 
     }
 
-    public void saveData()
+    public void addAlarmToLocalQueue()
     {
         //check if neccessary fields are filled
         if (m_meldernummer.text == "" || m_meldergruppe.text == "" || m_freitext.text == "" || m_hinweistext.text == "")
@@ -125,7 +127,7 @@ public class inputScreen : MonoBehaviour
         }
     }
 
-    public void readyButton()
+    public void manualAlarm()
     {
         alarmList.gameObject.SetActive(true);
         //alarmList.addAlarm(new Alarm(alarmausderliste));
@@ -182,7 +184,9 @@ public class inputScreen : MonoBehaviour
 
     public void jumpScenario()
     {
-
+        //localAlarmList.FindIndex(alarmid);
+        //localAlarmList[currentID].meldung1.Trim()
+        m_freitext.text = localAlarmList[currentID].meldung2;
     }
 
     public void callSample()

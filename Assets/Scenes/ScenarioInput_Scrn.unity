@@ -5212,7 +5212,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1392383462}
-        m_MethodName: readyButton
+        m_MethodName: manualAlarm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6052,7 +6052,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1392383462}
-        m_MethodName: saveData
+        m_MethodName: addAlarmToLocalQueue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
