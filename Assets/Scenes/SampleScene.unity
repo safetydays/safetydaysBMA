@@ -573,6 +573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 410202754}
   - component: {fileID: 410202753}
+  - component: {fileID: 410202755}
   m_Layer: 0
   m_Name: BuzzerAudioSource
   m_TagString: Untagged
@@ -690,6 +691,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &410202755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410202752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7635c96a020d24f85900fdb0c453a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 410202753}
+  ClickSound: {fileID: 0}
+  secondClip: {fileID: 8300000, guid: aa90578dfe5bebd479d36f7977b36906, type: 3}
 --- !u!1 &435946485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 168.4, y: -176}
+  m_AnchoredPosition: {x: 168.40039, y: -176.00003}
   m_SizeDelta: {x: 110.2, y: -233.8}
   m_Pivot: {x: 0.5000001, y: 0.5365321}
 --- !u!1 &1251356535
@@ -1475,6 +1491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e006f3a3dc1cb1478cfc523298af0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fatController: {fileID: 1763267611}
 --- !u!114 &1251356538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1516,7 +1533,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1251356537}
-        m_MethodName: 
+        m_MethodName: shutDownBuzzer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1794,6 +1811,16 @@ PrefabInstance:
       propertyPath: buttonMessageDown
       value: 
       objectReference: {fileID: 1479819242}
+    - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: hausalarmSound
+      value: 
+      objectReference: {fileID: 1877660925}
+    - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: buzzerSound
+      value: 
+      objectReference: {fileID: 410202755}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9101a83d979c8a47bacc2f429d5d31d, type: 3}
 --- !u!1 &1359520847
@@ -3020,6 +3047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1877660924}
   - component: {fileID: 1877660923}
+  - component: {fileID: 1877660925}
   m_Layer: 0
   m_Name: HausAlarmAudioSource
   m_TagString: Untagged
@@ -3039,7 +3067,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 726c02771e3cda7408bbbfec8860ea56, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3137,6 +3165,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1877660925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877660922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7635c96a020d24f85900fdb0c453a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 1877660923}
+  ClickSound: {fileID: 0}
+  secondClip: {fileID: 8300000, guid: 726c02771e3cda7408bbbfec8860ea56, type: 3}
 --- !u!1 &1905784519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,7 +3217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 483.7, y: -293.8}
+  m_AnchoredPosition: {x: 483.69922, y: -293.79996}
   m_SizeDelta: {x: 86.1, y: -258.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1905784521
@@ -3915,6 +3958,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 353.4, y: -147.6}
+  m_AnchoredPosition: {x: 353.4004, y: -147.6}
   m_SizeDelta: {x: 114.6, y: -204.4}
   m_Pivot: {x: 0.5, y: 0.5}

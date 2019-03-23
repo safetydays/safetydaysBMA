@@ -35,12 +35,26 @@ public struct Alarm
 /// </summary>
 public class AlarmList : NetworkBehaviour
 {
+    public static AlarmList Instance;
     //public List<Alarm> internAlarmList;
     public class SyncAlarmList : SyncListStruct<Alarm> { }
     SyncAlarmList internAlarmList = new SyncAlarmList();
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            GameObject.Destroy(Instance);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+
+        // Start is called before the first frame update
+        void Start()
     {
         //internAlarmList = new List<Alarm>();
         internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/3", "Melder Flur O", Alarm.AlarmType.Alarm));
@@ -48,8 +62,7 @@ public class AlarmList : NetworkBehaviour
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/1", "Melder Attrium", Alarm.AlarmType.Alarm));
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/4", "Melder WC", Alarm.AlarmType.Alarm));
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/5", "Melder Küche", Alarm.AlarmType.Alarm));
-
-        DontDestroyOnLoad(this.gameObject);
+        
     }
 
     // Update is called once per frame
