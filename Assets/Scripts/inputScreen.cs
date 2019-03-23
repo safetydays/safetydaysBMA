@@ -34,6 +34,9 @@ public class inputScreen : MonoBehaviour
 
     public AlarmList alarmList;
 
+    public List<Alarm> localAlarmList = new List<Alarm>();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,13 +45,15 @@ public class inputScreen : MonoBehaviour
         initializeMelderart();
         initializeTimeDelay();
 
-        m_handmelder.isOn = false;
-        m_loeschanlage.isOn = false;
-        m_automatisch.isOn = true;
-
         m_fehlalarm.isOn = false;
 
         m_hinweistext.text = "Brandalarm";
+
+        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.Alarm));
+
+        m_handmelder.isOn = false;
+        m_loeschanlage.isOn = false;
+        m_automatisch.isOn = true;
 
     }
 
@@ -102,9 +107,7 @@ public class inputScreen : MonoBehaviour
         int timedelay;
         int.TryParse(timedelayLbl.text, out timedelay);
 
-        alarmList.gameObject.SetActive(true);
-        alarmList.addAlarm(new Alarm(alarmid, timedelay, meldertyp, m_hinweistext.text, m_freitext.text, alarmtyp));
-        infoText.text = "Meldung wurde der Alarm-Liste hinzugefügt.";
+        localAlarmList.Add(new Alarm(alarmid, timedelay, meldertyp, m_hinweistext.text, m_freitext.text, alarmtyp));
 
     }
 
@@ -124,15 +127,16 @@ public class inputScreen : MonoBehaviour
 
     public void readyButton()
     {
-        saveData();
-
+        alarmList.gameObject.SetActive(true);
+        //alarmList.addAlarm(new Alarm(alarmausderliste));
+        infoText.text = "Meldung wurde der Alarm-Liste hinzugefügt.";
     }
 
     public void setOnlyOneToggleActive()
     {
-        if (firstRun > 0)
+        if (firstRun > 3)
         {
-
+            Debug.Log(firstRun.ToString());
             switch (EventSystem.current.currentSelectedGameObject.name)
             {
                 case "Automatisch_Tgl":
@@ -174,5 +178,17 @@ public class inputScreen : MonoBehaviour
         }
 
         firstRun++;
+    }
+
+    public void jumpScenario()
+    {
+
+    }
+
+    public void callSample()
+    {
+        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(1, 15, Alarm.MelderType.Melder, "06/3", "Melder Flur O", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(1, 15, Alarm.MelderType.Melder, "07/4", "Melder Flur S", Alarm.AlarmType.Alarm));
     }
 }
