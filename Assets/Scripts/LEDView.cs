@@ -31,7 +31,12 @@ public class LEDView : MonoBehaviour
     public void turnOff()
     {
         Image img = panelLEDRunning.GetComponent<Image>();
-        img.color = Color.grey;
+        img.color = Color.yellow;
+    }
+    public void turnErrorOn()
+    {
+        Image img = panelLEDRunning.GetComponent<Image>();
+        img.color = Color.yellow;
     }
 
     public void triggerAlarmBlinking()
