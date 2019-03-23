@@ -9,13 +9,15 @@ public class LEDView : MonoBehaviour
     public GameObject panelLEDAlarm;
     public GameObject panelLEDError;
     public GameObject panelLEDOff;
-    public Image imageAlarm;
+    private Image imageAlarm;
 
     // Start is called before the first frame update
     void Start()
     {
         turnOn();
         imageAlarm = panelLEDAlarm.GetComponent<Image>();
+        imageAlarm.color = new Color(255, 0, 0, 1);
+        // triggerAlarmBlinking(); only for testing
     }
 
     // Update is called once per frame
@@ -61,12 +63,12 @@ public class LEDView : MonoBehaviour
             switch (imageAlarm.color.a.ToString())
             {
                 case "0":
-                    imageAlarm.color = new Color(255,0,0,1);
+                    imageAlarm.color = new Color(imageAlarm.color.r, imageAlarm.color.g, imageAlarm.color.b, 1);
                     //Play sound
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case "1":
-                    imageAlarm.color = new Color(255,0,0,0);
+                    imageAlarm.color = new Color(imageAlarm.color.r, imageAlarm.color.g, imageAlarm.color.b, 0);
                     //Play sound
                     yield return new WaitForSeconds(0.5f);
                     break;
