@@ -15,6 +15,7 @@ public class FATController : MonoBehaviour
     public string stoerungMessage1 = "* Störungsmeldung *";
     public string abschaltungMessage = "** Abschaltung **";
 
+
     private int cursorPosition;
     private State fatState;
     private bool faultFlag;     // Flag für die Störungs-Anzeige
@@ -27,7 +28,8 @@ public class FATController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        messageView.updateText1("* BMA App *", "safety days 2019");
+        messageView.updateText2("Universität Paderborn", "");
         cursorPosition = 0;
         fatState = State.Alarmanzeige;
     }
@@ -98,6 +100,8 @@ public class FATController : MonoBehaviour
             case State.Historie:
                 messageView.updateText1("", "");
                 messageView.updateText2("", "");
+                break;
+            default:
                 break;
         }
 
