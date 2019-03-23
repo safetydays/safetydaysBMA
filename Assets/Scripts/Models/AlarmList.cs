@@ -48,6 +48,8 @@ public class AlarmList : NetworkBehaviour
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/1", "Melder Attrium", Alarm.AlarmType.Alarm));
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/4", "Melder WC", Alarm.AlarmType.Alarm));
         internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/5", "Melder Küche", Alarm.AlarmType.Alarm));
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
