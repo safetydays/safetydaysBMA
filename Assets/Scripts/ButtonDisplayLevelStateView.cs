@@ -30,4 +30,9 @@ public class ButtonDisplayLevelStateView : MonoBehaviour
     {
 
     }
+
+    public void displayNextMode()
+    {
+
+    }
 }

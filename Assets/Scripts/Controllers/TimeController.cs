@@ -39,6 +39,7 @@ public class TimeController : MonoBehaviour
                 timeSinceLastUpdate = Time.time;
                 fatList.addAlarm(nextAlarm);
                 Debug.Log("Element ins FAT übernommen - " + nextAlarm.id);
+                fatController.switchToAlarmanzeige();
                 fatController.updateDisplay();
             }
         }
