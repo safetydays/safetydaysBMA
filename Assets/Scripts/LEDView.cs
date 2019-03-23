@@ -9,12 +9,13 @@ public class LEDView : MonoBehaviour
     public GameObject panelLEDAlarm;
     public GameObject panelLEDError;
     public GameObject panelLEDOff;
-    private Image imageAlarm;
+    public Image imageAlarm;
 
     // Start is called before the first frame update
     void Start()
     {
         turnOn();
+        imageAlarm = panelLEDAlarm.GetComponent<Image>();
     }
 
     // Update is called once per frame
