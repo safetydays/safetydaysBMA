@@ -2027,9 +2027,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.3605347, y: 64}
+  m_AnchoredPosition: {x: 1.3602295, y: 54.626343}
   m_SizeDelta: {x: 72.577, y: 53}
-  m_Pivot: {x: 0.5000014, y: 0.67686146}
+  m_Pivot: {x: 0.49999878, y: 0.5}
 --- !u!114 &1393909500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2453,6 +2453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1524371192}
+  - component: {fileID: 1524371193}
   m_Layer: 5
   m_Name: leftLEDView
   m_TagString: Untagged
@@ -2483,6 +2484,22 @@ RectTransform:
   m_AnchoredPosition: {x: 1007, y: -210}
   m_SizeDelta: {x: 63.6, y: 517.7}
   m_Pivot: {x: 0.5, y: 0.50000006}
+--- !u!114 &1524371193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524371191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596e5371cee1e4f4d9d780767e984d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelLEDRunning: {fileID: 86004506}
+  panelLEDExtinguishTriggered: {fileID: 280969676}
+  panelLEDAcoustigSignal: {fileID: 1584960621}
+  panelLEEUe: {fileID: 1963408695}
 --- !u!1 &1570677599
 GameObject:
   m_ObjectHideFlags: 0
