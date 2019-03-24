@@ -49,15 +49,17 @@ public class inputScreen : MonoBehaviour
         initializeMelderart();
         initializeTimeDelay();
 
+        m_handmelder.isOn = false;
+        m_loeschanlage.isOn = false;
+        m_automatisch.isOn = true;
+
         m_fehlalarm.isOn = false;
 
         m_hinweistext.text = "Brandalarm";
 
         localAlarmList.Clear();
 
-        m_handmelder.isOn = false;
-        m_loeschanlage.isOn = false;
-        m_automatisch.isOn = true;
+
 
     }
 
@@ -133,7 +135,7 @@ public class inputScreen : MonoBehaviour
         {
             // go!
             generateScenarioFromInput();
-            currentID = localAlarmList.Count;
+            currentID = localAlarmList.Count - 1;
         }
     }
 
@@ -155,7 +157,7 @@ public class inputScreen : MonoBehaviour
 
     public void setOnlyOneToggleActive()
     {
-        if (firstRun > 3)
+        if (firstRun >= 2)
         {
             switch (EventSystem.current.currentSelectedGameObject.name)
             {
