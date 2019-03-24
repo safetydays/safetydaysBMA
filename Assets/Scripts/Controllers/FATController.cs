@@ -70,8 +70,16 @@ public class FATController : MonoBehaviour
             fatState = State.Alarmanzeige;
             updateDisplay();
         }
+        if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
+        {
+            acousticsFlag = true;
+        }
+        else
+        {
+            acousticsFlag = false;
+        }
 
-        if(acousticsFlag)
+        if (acousticsFlag)
         {
             hausalarmSound.PlaySecondClick();
             if (lastBuzzerMessage < fatList.getAlarmCount() - 1)
@@ -94,6 +102,7 @@ public class FATController : MonoBehaviour
     {
         if (fatList.getAlarmCount() > 0)
         {
+           
             // States wechseln - Strörungsmeldung
             if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
             {
@@ -101,10 +110,7 @@ public class FATController : MonoBehaviour
                 ledView.triggerAlarmBlinking();
                 fwControlPanelRightLEDView.switchImageBMZResetOn();
 
-                if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
-                {
-                    acousticsFlag = true;
-                }
+              
             }
             // States wechseln - Abschalten
             if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
@@ -259,12 +265,11 @@ public class FATController : MonoBehaviour
         {
             fwControlPanelLeftLEDView.switchLEDAcoustigSignalOff();
             fwControlPanelLeftButtonView.switchOffAcoustigSignalButton();
-            acousticsFlag = false;
+           
         }
         else
         {
             fwControlPanelLeftLEDView.switchLEDAcoustigSignalOn();
-            acousticsFlag = true;
         }
 
     }

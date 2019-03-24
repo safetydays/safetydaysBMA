@@ -8,12 +8,10 @@ public class RightLEDView : MonoBehaviour
 {
     public GameObject panelUEexecuted;
     public GameObject panelBrandfallControlAb;
-    public GameObject panelLEDAcoustigSignal;
     public GameObject panelBMZReset;
 
     private Image imageUEExecuted;
     private Image imageBrandFallControlAb;
-    private Image imageLEDAcousticSignal;
     private Image imageBMZReset;
 
 
@@ -22,7 +20,6 @@ public class RightLEDView : MonoBehaviour
     {
         imageUEExecuted = panelUEexecuted.GetComponent<Image>();
         imageBrandFallControlAb = panelBrandfallControlAb.GetComponent<Image>();
-        imageLEDAcousticSignal = panelLEDAcoustigSignal.GetComponent<Image>();
         imageBMZReset = panelBMZReset.GetComponent<Image>();
     }
 
