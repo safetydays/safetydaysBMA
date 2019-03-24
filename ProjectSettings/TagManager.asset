@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NetworkController
   - AlarmList
+  - GlobalSettings
   layers:
   - Default
   - TransparentFX

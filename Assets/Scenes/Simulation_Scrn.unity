@@ -316,7 +316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bmaNetworkController: {fileID: 0}
+  ownIPField: {fileID: 0}
+  ipField: {fileID: 0}
 --- !u!1 &421719366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bmaNetworkController: {fileID: 0}
+  ownIPField: {fileID: 0}
+  ipField: {fileID: 0}
 --- !u!114 &1392383464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,7 +1528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bmaNetworkController: {fileID: 0}
+  ownIPField: {fileID: 0}
+  ipField: {fileID: 0}
 --- !u!1 &1516848972
 GameObject:
   m_ObjectHideFlags: 0
