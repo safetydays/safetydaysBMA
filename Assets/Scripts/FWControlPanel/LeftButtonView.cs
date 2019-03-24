@@ -7,7 +7,9 @@ public class LeftButtonView : MonoBehaviour
 {
 
     public FATController fatController;
-   
+    public Button btnAcousticSignal;
+    public Button btnUeAb;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +22,36 @@ public class LeftButtonView : MonoBehaviour
         
     }
 
-    public void switchOnAcoustigSignalLED()
+    public void switchOnAcousticSignalButtonAndLED()
     {
+        Image img = btnAcousticSignal.GetComponent<Image>();
+        img.color = Color.yellow;
         fatController.switchOnAcousticSignalLED();
+
     }
+    public void switchOffAcoustigSignalButton()
+    {
+        Image img = btnAcousticSignal.GetComponent<Image>();
+        img.color = Color.white;
+    }
+
+    public void switchOffUEAbButton()
+    {
+        Image img = btnUeAb.GetComponent<Image>();
+        img.color = Color.white;
+    }
+    
     public void UEAbClicked()
     {
+        Image img = btnUeAb.GetComponent<Image>();
+        img.color = Color.yellow;
+        fatController.switchOnUeAbLED();
+        //Funktionslos, Lampe an und Knop leuchtet
         //TODO
     }
+
+
+
 }
 
     

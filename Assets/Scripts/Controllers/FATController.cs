@@ -11,15 +11,19 @@ public class FATController : MonoBehaviour
     public LEDView ledView;
     public LeftLEDView fwControlPanelLeftLEDView;
     public RightLEDView fwControlPanelRightLEDView;
+    public LeftButtonView fwControlPanelLeftButtonView;
+    
 
     public ButtonMessageUpDown buttonMessageUp;
     public ButtonMessageUpDown buttonMessageDown;
+
+
     public ButtonMultipleSoundsView hausalarmSound;
     public ButtonMultipleSoundsView buzzerSound;
 
-
     public string stoerungMessage0 = "** Keine Störung **";
     public string stoerungMessage1 = "* Störungsmeldung *";
+
     public string abschaltungMessage = "** Abschaltung **";
 
     private int cursorPosition;
@@ -28,7 +32,7 @@ public class FATController : MonoBehaviour
     private State fatState;
     private bool faultFlag;     // Flag für die Störungs-Anzeige
     private bool offFlag;       // Flag für die Abschalten-Anzeige
-    private bool acousticsFlag; // Flag für das Abspielen von Sounds
+    private bool acousticsFlag = true; // Flag für das Abspielen von Sounds
     
     private static float ResetTimeInSeconds = 17;
     private float lastInputTime;
@@ -58,7 +62,7 @@ public class FATController : MonoBehaviour
             updateDisplay();
         }
 
-        if (!acousticsFlag)
+        if(acousticsFlag)
         {
             hausalarmSound.PlaySecondClick();
             if (lastBuzzerMessage < fatList.getAlarmCount() - 1)
@@ -66,6 +70,11 @@ public class FATController : MonoBehaviour
             else
                 buzzerSound.StopSecondClick();
         }
+        else
+        {
+            buzzerSound.StopSecondClick();
+        }
+
     }
 
     /// <summary>
@@ -74,22 +83,25 @@ public class FATController : MonoBehaviour
     /// </summary>
     public void updateDisplay()
     {
-        // States wechseln - Strörungsmeldung
-        if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
+        if (fatList.getAlarmCount() > 0)
         {
-            faultFlag = true;
-            ledView.triggerAlarmBlinking();
-        }
-        // States wechseln - Abschalten
-        if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
-        {
-            offFlag = true;
-        }
+            // States wechseln - Strörungsmeldung
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
+            {
+                faultFlag = true;
+                ledView.triggerAlarmBlinking();
+            }
+            // States wechseln - Abschalten
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
+            {
+                offFlag = true;
+            }
 
-        //Löschanlage ausgelöst? -> Lampe anmachen
-        if(fatList.getAlarm(fatList.getAlarmCount() - 1).melderTyp == Alarm.MelderType.Loeschanlage)
-        {
-            fwControlPanelLeftLEDView.switchLEDExtinguishOn();
+            //Löschanlage ausgelöst? -> Lampe anmachen
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).melderTyp == Alarm.MelderType.Loeschanlage)
+            {
+                fwControlPanelLeftLEDView.switchLEDExtinguishOn();
+            }
         }
 
 
@@ -98,12 +110,15 @@ public class FATController : MonoBehaviour
         {
             case State.Alarmanzeige:
                 Debug.Log("Meldung zur Anzeige übergeben");
-                // Aktuelles Element an der Cursorposition (obere Anzeige)
-                messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
-                //if(fatList.getAlarmCount() > cursorPosition+1)
+                if (fatList.getAlarmCount() > 0)
+                {
+                    // Aktuelles Element an der Cursorposition (obere Anzeige)
+                    messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
+                    //if(fatList.getAlarmCount() > cursorPosition+1)
 
-                // Letztes Element
-                messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
+                    // Letztes Element
+                    messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
+                }
                 break;
             case State.Stoerung:
                 if (faultFlag)
@@ -218,12 +233,46 @@ public class FATController : MonoBehaviour
 
     public void switchOnAcousticSignalLED()
     {
-        fwControlPanelLeftLEDView.switchLEDAcoustigSignalOn();
-        
+        if(fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
+        {
+            fwControlPanelLeftLEDView.switchLEDAcoustigSignalOff();
+            fwControlPanelLeftButtonView.switchOffAcoustigSignalButton();
+            acousticsFlag = true;
+        }
+        else
+        {
+            fwControlPanelLeftLEDView.switchLEDAcoustigSignalOn();
+            acousticsFlag = false;
+        }
+
     }
-    public void switchOnUESignalLED()
+    public void switchOnUECheckSignalLED()
     {
         fwControlPanelRightLEDView.switchLEDUEExecutedOn();
+    }
+
+    public void switchOffUeCheckSignalLED()
+    {
+        fwControlPanelRightLEDView.switchLEDUEExecutedOff();
+    }
+
+    public void switchOnUeAbLED()
+    {
+        if(fwControlPanelLeftLEDView.ueAbLEDIsOn())
+        {
+            fwControlPanelLeftLEDView.switchLEDUEAbOff();
+            fwControlPanelLeftButtonView.switchOffUEAbButton();
+        }
+        else
+        {
+            fwControlPanelLeftLEDView.switchLEDUEAbOn();
+          
+        }
+
+    }
+    public void switchonBrandFallLED()
+    {
+        fwControlPanelRightLEDView.switchLDBrandFallControlAbOn();
     }
 
     public void shutDownBuzzer()
