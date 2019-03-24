@@ -23,7 +23,6 @@ public class BMANetworkController : MonoBehaviour
     {
         networkManager = this.GetComponent<NetworkManager>();
         networkManager.StartHost();
-        ownIPField.text = LocalIPAddress();
     }
 
     // Update is called once per frame

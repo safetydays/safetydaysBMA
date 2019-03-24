@@ -14,7 +14,8 @@ public class buttonClick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (ownIPField != null)
+            ownIPField.text = BMANetworkController.LocalIPAddress();
     }
 
     // Update is called once per frame
