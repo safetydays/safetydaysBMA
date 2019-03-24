@@ -58,7 +58,7 @@ public class AlarmList : NetworkBehaviour
         // Start is called before the first frame update
         void Start()
     {
-        //internAlarmList = new List<Alarm>();
+          //internAlarmList = new List<Alarm>();
     //    internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/3", "Melder Flur O", Alarm.AlarmType.Alarm));
          internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Loeschanlage, "06/2", "Löschanlagen Test", Alarm.AlarmType.Alarm));
 

@@ -279,4 +279,17 @@ public class FATController : MonoBehaviour
     {
         lastBuzzerMessage = fatList.getAlarmCount()-1;
     }
+    public void resetBMZ()
+    {
+        ledView.disableAlarmLED();
+        fwControlPanelLeftLEDView.switchLEDExtinguishOff();
+            
+
+        //Alarm LED off
+        //Lösch LED off
+        //UE rechts Lauf
+        //FAT Speicher alle Fehlalarme löschen
+        //Wenn im Disply Fehlalarm angezeigt wird, dann muss der verwchiwnden
+
+    }
 }
