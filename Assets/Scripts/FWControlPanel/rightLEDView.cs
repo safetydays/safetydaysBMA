@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,7 +40,7 @@ public class RightLEDView : MonoBehaviour
     {
         imageUEExecuted.color = Color.grey;
     }
-    public void switchLDBrandFallControlAbOn()
+    public void switchLEDBrandFallControlAbOn()
     {
         imageBrandFallControlAb.color = Color.yellow;
     }
@@ -57,4 +58,9 @@ public class RightLEDView : MonoBehaviour
         imageBMZReset.color = Color.grey;
     }
 
+    public bool brandfallLEDOn() { 
+    
+       return imageBrandFallControlAb.color == Color.yellow;
+
+    }
 }

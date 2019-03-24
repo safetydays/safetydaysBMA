@@ -32,4 +32,9 @@ public class FATList : MonoBehaviour
     {
         this.internAlarmList.Add(alarm);
     }
+
+    public void removeAllFalseAlarmsFromList()
+    {
+        this.internAlarmList.RemoveAll(x => x.alarmTyp == Alarm.AlarmType.FalseAlarm);
+    }
 }
