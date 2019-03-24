@@ -53,6 +53,8 @@ public class buttonClick : MonoBehaviour
                 break;
             case "Single_Btn":
                 //EditorUtility.DisplayDialog("Button Name", "Single", "OKAY");
+                GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType = GlobalSettings.ClientType.SinglePlayer;
+                SceneManager.LoadScene("SampleScene");
                 break;
             case "Partner_Btn":
                 //EditorUtility.DisplayDialog("Button Name", "Partner", "OKAY");
@@ -61,13 +63,14 @@ public class buttonClick : MonoBehaviour
                 //Trainer-Rolle speichern
 
                 //nächsten Screen aufrufen
-                
+                //GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType = GlobalSettings.ClientType.Teacher;
                 SceneManager.LoadScene("ScenarioInput_Scrn");
                 break;
             case "Student_Btn":
                 //Schüler-Rolle speichern
 
                 //nächsten Screen aufrufen
+                //GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType = GlobalSettings.ClientType.Student;
                 SceneManager.LoadScene("IP_Adress_Scrn");
                 break;
             case "SaveIP_Btn":

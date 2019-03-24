@@ -25,6 +25,10 @@ public class FATController : MonoBehaviour
     public string stoerungMessage1 = "* Störungsmeldung *";
 
     public string abschaltungMessage = "** Abschaltung **";
+    public string bereitMessage0Line1 = " * BMA App* ";
+    public String bereitMessage0Line2 = "safety days 2019";
+    public String bereitMessage1Line1 = "Universität Paderborn";
+
 
     private int cursorPosition;
 
@@ -32,7 +36,7 @@ public class FATController : MonoBehaviour
     private State fatState;
     private bool faultFlag;     // Flag für die Störungs-Anzeige
     private bool offFlag;       // Flag für die Abschalten-Anzeige
-    private bool acousticsFlag = true; // Flag für das Abspielen von Sounds
+    private bool acousticsFlag = false; // Flag für das Abspielen von Sounds
     
     private static float ResetTimeInSeconds = 17;
     private float lastInputTime;
@@ -43,9 +47,8 @@ public class FATController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        messageView.updateText1("* BMA App *", "safety days 2019");
-        messageView.updateText2("Universität Paderborn", "");
-
+        messageView.updateText1(bereitMessage0Line1,bereitMessage0Line2);
+        messageView.updateText2(bereitMessage1Line1, "");
         cursorPosition = 0;
         fatState = State.Alarmanzeige;
     }
@@ -90,6 +93,12 @@ public class FATController : MonoBehaviour
             {
                 faultFlag = true;
                 ledView.triggerAlarmBlinking();
+                fwControlPanelRightLEDView.switchImageBMZResetOn();
+
+                if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
+                {
+                    acousticsFlag = true;
+                }
             }
             // States wechseln - Abschalten
             if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
@@ -119,6 +128,11 @@ public class FATController : MonoBehaviour
                     // Letztes Element
                     messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
                 }
+                else
+                {
+                    messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
+                    messageView.updateText2(bereitMessage1Line1, "");
+                }
                 break;
             case State.Stoerung:
                 if (faultFlag)
@@ -143,6 +157,8 @@ public class FATController : MonoBehaviour
                 messageView.updateText2("", "");
                 break;
             default:
+                messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
+                messageView.updateText2(bereitMessage1Line1, "");
                 break;
         }
 
@@ -237,12 +253,12 @@ public class FATController : MonoBehaviour
         {
             fwControlPanelLeftLEDView.switchLEDAcoustigSignalOff();
             fwControlPanelLeftButtonView.switchOffAcoustigSignalButton();
-            acousticsFlag = true;
+            acousticsFlag = false;
         }
         else
         {
             fwControlPanelLeftLEDView.switchLEDAcoustigSignalOn();
-            acousticsFlag = false;
+            acousticsFlag = true;
         }
 
     }
@@ -272,7 +288,15 @@ public class FATController : MonoBehaviour
     }
     public void switchonBrandFallLED()
     {
-        fwControlPanelRightLEDView.switchLDBrandFallControlAbOn();
+        if (fwControlPanelRightLEDView.brandfallLEDOn())
+        {
+            fwControlPanelRightLEDView.switchLEDBrandFallControlAbOff();
+            fwControlPanelLeftButtonView.switchOffUEAbButton();
+        }
+        else {
+            fwControlPanelRightLEDView.switchLEDBrandFallControlAbOn();
+        }
+            
     }
 
     public void shutDownBuzzer()
@@ -283,13 +307,12 @@ public class FATController : MonoBehaviour
     {
         ledView.disableAlarmLED();
         fwControlPanelLeftLEDView.switchLEDExtinguishOff();
-            
-
-        //Alarm LED off
-        //Lösch LED off
-        //UE rechts Lauf
-        //FAT Speicher alle Fehlalarme löschen
-        //Wenn im Disply Fehlalarm angezeigt wird, dann muss der verwchiwnden
+        fwControlPanelRightLEDView.switchBMZResetOff();
+        fatList.removeAllFalseAlarmsFromList();
+        acousticsFlag = false; //ton ausmachen, kann aber wieder angehen
+        messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
+        messageView.updateText2(bereitMessage1Line1, "");
+    
 
     }
 }

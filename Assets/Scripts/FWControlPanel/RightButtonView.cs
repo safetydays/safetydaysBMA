@@ -32,6 +32,12 @@ public class RightButtonView : MonoBehaviour
         //LED and Button light
         //Set status that UE is abgeschaltet
     }
+
+    public void switchOffBrandFallLED()
+    {
+        Image img = btnBrandfallAb.GetComponent<Image>();
+        img.color = Color.white;
+    }
     public void BMZResetClicked()
     {
         fatController.resetBMZ();
