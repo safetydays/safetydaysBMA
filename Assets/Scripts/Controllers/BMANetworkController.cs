@@ -11,6 +11,7 @@ using UnityEngine.UI;
 /// </summary>
 public class BMANetworkController : MonoBehaviour
 {
+    public InputField ownIPField;
     public InputField ipField;
 
     private NetworkManager networkManager;
@@ -22,12 +23,29 @@ public class BMANetworkController : MonoBehaviour
     {
         networkManager = this.GetComponent<NetworkManager>();
         networkManager.StartHost();
+        ownIPField.text = LocalIPAddress();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public static string LocalIPAddress()
+    {
+        IPHostEntry host;
+        string localIP = "0.0.0.0";
+        host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (IPAddress ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            {
+                localIP = ip.ToString();
+                break;
+            }
+        }
+        return localIP;
     }
 
     /// <summary>
