@@ -51,6 +51,12 @@ public class FATController : MonoBehaviour
         messageView.updateText2(bereitMessage1Line1, "");
         cursorPosition = 0;
         fatState = State.Alarmanzeige;
+
+        // Server neustarten im Einzelplayer
+        if (GameObject.FindGameObjectWithTag("GlobalSettings") != null && GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType == GlobalSettings.ClientType.SinglePlayer)
+        {
+            GameObject.FindGameObjectWithTag("NetworkController").GetComponent<BMANetworkController>().restartHost();
+        }
     }
 
     /// <summary>
