@@ -43,17 +43,15 @@ public class LeftButtonView : MonoBehaviour
     
     public void UEAbClicked()
     {
-        fatController.switchOnUeAbLED();
         Image img = btnUeAb.GetComponent<Image>();
         img.color = Color.yellow;
-
-        
+        fatController.switchOnUeAbLED();
         //Funktionslos, Lampe an und Knop leuchtet
         //TODO
     }
-  
 
-   
+
+
 }
 
     
