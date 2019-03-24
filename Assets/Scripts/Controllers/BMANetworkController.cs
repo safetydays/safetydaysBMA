@@ -89,4 +89,16 @@ public class BMANetworkController : MonoBehaviour
         networkManager.networkAddress = ip;
         networkManager.StartClient();
     }
+
+    public void restartHost()
+    {
+        StartCoroutine("yieldRestartHost");
+    }
+
+    IEnumerator yieldRestartHost()
+    {
+        networkManager.StopHost();
+        yield return new WaitForEndOfFrame();
+        networkManager.StartHost();
+    }
 }
