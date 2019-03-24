@@ -101,12 +101,15 @@ public class FATController : MonoBehaviour
         {
             case State.Alarmanzeige:
                 Debug.Log("Meldung zur Anzeige übergeben");
-                // Aktuelles Element an der Cursorposition (obere Anzeige)
-                messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
-                //if(fatList.getAlarmCount() > cursorPosition+1)
+                if (fatList.getAlarmCount() > 0)
+                {
+                    // Aktuelles Element an der Cursorposition (obere Anzeige)
+                    messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
+                    //if(fatList.getAlarmCount() > cursorPosition+1)
 
-                // Letztes Element
-                messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
+                    // Letztes Element
+                    messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
+                }
                 break;
             case State.Stoerung:
                 if (faultFlag)

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class buttonClick : MonoBehaviour
 {
-    public BMANetworkController bmaNetworkController;
+    private BMANetworkController bmaNetworkController;
+    public InputField ownIPField;
+    public InputField ipField;
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +73,8 @@ public class buttonClick : MonoBehaviour
                 //wenn Trainer
                 //SceneManager.LoadScene("ScenarioInput_Scrn");
                 //wenn Schüler
-                bmaNetworkController.connectWithIPField();
+                bmaNetworkController = GameObject.FindGameObjectWithTag("NetworkController").GetComponent<BMANetworkController>();
+                bmaNetworkController.connectWithIPField(ownIPField, ipField);
                 SceneManager.LoadScene("SampleScene");  
                 break;
             case "Home_Btn":

@@ -11,8 +11,8 @@ using UnityEngine.UI;
 /// </summary>
 public class BMANetworkController : MonoBehaviour
 {
-    public InputField ownIPField;
-    public InputField ipField;
+    private InputField ownIPField;
+    private InputField ipField;
 
     private NetworkManager networkManager;
 
@@ -69,8 +69,10 @@ public class BMANetworkController : MonoBehaviour
         return true;
     }
 
-    public void connectWithIPField()
+    public void connectWithIPField(InputField ownIPField, InputField ipField)
     {
+        this.ownIPField = ownIPField;
+        this.ipField = ipField;
         if (checkIPAdress(ipField.text))
             connectWithHost(ipField.text);
     }

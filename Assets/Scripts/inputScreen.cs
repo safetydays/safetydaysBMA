@@ -130,7 +130,7 @@ public class inputScreen : MonoBehaviour
     public void manualAlarm()
     {
         alarmList.gameObject.SetActive(true);
-        //alarmList.addAlarm(new Alarm(alarmausderliste));
+        alarmList.addAlarm(new Alarm(alarmid, 0, Alarm.MelderType.Melder, m_hinweistext.text, m_freitext.text, Alarm.AlarmType.Alarm));
         infoText.text = "Meldung wurde der Alarm-Liste hinzugefügt.";
     }
 
