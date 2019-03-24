@@ -108,8 +108,6 @@ public class FATController : MonoBehaviour
             {
                 faultFlag = true;
                 ledView.triggerAlarmBlinking();
-                fwControlPanelRightLEDView.switchImageBMZResetOn();
-
               
             }
             // States wechseln - Abschalten
@@ -207,6 +205,7 @@ public class FATController : MonoBehaviour
         updateDisplay();
 
         ledView.stopAlarmBlinking();
+        fwControlPanelRightLEDView.switchImageBMZResetOn();
 
         // Next-LED-Anzeige aktualisieren
         if (fatList.getAlarmCount() > cursorPosition + 2)
