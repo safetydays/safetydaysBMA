@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class RightButtonView : MonoBehaviour
 {
     public FATController fatController;
-
-    // Start is called before the first frame update
+    public Button btnBMZReset;
+    public Button btnBrandfallAb;
+        
+   // Start is called before the first frame update
     void Start()
     {
         
@@ -19,8 +21,24 @@ public class RightButtonView : MonoBehaviour
         
     }
 
-    public void switchOnUEExecutedLED()
+ 
+
+    public void switchOnBrandFallLED()
     {
-        fatController.switchOnUESignalLED();
+        Image img = btnBrandfallAb.GetComponent<Image>();
+        img.color = Color.yellow;
+
+        fatController.switchonBrandFallLED();
+        //LED and Button light
+        //Set status that UE is abgeschaltet
     }
+    public void BMZResetClicked()
+    {
+      //Alarm LED off
+      //Lösch LED off
+      //UE rechts Lauf
+      //FAT Speicher alle Fehlalarme löschen
+      //Wenn im Disply Fehlalarm angezeigt wird, dann muss der verwchiwnden
+    }
+   
 }

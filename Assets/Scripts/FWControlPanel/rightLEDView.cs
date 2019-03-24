@@ -34,7 +34,6 @@ public class RightLEDView : MonoBehaviour
     public void switchLEDUEExecutedOn()
     {
         imageUEExecuted.color = Color.red;
-
     }
     public void switchLEDUEExecutedOff()
     {
@@ -49,7 +48,7 @@ public class RightLEDView : MonoBehaviour
         imageBrandFallControlAb.color = Color.grey;
     }
 
-    public void switchImageMZResetOn()
+    public void switchImageBMZResetOn()
     {
         imageBMZReset.color = Color.red;
     }

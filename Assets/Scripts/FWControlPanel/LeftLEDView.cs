@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,8 @@ public class LeftLEDView : MonoBehaviour
     private Image imageLEDAcoustigSignal;
     private Image imageLEDUEAb;
 
+    private Image ImageLEDAcoustigSignal;
+
 
 
     // Start is called before the first frame update
@@ -26,7 +29,7 @@ public class LeftLEDView : MonoBehaviour
     {
         imageLEDRunning = panelLEDRunning.GetComponent<Image>();
         imageLEDExtinguish = panelLEDExtinguishTriggered.GetComponent<Image>();
-        imageLEDAcoustigSignal = panelLEDAcoustigSignal.GetComponent<Image>();
+        ImageLEDAcoustigSignal = panelLEDAcoustigSignal.GetComponent<Image>();
         imageLEDUEAb = panelLEEUe.GetComponent<Image>();
         switchPanelLEDRunning();
     }
@@ -35,6 +38,10 @@ public class LeftLEDView : MonoBehaviour
     void Update()
     {
         
+    }
+    public bool acousticSignalLEDIsOn()
+    {
+        return ImageLEDAcoustigSignal.color == Color.yellow;
     }
 
     public void switchPanelLEDRunning()
@@ -52,11 +59,11 @@ public class LeftLEDView : MonoBehaviour
     }
     public void switchLEDAcoustigSignalOn()
     {
-        imageLEDAcoustigSignal.color = Color.yellow;
+        ImageLEDAcoustigSignal.color = Color.yellow;
     }
     public void switchLEDAcoustigSignalOff()
     {
-        imageLEDAcoustigSignal.color = Color.grey;
+        ImageLEDAcoustigSignal.color = Color.grey;
     }
     public void switchLEDUEAbOn()
     {
@@ -67,4 +74,9 @@ public class LeftLEDView : MonoBehaviour
         imageLEDUEAb.color = Color.grey;
     }
 
+    public bool ueAbLEDIsOn()
+    {
+        return imageLEDUEAb.color == Color.yellow;
+       
+    }
 }
