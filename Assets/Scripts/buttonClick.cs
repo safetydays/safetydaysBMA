@@ -82,7 +82,23 @@ public class buttonClick : MonoBehaviour
                 SceneManager.LoadScene("SampleScene");  
                 break;
             case "Home_Btn":
-                SceneManager.LoadScene("MainMenu_Scrn");
+                switch (SceneManager.GetActiveScene().name){
+                    case "ScenarioInput_Scrn":
+                        SceneManager.LoadScene("Teacher_Student_Scrn");
+                        break;
+                    case "IP_Adress_Scrn":
+                        SceneManager.LoadScene("Teacher_Student_Scrn");
+                        break;
+                    case "Teacher_Student_Scrn":
+                        SceneManager.LoadScene("Simulation_Scrn");
+                        break;
+                    case "Simulation_Scrn":
+                        SceneManager.LoadScene("MainMenu_Scrn");
+                        break;
+                    default:
+                        SceneManager.LoadScene("MainMenu_Scrn");
+                        break;
+                }
                 break;
             default:
                 break;

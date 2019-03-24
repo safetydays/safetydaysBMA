@@ -6787,7 +6787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Zur\xFCck"
+  m_Text: Vorheriges
 --- !u!222 &1815839579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7024,7 +7024,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vor
+  m_Text: "N\xE4chstes"
 --- !u!222 &1905133648
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -136,6 +136,7 @@ public class inputScreen : MonoBehaviour
             // go!
             generateScenarioFromInput();
             currentID = localAlarmList.Count - 1;
+            infoText.text = "Melder wurde in den lokalen Puffer gestellt.";
         }
     }
 
@@ -273,9 +274,15 @@ public class inputScreen : MonoBehaviour
     public void callSample()
     {
         localAlarmList.Clear();
-        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.FalseAlarm));
-        localAlarmList.Add(new Alarm(1, 15, Alarm.MelderType.Melder, "06/3", "Melder Flur O", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(2, 15, Alarm.MelderType.Melder, "07/4", "Melder Flur S", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "0203/04", "Gaststätte ZWD", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(1, 0, Alarm.MelderType.Melder, "0203/03", "Gaststätte ZWD", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(2, 0, Alarm.MelderType.Melder, "0201/01", "Gaststätte U-E.12", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(3, 0, Alarm.MelderType.Melder, "0203/02", "Gaststätte ZWD", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(4, 0, Alarm.MelderType.Melder, "0203/01", "Gaststätte ZWD", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(5, 0, Alarm.MelderType.Melder, "0202/01", "Gaststätte U-E.12", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(6, 0, Alarm.MelderType.Melder, "0202/04", "Gaststätte U-E.12", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(7, 0, Alarm.MelderType.Melder, "0202/03", "Gaststätte U-E.12", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(8, 0, Alarm.MelderType.Melder, "0202/02", "Gaststätte U-E.12", Alarm.AlarmType.Alarm));
         currentID = 0;
         provideData(currentID);
         alarmid_max = 2;
