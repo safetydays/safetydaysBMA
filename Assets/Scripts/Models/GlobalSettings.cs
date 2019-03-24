@@ -13,7 +13,7 @@ public class GlobalSettings : MonoBehaviour
     {
         if (Instance != null)
         {
-            GameObject.Destroy(Instance);
+            GameObject.Destroy(Instance.gameObject);
             Debug.Log("Alarm-List-Objekt schon vorhanden!");
         }
         else

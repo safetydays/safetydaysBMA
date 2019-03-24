@@ -59,7 +59,7 @@ public class AlarmList : NetworkBehaviour
         void Start()
     {
         //internAlarmList = new List<Alarm>();
-        if (GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType == GlobalSettings.ClientType.SinglePlayer)
+        if (GameObject.FindGameObjectWithTag("GlobalSettings") != null && GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType == GlobalSettings.ClientType.SinglePlayer)
         {
             internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/3", "Melder Flur O", Alarm.AlarmType.Alarm));
             internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Loeschanlage, "06/2", "Löschanlagen Test", Alarm.AlarmType.Alarm));
