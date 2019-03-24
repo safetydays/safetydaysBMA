@@ -70,15 +70,7 @@ public class FATController : MonoBehaviour
             fatState = State.Alarmanzeige;
             updateDisplay();
         }
-        if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
-        {
-            acousticsFlag = true;
-        }
-        else
-        {
-            acousticsFlag = false;
-        }
-
+      
         if (acousticsFlag)
         {
             hausalarmSound.PlaySecondClick();
@@ -89,7 +81,7 @@ public class FATController : MonoBehaviour
         }
         else
         {
-            buzzerSound.StopSecondClick();
+            hausalarmSound.StopSecondClick();
         }
 
     }
@@ -131,6 +123,16 @@ public class FATController : MonoBehaviour
                 Debug.Log("Meldung zur Anzeige übergeben");
                 if (fatList.getAlarmCount() > 0)
                 {
+                    if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
+                    {
+                        acousticsFlag = true;
+                    }
+                    else
+                    {
+                        acousticsFlag = false;
+                    }
+
+
                     // Aktuelles Element an der Cursorposition (obere Anzeige)
                     messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
                     //if(fatList.getAlarmCount() > cursorPosition+1)
