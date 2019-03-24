@@ -74,22 +74,25 @@ public class FATController : MonoBehaviour
     /// </summary>
     public void updateDisplay()
     {
-        // States wechseln - Strörungsmeldung
-        if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
+        if (fatList.getAlarmCount() > 0)
         {
-            faultFlag = true;
-            ledView.triggerAlarmBlinking();
-        }
-        // States wechseln - Abschalten
-        if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
-        {
-            offFlag = true;
-        }
+            // States wechseln - Strörungsmeldung
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
+            {
+                faultFlag = true;
+                ledView.triggerAlarmBlinking();
+            }
+            // States wechseln - Abschalten
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
+            {
+                offFlag = true;
+            }
 
-        //Löschanlage ausgelöst? -> Lampe anmachen
-        if(fatList.getAlarm(fatList.getAlarmCount() - 1).melderTyp == Alarm.MelderType.Loeschanlage)
-        {
-            fwControlPanelLeftLEDView.switchLEDExtinguishOn();
+            //Löschanlage ausgelöst? -> Lampe anmachen
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).melderTyp == Alarm.MelderType.Loeschanlage)
+            {
+                fwControlPanelLeftLEDView.switchLEDExtinguishOn();
+            }
         }
 
 

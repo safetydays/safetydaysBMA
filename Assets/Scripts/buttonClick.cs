@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class buttonClick : MonoBehaviour
 {
+    public BMANetworkController bmaNetworkController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +57,8 @@ public class buttonClick : MonoBehaviour
                 //Trainer-Rolle speichern
 
                 //nächsten Screen aufrufen
-                SceneManager.LoadScene("IP_Adress_Scrn");
+                
+                SceneManager.LoadScene("ScenarioInput_Scrn");
                 break;
             case "Student_Btn":
                 //Schüler-Rolle speichern
@@ -65,8 +68,9 @@ public class buttonClick : MonoBehaviour
                 break;
             case "SaveIP_Btn":
                 //wenn Trainer
-                SceneManager.LoadScene("ScenarioInput_Scrn");
+                //SceneManager.LoadScene("ScenarioInput_Scrn");
                 //wenn Schüler
+                bmaNetworkController.connectWithIPField();
                 SceneManager.LoadScene("SampleScene");  
                 break;
             case "Home_Btn":

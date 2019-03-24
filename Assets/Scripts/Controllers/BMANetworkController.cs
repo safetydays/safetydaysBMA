@@ -4,12 +4,15 @@ using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 /// <summary>
 /// NetzwerkController zum Verbinden des Clients mit dem Server
 /// </summary>
 public class BMANetworkController : MonoBehaviour
 {
+    public InputField ipField;
+
     private NetworkManager networkManager;
 
     /// <summary>
@@ -46,6 +49,12 @@ public class BMANetworkController : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    public void connectWithIPField()
+    {
+        if (checkIPAdress(ipField.text))
+            connectWithHost(ipField.text);
     }
 
 
