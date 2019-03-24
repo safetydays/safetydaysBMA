@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class inputScreen : MonoBehaviour
 {
-
     List<string> melderart_list = new List<string> { "Brand", "Rauch", "CO" };
     List<string> timedelay_list = new List<string> { "0", "30", "60", "90" };
 
@@ -27,8 +26,11 @@ public class inputScreen : MonoBehaviour
 
     public Text timedelayLbl;
     public Text infoText;
+    public Text m_currentScenario;
+    public Text m_maxScenario;
 
     public int alarmid;
+    public int alarmid_max;
 
     public int firstRun = 0;
 
@@ -62,7 +64,9 @@ public class inputScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        int l_currentID = currentID + 1;
+        m_currentScenario.text = l_currentID.ToString();
+        m_maxScenario.text = localAlarmList.Count.ToString();
     }
 
     void initializeMelderart()
@@ -83,7 +87,7 @@ public class inputScreen : MonoBehaviour
         Alarm.AlarmType alarmtyp = Alarm.AlarmType.Alarm;
 
         //count up alarmid
-        alarmid++;
+        alarmid = ++alarmid_max;
         //extract meldertyp from checkboxes
         if (m_handmelder.isOn)
         {
@@ -109,36 +113,50 @@ public class inputScreen : MonoBehaviour
         int timedelay;
         int.TryParse(timedelayLbl.text, out timedelay);
 
-        localAlarmList.Add(new Alarm(alarmid, timedelay, meldertyp, m_hinweistext.text, m_freitext.text, alarmtyp));
+        //concatenate group and number
+        string l_melderinfo = m_meldergruppe.text + "/" + m_meldernummer.text;
+
+        // hinweistext meldertype are not passed
+        localAlarmList.Add(new Alarm(alarmid, timedelay, meldertyp, l_melderinfo, m_freitext.text, alarmtyp));
 
     }
 
     public void addAlarmToLocalQueue()
     {
+        infoText.text = "";
         //check if neccessary fields are filled
         if (m_meldernummer.text == "" || m_meldergruppe.text == "" || m_freitext.text == "" || m_hinweistext.text == "")
         {
-            //EditorUtility.DisplayDialog("Oh man!", "Alle fettgedruckten Felder füllen", "Okay");
+            infoText.text = "Bitte alle Pflichtfelder füllen";
         }
         else
         {
             // go!
             generateScenarioFromInput();
+            currentID = localAlarmList.Count;
         }
     }
 
     public void manualAlarm()
     {
-        alarmList.gameObject.SetActive(true);
-        //alarmList.addAlarm(new Alarm(alarmausderliste));
-        infoText.text = "Meldung wurde der Alarm-Liste hinzugefügt.";
+        if (localAlarmList.Count > 0)
+        {
+            alarmList.gameObject.SetActive(true);
+            alarmList.addAlarm(localAlarmList[currentID]);
+            infoText.text = "Meldung wurde der an die BMA gesendet.";
+        }
+        else
+        {
+            addAlarmToLocalQueue();
+            manualAlarm();
+            alarmid_max = alarmid;
+        }
     }
 
     public void setOnlyOneToggleActive()
     {
         if (firstRun > 3)
         {
-            Debug.Log(firstRun.ToString());
             switch (EventSystem.current.currentSelectedGameObject.name)
             {
                 case "Automatisch_Tgl":
@@ -184,15 +202,80 @@ public class inputScreen : MonoBehaviour
 
     public void jumpScenario()
     {
-        //localAlarmList.FindIndex(alarmid);
-        //localAlarmList[currentID].meldung1.Trim()
+        if (localAlarmList.Count > 1)
+        {
+            switch (EventSystem.current.currentSelectedGameObject.name)
+            {
+                case "NextScenario_Btn":
+                    if (localAlarmList.Count == currentID + 1)
+                    {
+                        currentID = 0;
+                    }
+                    else
+                    {
+                        currentID++;
+                    }
+                    break;
+                case "PrevScenario_Btn":
+                    if (currentID == 0)
+                    {
+                        currentID = localAlarmList.Count - 1;
+                    }
+                    else
+                    {
+                        currentID--;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            provideData(currentID);
+        }
+
+    }
+
+    public void provideData(int index)
+    {
+        string[] l_melderinfo = localAlarmList[currentID].meldung1.Split('/');
+        m_meldergruppe.text = l_melderinfo[0];
+        m_meldernummer.text = l_melderinfo[1];
+
         m_freitext.text = localAlarmList[currentID].meldung2;
+        m_hinweistext.text = "Brandalarm";
+
+        if (localAlarmList[currentID].alarmTyp == Alarm.AlarmType.FalseAlarm)
+        {
+            m_fehlalarm.isOn = true;
+        }
+        else
+        {
+            m_fehlalarm.isOn = false;
+        }
+
+        if (localAlarmList[currentID].melderTyp == Alarm.MelderType.Loeschanlage)
+        {
+            m_loeschanlage.isOn = true;
+        }
+
+        if (localAlarmList[currentID].melderTyp == Alarm.MelderType.Melder)
+        {
+            m_automatisch.isOn = true;
+        }
+
+        m_Dropdown_TimeDelay.value = localAlarmList[currentID].deltatime;
+
+        alarmid = localAlarmList[currentID].id;
     }
 
     public void callSample()
     {
-        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.Alarm));
+        localAlarmList.Clear();
+        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.FalseAlarm));
         localAlarmList.Add(new Alarm(1, 15, Alarm.MelderType.Melder, "06/3", "Melder Flur O", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(1, 15, Alarm.MelderType.Melder, "07/4", "Melder Flur S", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(2, 15, Alarm.MelderType.Melder, "07/4", "Melder Flur S", Alarm.AlarmType.Alarm));
+        currentID = 0;
+        provideData(currentID);
+        alarmid_max = 2;
     }
 }
