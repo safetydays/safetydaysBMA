@@ -31,10 +31,14 @@ public class TimeController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(alarmList == null)
+        if(alarmList == null && GameObject.FindGameObjectWithTag("AlarmList") != null)
         {
             alarmList = GameObject.FindGameObjectWithTag("AlarmList").GetComponent<AlarmList>();
             alarmList.gameObject.SetActive(true);
+        }
+        else if(alarmList == null)
+        {
+            return;
         }
 
         if (alarmList.getAlarmCount() > lastIDUpdatet)

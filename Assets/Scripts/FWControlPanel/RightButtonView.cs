@@ -34,11 +34,8 @@ public class RightButtonView : MonoBehaviour
     }
     public void BMZResetClicked()
     {
-      //Alarm LED off
-      //Lösch LED off
-      //UE rechts Lauf
-      //FAT Speicher alle Fehlalarme löschen
-      //Wenn im Disply Fehlalarm angezeigt wird, dann muss der verwchiwnden
+        fatController.resetBMZ();
+
     }
    
 }
