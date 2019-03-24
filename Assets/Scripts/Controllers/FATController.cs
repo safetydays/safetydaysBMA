@@ -83,22 +83,25 @@ public class FATController : MonoBehaviour
     /// </summary>
     public void updateDisplay()
     {
-        // States wechseln - Strörungsmeldung
-        if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
+        if (fatList.getAlarmCount() > 0)
         {
-            faultFlag = true;
-            ledView.triggerAlarmBlinking();
-        }
-        // States wechseln - Abschalten
-        if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
-        {
-            offFlag = true;
-        }
+            // States wechseln - Strörungsmeldung
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
+            {
+                faultFlag = true;
+                ledView.triggerAlarmBlinking();
+            }
+            // States wechseln - Abschalten
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
+            {
+                offFlag = true;
+            }
 
-        //Löschanlage ausgelöst? -> Lampe anmachen
-        if(fatList.getAlarm(fatList.getAlarmCount() - 1).melderTyp == Alarm.MelderType.Loeschanlage)
-        {
-            fwControlPanelLeftLEDView.switchLEDExtinguishOn();
+            //Löschanlage ausgelöst? -> Lampe anmachen
+            if (fatList.getAlarm(fatList.getAlarmCount() - 1).melderTyp == Alarm.MelderType.Loeschanlage)
+            {
+                fwControlPanelLeftLEDView.switchLEDExtinguishOn();
+            }
         }
 
 
@@ -107,12 +110,15 @@ public class FATController : MonoBehaviour
         {
             case State.Alarmanzeige:
                 Debug.Log("Meldung zur Anzeige übergeben");
-                // Aktuelles Element an der Cursorposition (obere Anzeige)
-                messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
-                //if(fatList.getAlarmCount() > cursorPosition+1)
+                if (fatList.getAlarmCount() > 0)
+                {
+                    // Aktuelles Element an der Cursorposition (obere Anzeige)
+                    messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
+                    //if(fatList.getAlarmCount() > cursorPosition+1)
 
-                // Letztes Element
-                messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
+                    // Letztes Element
+                    messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).meldung1, fatList.getAlarm(fatList.getAlarmCount() - 1).meldung2);
+                }
                 break;
             case State.Stoerung:
                 if (faultFlag)

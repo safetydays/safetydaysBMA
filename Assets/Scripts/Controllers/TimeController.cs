@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class TimeController : MonoBehaviour
 {
-    public AlarmList alarmList;
+    private AlarmList alarmList;
     public FATList fatList;
     public FATController fatController;
 
@@ -20,6 +20,7 @@ public class TimeController : MonoBehaviour
     /// </summary>
     void Start()
     {
+        
         startTime = Time.time;
         lastIDUpdatet = 0;
         timeSinceLastUpdate = 0;
@@ -30,6 +31,12 @@ public class TimeController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if(alarmList == null)
+        {
+            alarmList = GameObject.FindGameObjectWithTag("AlarmList").GetComponent<AlarmList>();
+            alarmList.gameObject.SetActive(true);
+        }
+
         if (alarmList.getAlarmCount() > lastIDUpdatet)
         {
             Alarm nextAlarm = alarmList.getAlarm(lastIDUpdatet);

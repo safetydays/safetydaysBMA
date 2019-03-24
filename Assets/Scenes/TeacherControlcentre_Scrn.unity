@@ -855,8 +855,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.5}
-  m_SizeDelta: {x: -0, y: 47}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: -0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245896829
 MonoBehaviour:
@@ -922,6 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bmaNetworkController: {fileID: 0}
 --- !u!114 &245896833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,6 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bmaNetworkController: {fileID: 0}
 --- !u!114 &245896834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bmaNetworkController: {fileID: 0}
 --- !u!1 &262414733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bmaNetworkController: {fileID: 0}
 --- !u!1 &466787558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4601,8 +4605,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.500015}
-  m_SizeDelta: {x: 0, y: -47}
+  m_AnchoredPosition: {x: 0, y: -70.00001}
+  m_SizeDelta: {x: 0, y: -139.99998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392383460
 MonoBehaviour:
@@ -4658,11 +4662,17 @@ MonoBehaviour:
   m_automatisch: {fileID: 466787560}
   m_handmelder: {fileID: 620776694}
   m_loeschanlage: {fileID: 207319055}
+  m_fehlalarm: {fileID: 0}
   m_meldergruppe: {fileID: 269759921}
   m_meldernummer: {fileID: 1811257199}
   m_hinweistext: {fileID: 1712609133}
   m_freitext: {fileID: 2000505186}
+  timedelayLbl: {fileID: 0}
+  infoText: {fileID: 0}
+  alarmid: 0
   firstRun: 0
+  currentID: 0
+  alarmList: {fileID: 0}
 --- !u!114 &1392383463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4675,6 +4685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bmaNetworkController: {fileID: 0}
 --- !u!114 &1392383464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4687,6 +4698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bmaNetworkController: {fileID: 0}
 --- !u!1 &1406769761
 GameObject:
   m_ObjectHideFlags: 0
@@ -5025,7 +5037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.74997, y: -329}
+  m_AnchoredPosition: {x: -0.75, y: -329}
   m_SizeDelta: {x: -170, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560473260

@@ -45,11 +45,13 @@ public class AlarmList : NetworkBehaviour
         if (Instance != null)
         {
             GameObject.Destroy(Instance);
+            Debug.Log("Alarm-List-Objekt schon vorhanden!");
         }
         else
         {
             Instance = this;
             DontDestroyOnLoad(this);
+            this.gameObject.SetActive(true);
         }
     }
 
