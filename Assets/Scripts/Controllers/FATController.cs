@@ -131,8 +131,7 @@ public class FATController : MonoBehaviour
                     {
                         acousticsFlag = false;
                     }
-
-
+                
                     // Aktuelles Element an der Cursorposition (obere Anzeige)
                     messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
                     //if(fatList.getAlarmCount() > cursorPosition+1)
@@ -178,6 +177,8 @@ public class FATController : MonoBehaviour
         if (fatList.getAlarmCount() > 0)
         {
             ledView.stopAlarmBlinking();
+            fwControlPanelRightLEDView.switchImageBMZResetOn();
+
         }
         if (fatList.getAlarmCount() > cursorPosition + 2)
             buttonMessageDown.turnOn();

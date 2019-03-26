@@ -2503,6 +2503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameObject
       objectReference: {fileID: 0}
+    - target: {fileID: 7194070040605783012, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: m_TagString
+      value: AlarmList
+      objectReference: {fileID: 0}
     - target: {fileID: 3059568238917872128, guid: c9101a83d979c8a47bacc2f429d5d31d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2603,11 +2608,6 @@ PrefabInstance:
       propertyPath: fwControlPanelLeftButtonView
       value: 
       objectReference: {fileID: 248006240}
-    - target: {fileID: 7194070040605783012, guid: c9101a83d979c8a47bacc2f429d5d31d,
-        type: 3}
-      propertyPath: m_TagString
-      value: AlarmList
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9101a83d979c8a47bacc2f429d5d31d, type: 3}
 --- !u!1 &1359520847
@@ -4360,6 +4360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca9b35af8c9fcf4dafc62e19f37eda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelUEexecuted: {fileID: 2073383751050143158, guid: c9101a83d979c8a47bacc2f429d5d31d,
+    type: 3}
+  panelBrandfallControlAb: {fileID: 435946485}
+  panelBMZReset: {fileID: 585046475}
 --- !u!1 &2061148405
 GameObject:
   m_ObjectHideFlags: 0
