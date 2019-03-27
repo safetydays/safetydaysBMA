@@ -29,12 +29,16 @@ public class FATController : MonoBehaviour
     public String bereitMessage0Line2 = "safety days 2019";
     public String bereitMessage1Line1 = "Universität Paderborn";
 
+    public float timeForLightingUpAllLights = 5.0f;
+    private float lightingTimer = 5f;
+    private bool testLightMode;
 
     private int cursorPosition;
 
     // States und Flags
     private State fatState;
     private bool faultFlag;     // Flag für die Störungs-Anzeige
+
     private bool offFlag;       // Flag für die Abschalten-Anzeige
     private bool acousticsFlag = false; // Flag für das Abspielen von Sounds
     
@@ -84,6 +88,11 @@ public class FATController : MonoBehaviour
             hausalarmSound.StopSecondClick();
         }
 
+        if (testLightMode)
+        {
+            lightingTimer -= Time.deltaTime;
+      
+        }
     }
 
     /// <summary>
@@ -327,5 +336,10 @@ public class FATController : MonoBehaviour
         messageView.updateText2(bereitMessage1Line1, "");
     
 
+    }
+
+    public void activateTestMode()
+    {
+       
     }
 }
