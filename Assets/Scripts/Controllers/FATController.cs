@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FATController : MonoBehaviour
 {
-    public enum State { Alarmanzeige, Stoerung, Abschaltung, Historie};
+    public enum State { Alarmanzeige, Stoerung, Abschaltung, Historie, Test};
     public FATList fatList;
     public MessageView messageView;
     public LEDView ledView;
@@ -30,7 +30,7 @@ public class FATController : MonoBehaviour
     public String bereitMessage1Line1 = "Universität Paderborn";
 
     public float timeForLightingUpAllLights = 5.0f;
-    private float lightingTimer = 5f;
+    private float lightningTimer;
     private bool testLightMode;
 
     private int cursorPosition;
@@ -68,7 +68,7 @@ public class FATController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(Time.time - lastInputTime > ResetTimeInSeconds)
+        if(fatState != State.Test && Time.time - lastInputTime > ResetTimeInSeconds)
         {
             cursorPosition = 0;
             fatState = State.Alarmanzeige;
@@ -79,9 +79,13 @@ public class FATController : MonoBehaviour
         {
             hausalarmSound.PlaySecondClick();
             if (lastBuzzerMessage < fatList.getAlarmCount() - 1)
+            {
                 buzzerSound.PlaySecondClick();
+            }
             else
+            {
                 buzzerSound.StopSecondClick();
+            }
         }
         else
         {
@@ -90,10 +94,10 @@ public class FATController : MonoBehaviour
 
         if (testLightMode)
         {
-            lightingTimer -= Time.deltaTime;
-      
+            lightningTimer += Time.deltaTime;
         }
     }
+
 
     /// <summary>
     /// Display-Nachrichten anzeigen, je nach State
@@ -161,7 +165,10 @@ public class FATController : MonoBehaviour
                     ledView.stopErrorBlinking();
                 }
                 else
+                {
                     messageView.updateText1("", stoerungMessage0);
+                }
+                   
                 messageView.updateText2("", "");
                 break;
             case State.Abschaltung:
@@ -176,6 +183,12 @@ public class FATController : MonoBehaviour
                 messageView.updateText1("", "");
                 messageView.updateText2("", "");
                 break;
+
+            case State.Test:
+                messageView.updateText1("-----Test-----", "");
+                messageView.updateText2("BMA TEST Modus", "");
+                break;
+
             default:
                 messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
                 messageView.updateText2(bereitMessage1Line1, "");
@@ -306,7 +319,6 @@ public class FATController : MonoBehaviour
             fwControlPanelLeftLEDView.switchLEDUEAbOn();
           
         }
-
     }
     public void switchonBrandFallLED()
     {
@@ -318,7 +330,6 @@ public class FATController : MonoBehaviour
         else {
             fwControlPanelRightLEDView.switchLEDBrandFallControlAbOn();
         }
-            
     }
 
     public void shutDownBuzzer()
@@ -334,12 +345,33 @@ public class FATController : MonoBehaviour
         acousticsFlag = false; //ton ausmachen, kann aber wieder angehen
         messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
         messageView.updateText2(bereitMessage1Line1, "");
-    
-
     }
 
     public void activateTestMode()
+    { 
+        testLightMode = true;
+        fatState = State.Test;
+        ledView.stopAlarmBlinking();
+        ledView.stopErrorBlinking();
+        ledView.stopOffModeBlinking();
+
+        acousticsFlag = true; 
+    
+        StartCoroutine(waitForTestModeFinishing());
+
+    }
+
+    IEnumerator waitForTestModeFinishing()
     {
-       
+        Debug.Log("Waiting for 5 seconds until test mode shutdown ");
+        yield return new WaitUntil(() => lightningTimer >= timeForLightingUpAllLights);
+        Debug.Log("Wait time is over, returning to mormal");
+
+        lightningTimer = 0;
+        testLightMode = false;
+        ledView.disableAlarmLED();
+        ledView.disableErrorLED();
+        ledView.disableOffModeLED();
+        fatState = State.Alarmanzeige;
     }
 }
