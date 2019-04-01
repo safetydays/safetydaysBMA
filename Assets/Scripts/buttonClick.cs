@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class buttonClick : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class buttonClick : MonoBehaviour
     {
         if (ownIPField != null)
             ownIPField.text = BMANetworkController.LocalIPAddress();
+        if (ipField != null)
+        {
+            ipField.text = GameObject.FindGameObjectWithTag("NetworkController").GetComponent<NetworkManager>().networkAddress;
+        }
     }
 
     // Update is called once per frame

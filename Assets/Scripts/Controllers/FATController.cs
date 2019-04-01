@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FATController : MonoBehaviour
 {
-    public enum State { Alarmanzeige, Stoerung, Abschaltung, Historie};
+    public enum State { Alarmanzeige, Stoerung, Abschaltung, Historie, Test};
     public FATList fatList;
     public MessageView messageView;
     public LEDView ledView;
@@ -29,12 +29,16 @@ public class FATController : MonoBehaviour
     public String bereitMessage0Line2 = "safety days 2019";
     public String bereitMessage1Line1 = "Universität Paderborn";
 
+    public float timeForLightingUpAllLights = 5.0f;
+    private float lightningTimer;
+    private bool testLightMode;
 
     private int cursorPosition;
 
     // States und Flags
     private State fatState;
     private bool faultFlag;     // Flag für die Störungs-Anzeige
+
     private bool offFlag;       // Flag für die Abschalten-Anzeige
     private bool acousticsFlag = false; // Flag für das Abspielen von Sounds
     
@@ -64,35 +68,36 @@ public class FATController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(Time.time - lastInputTime > ResetTimeInSeconds)
+        if(fatState != State.Test && Time.time - lastInputTime > ResetTimeInSeconds)
         {
             cursorPosition = 0;
             fatState = State.Alarmanzeige;
             updateDisplay();
         }
-        if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
-        {
-            acousticsFlag = true;
-        }
-        else
-        {
-            acousticsFlag = false;
-        }
-
+      
         if (acousticsFlag)
         {
             hausalarmSound.PlaySecondClick();
             if (lastBuzzerMessage < fatList.getAlarmCount() - 1)
+            {
                 buzzerSound.PlaySecondClick();
+            }
             else
+            {
                 buzzerSound.StopSecondClick();
+            }
         }
         else
         {
-            buzzerSound.StopSecondClick();
+            hausalarmSound.StopSecondClick();
         }
 
+        if (testLightMode)
+        {
+            lightningTimer += Time.deltaTime;
+        }
     }
+
 
     /// <summary>
     /// Display-Nachrichten anzeigen, je nach State
@@ -108,8 +113,6 @@ public class FATController : MonoBehaviour
             {
                 faultFlag = true;
                 ledView.triggerAlarmBlinking();
-                fwControlPanelRightLEDView.switchImageBMZResetOn();
-
               
             }
             // States wechseln - Abschalten
@@ -133,6 +136,15 @@ public class FATController : MonoBehaviour
                 Debug.Log("Meldung zur Anzeige übergeben");
                 if (fatList.getAlarmCount() > 0)
                 {
+                    if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
+                    {
+                        acousticsFlag = true;
+                    }
+                    else
+                    {
+                        acousticsFlag = false;
+                    }
+                
                     // Aktuelles Element an der Cursorposition (obere Anzeige)
                     messageView.updateText1(fatList.getAlarm(cursorPosition).meldung1, fatList.getAlarm(cursorPosition).meldung2);
                     //if(fatList.getAlarmCount() > cursorPosition+1)
@@ -153,7 +165,10 @@ public class FATController : MonoBehaviour
                     ledView.stopErrorBlinking();
                 }
                 else
+                {
                     messageView.updateText1("", stoerungMessage0);
+                }
+                   
                 messageView.updateText2("", "");
                 break;
             case State.Abschaltung:
@@ -168,6 +183,12 @@ public class FATController : MonoBehaviour
                 messageView.updateText1("", "");
                 messageView.updateText2("", "");
                 break;
+
+            case State.Test:
+                messageView.updateText1("-----Test-----", "");
+                messageView.updateText2("BMA TEST Modus", "");
+                break;
+
             default:
                 messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
                 messageView.updateText2(bereitMessage1Line1, "");
@@ -178,6 +199,8 @@ public class FATController : MonoBehaviour
         if (fatList.getAlarmCount() > 0)
         {
             ledView.stopAlarmBlinking();
+            fwControlPanelRightLEDView.switchImageBMZResetOn();
+
         }
         if (fatList.getAlarmCount() > cursorPosition + 2)
             buttonMessageDown.turnOn();
@@ -207,6 +230,7 @@ public class FATController : MonoBehaviour
         updateDisplay();
 
         ledView.stopAlarmBlinking();
+        fwControlPanelRightLEDView.switchImageBMZResetOn();
 
         // Next-LED-Anzeige aktualisieren
         if (fatList.getAlarmCount() > cursorPosition + 2)
@@ -295,7 +319,6 @@ public class FATController : MonoBehaviour
             fwControlPanelLeftLEDView.switchLEDUEAbOn();
           
         }
-
     }
     public void switchonBrandFallLED()
     {
@@ -307,7 +330,6 @@ public class FATController : MonoBehaviour
         else {
             fwControlPanelRightLEDView.switchLEDBrandFallControlAbOn();
         }
-            
     }
 
     public void shutDownBuzzer()
@@ -323,7 +345,33 @@ public class FATController : MonoBehaviour
         acousticsFlag = false; //ton ausmachen, kann aber wieder angehen
         messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
         messageView.updateText2(bereitMessage1Line1, "");
-    
+    }
 
+    public void activateTestMode()
+    { 
+        testLightMode = true;
+        fatState = State.Test;
+        ledView.stopAlarmBlinking();
+        ledView.stopErrorBlinking();
+        ledView.stopOffModeBlinking();
+
+        acousticsFlag = true; 
+    
+        StartCoroutine(waitForTestModeFinishing());
+
+    }
+
+    IEnumerator waitForTestModeFinishing()
+    {
+        Debug.Log("Waiting for 5 seconds until test mode shutdown ");
+        yield return new WaitUntil(() => lightningTimer >= timeForLightingUpAllLights);
+        Debug.Log("Wait time is over, returning to mormal");
+
+        lightningTimer = 0;
+        testLightMode = false;
+        ledView.disableAlarmLED();
+        ledView.disableErrorLED();
+        ledView.disableOffModeLED();
+        fatState = State.Alarmanzeige;
     }
 }
