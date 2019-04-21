@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 48623065}
   m_Layer: 0
   m_Name: AlarmList
-  m_TagString: Untagged
+  m_TagString: AlarmList
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -914,6 +914,7 @@ GameObject:
   - component: {fileID: 245896832}
   - component: {fileID: 245896834}
   - component: {fileID: 245896833}
+  - component: {fileID: 245896835}
   m_Layer: 0
   m_Name: Header_Pnl
   m_TagString: Untagged
@@ -1036,6 +1037,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownIPField: {fileID: 0}
   ipField: {fileID: 0}
+--- !u!114 &245896835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245896827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4d224bbe529f74a9fb5d10e6d32751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &255072975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,6 +3107,7 @@ GameObject:
   - component: {fileID: 666821850}
   - component: {fileID: 666821852}
   - component: {fileID: 666821851}
+  - component: {fileID: 666821853}
   m_Layer: 0
   m_Name: Container_Pnl
   m_TagString: Untagged
@@ -3159,6 +3173,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666821849}
   m_CullTransparentMesh: 0
+--- !u!114 &666821853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666821849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4d224bbe529f74a9fb5d10e6d32751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &672196698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4155,7 +4181,7 @@ GameObject:
   - component: {fileID: 970510958}
   m_Layer: 0
   m_Name: RestartServer
-  m_TagString: Untagged
+  m_TagString: NetworkController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4881,7 +4907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 31.4, y: 0.5}
+  m_AnchoredPosition: {x: 31.400024, y: 0.5}
   m_SizeDelta: {x: -62.7, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255158362
@@ -5126,6 +5152,7 @@ GameObject:
   - component: {fileID: 1378872823}
   - component: {fileID: 1378872825}
   - component: {fileID: 1378872824}
+  - component: {fileID: 1378872826}
   m_Layer: 0
   m_Name: Meldergruppe_Txt
   m_TagString: Untagged
@@ -5194,6 +5221,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378872822}
   m_CullTransparentMesh: 0
+--- !u!114 &1378872826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378872822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4d224bbe529f74a9fb5d10e6d32751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1392383458
 GameObject:
   m_ObjectHideFlags: 0

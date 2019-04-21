@@ -1333,7 +1333,6 @@ GameObject:
   - component: {fileID: 1392383461}
   - component: {fileID: 1392383460}
   - component: {fileID: 1392383463}
-  - component: {fileID: 1392383464}
   m_Layer: 0
   m_Name: Button_Pnl
   m_TagString: Untagged
@@ -1402,20 +1401,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 1392383458}
   m_CullTransparentMesh: 0
 --- !u!114 &1392383463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392383458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a8dd024e2d4d546af3d095d0d6bf74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownIPField: {fileID: 0}
-  ipField: {fileID: 0}
---- !u!114 &1392383464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
