@@ -12,11 +12,18 @@ public class ExistingDbScript : MonoBehaviour
         var people = ds.getScenario();
         ToConsole(people);
 
-
-
-
-
+        Scenario s = new Scenario { 
+            AlarmType = Alarm.AlarmType.Alarm.ToString(),
+            MelderType = Alarm.MelderType.Loeschanlage.ToString(),
+            MelderGruppe="LIne 27/80", TimeDelay="20"
+            };
+        
+        ds.insertScenario(s);
+        var sce = ds.getScenario();
+        ToConsole(sce);
     }
+
+
     private void ToConsole(IEnumerable<Scenario> people)
     {
         foreach (var person in people)

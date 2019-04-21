@@ -72,4 +72,9 @@ public class DataService
         return _connection.Table<Scenario>();
     }
 
+    public int insertScenario(Scenario scenario)
+    {
+        return _connection.Insert(scenario);
+    }
+
 }
