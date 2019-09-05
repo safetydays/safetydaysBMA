@@ -49,12 +49,6 @@ public class inputScreen : MonoBehaviour
         initializeMelderart();
         initializeTimeDelay();
 
-        m_handmelder.isOn = false;
-        m_loeschanlage.isOn = false;
-        m_automatisch.isOn = true;
-
-        m_fehlalarm.isOn = false;
-
         m_hinweistext.text = "Brandalarm";
 
         localAlarmList.Clear();
@@ -156,7 +150,7 @@ public class inputScreen : MonoBehaviour
         }
     }
 
-    public void setOnlyOneToggleActive()
+   /* public void setOnlyOneToggleActive()
     {
         if (firstRun >= 2)
         {
@@ -202,6 +196,7 @@ public class inputScreen : MonoBehaviour
 
         firstRun++;
     }
+    */
 
     public void jumpScenario()
     {
