@@ -45,6 +45,9 @@ public class buttonClick : MonoBehaviour
             case "Evaluate_Btn":
                 //EditorUtility.DisplayDialog("Button Name", "Evaluation", "OKAY");
                 break;
+            case "Manual_Btn":
+                SceneManager.LoadScene("Manual_Scrn");
+                break;
             case "Input_Btn":
                 //EditorUtility.DisplayDialog("Button Name", "Eingabe", "OKAY");
                 break;
