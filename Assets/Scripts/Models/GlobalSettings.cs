@@ -6,7 +6,7 @@ public class GlobalSettings : MonoBehaviour
 {
     public static GlobalSettings Instance;
 
-    public enum ClientType { Teacher, Student, SinglePlayer};
+    public enum ClientType { Teacher, Student, SinglePlayer, Team};
     public ClientType clientType { get; set; }
 
     void Awake()

@@ -52,9 +52,6 @@ public class inputScreen : MonoBehaviour
         m_hinweistext.text = "Brandalarm";
 
         localAlarmList.Clear();
-
-
-
     }
 
     // Update is called once per frame
@@ -84,6 +81,7 @@ public class inputScreen : MonoBehaviour
 
         //count up alarmid
         alarmid = ++alarmid_max;
+        
         //extract meldertyp from checkboxes
         if (m_handmelder.isOn)
         {
