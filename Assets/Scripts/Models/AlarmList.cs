@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -6,6 +7,7 @@ using UnityEngine.Networking;
 /// <summary>
 /// Struct für die Melder-Nachricht, die vom Server (Lehrer) gesendet wurde
 /// </summary>
+[Serializable]
 public struct Alarm
 {
     // FalseAlarm: Fehlalarm, Alarm: Echter Alarm
@@ -91,5 +93,13 @@ public class AlarmList : NetworkBehaviour
     public void addAlarm(Alarm alarm)
     {
         this.internAlarmList.Add(alarm);
+    }
+
+    public string toJSON()
+    {
+        SerializableScenarioList list = new SerializableScenarioList();
+        foreach (Alarm alarm in internAlarmList)
+            list.alarms.Add(alarm);
+         return JsonUtility.ToJson(list, true);
     }
 }

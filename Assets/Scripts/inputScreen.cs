@@ -280,4 +280,12 @@ public class inputScreen : MonoBehaviour
         provideData(currentID);
         alarmid_max = 2;
     }
+
+    public string toJSON()
+    {
+        SerializableScenarioList list = new SerializableScenarioList();
+        foreach (Alarm alarm in localAlarmList)
+            list.alarms.Add(alarm);
+        return JsonUtility.ToJson(list, true);
+    }
 }

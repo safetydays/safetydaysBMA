@@ -77,4 +77,8 @@ public class DataService
         return _connection.Insert(scenario);
     }
 
+    public void clearDb()
+    {
+        _connection.DeleteAll<Scenario>();
+    }
 }

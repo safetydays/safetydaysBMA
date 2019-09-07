@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExistingDbScript : MonoBehaviour
 {
+    private IEnumerable<Scenario> scenarios;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +23,38 @@ public class ExistingDbScript : MonoBehaviour
         ds.insertScenario(s);
         var sce = ds.getScenario();
         ToConsole(sce);
+        scenarios = sce;
     }
 
+    // nicht weiter umgesetzt
+    /*public void insertAlarmList(AlarmList alarmList)
+    {
+
+    }*/
+
+    public void clearDb()
+    {
+        var ds = new DataService("scenarios.db");
+        ds.clearDb();
+    }
+
+    public string toJSON()
+    {
+        SerializableScenarioList list = new SerializableScenarioList();
+        foreach (var scenario in scenarios)
+        {
+            list.scenarios.Add(new SerializableScenario(scenario));
+        }
+        
+        return JsonUtility.ToJson(list, true);
+    }
 
     private void ToConsole(IEnumerable<Scenario> people)
     {
         foreach (var person in people)
         {
             ToConsole(person.ToString());
+            //ToConsole(person.toJson());
         }
     }
 

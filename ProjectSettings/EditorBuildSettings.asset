@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IP_Adress_Scrn.unity
     guid: c34fe0b5c25086e45be505d1eafd30b0
+  - enabled: 1
+    path: Assets/Scenes/Manual_Scrn.unity
+    guid: ed2d2a4f6adff8f4fa989dddd51c08b9
   m_configObjects: {}
