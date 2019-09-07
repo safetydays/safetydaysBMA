@@ -2636,7 +2636,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fwControlPanelRightLEDView
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1968156829}
     - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
         type: 3}
       propertyPath: fwControlPanelLeftButtonView
