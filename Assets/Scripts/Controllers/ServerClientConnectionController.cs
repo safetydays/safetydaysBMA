@@ -36,13 +36,13 @@ public class ServerClientConnectionController : NetworkBehaviour
     [ClientRpc]
     public void RpcSendStringsToServer(Alarm alarm)
     {
-        Debug.Log("Meldung: " + alarm.meldung1);
+        Debug.Log("Meldung: " + alarm.infotext);
         alarmList.addAlarm(alarm);
     }
 
     public void Test()
     {
-        Alarm alarm = new Alarm(0, 0, Alarm.MelderType.Melder, "Meldung 1", "Meldung 2", AlarmType.Alarm);
+        Alarm alarm = new Alarm(0, 0, Alarm.MelderType.Melder, "Meldung 1", "Meldung 2", "", AlarmType.Alarm);
         //RpcSendStringsToServer(alarm);
         alarmList.addAlarm(alarm);
     }

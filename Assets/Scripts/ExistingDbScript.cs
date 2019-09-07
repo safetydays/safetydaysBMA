@@ -40,13 +40,14 @@ public class ExistingDbScript : MonoBehaviour
 
     public string toJSON()
     {
-        SerializableScenarioList list = new SerializableScenarioList();
+        /*SerializableScenarioList list = new SerializableScenarioList();
         foreach (var scenario in scenarios)
         {
             list.scenarios.Add(new SerializableScenario(scenario));
         }
         
-        return JsonUtility.ToJson(list, true);
+        return JsonUtility.ToJson(list, true);*/
+        return "";
     }
 
     private void ToConsole(IEnumerable<Scenario> people)

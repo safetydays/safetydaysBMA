@@ -19,8 +19,9 @@ public class Scenario
 
     public string toJson()
     {
-        SerializableScenario serializable = new SerializableScenario(Id, MelderType, AlarmType, TimeDelay, MelderGruppe);
+        /*SerializableScenario serializable = new SerializableScenario(Id, MelderType, AlarmType, TimeDelay, MelderGruppe);
         string ret = JsonUtility.ToJson(serializable, false);
-        return ret;
+        return ret;*/
+        return "";
     }
 }

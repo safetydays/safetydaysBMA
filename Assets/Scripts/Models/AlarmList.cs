@@ -16,18 +16,29 @@ public struct Alarm
 
     public int id;
     public int deltatime;
+    public string melderGruppeNummer;
     public MelderType melderTyp;
-    public string meldung1;
-    public string meldung2;
+    public string infotext;
+    public string meldertext;
     public AlarmType alarmTyp;
 
-    public Alarm(int pId, int pTime, MelderType pMelderTyp, string pMeldung1, string pMeldung2, AlarmType pAlarmTyp)
+    /*public int Id;
+    public string MelderGruppe;
+    public string MelderNummer;
+    public string MelderTyp;
+    public string Melderart;
+    public string Hinweistext;
+    public string Freitext;
+    public string TimeDelay;*/
+
+    public Alarm(int pId, int pTime, MelderType pMelderTyp, string pMelderGruppeNummer, string pInfotext, string pMeldertext, AlarmType pAlarmTyp)
     {
         id = pId;
         deltatime = pTime;
+        melderGruppeNummer = pMelderGruppeNummer;
         melderTyp = pMelderTyp;
-        meldung1 = pMeldung1;
-        meldung2 = pMeldung2;
+        infotext = pInfotext;
+        meldertext = pMeldertext;
         alarmTyp = pAlarmTyp;
     }
 }
@@ -70,13 +81,13 @@ public class AlarmList : NetworkBehaviour
         //internAlarmList = new List<Alarm>();
         if (internAlarmList.Count == 0 && GameObject.FindGameObjectWithTag("GlobalSettings") != null && GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType == GlobalSettings.ClientType.SinglePlayer)
         {
-            internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/3", "Melder Flur O", Alarm.AlarmType.Alarm));
-            internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Loeschanlage, "06/2", "Löschanlagen Test", Alarm.AlarmType.FalseAlarm));
+            internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/3", "Melder Flur O", "", Alarm.AlarmType.Alarm));
+            internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Loeschanlage, "06/2", "Löschanlagen Test", "", Alarm.AlarmType.FalseAlarm));
 
-            internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", Alarm.AlarmType.Alarm));
-            internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/1", "Melder Attrium", Alarm.AlarmType.Alarm));
-            internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/4", "Melder WC", Alarm.AlarmType.Alarm));
-            internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/5", "Melder Küche", Alarm.AlarmType.Alarm));
+            internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "06/2", "Melder Flur W", "", Alarm.AlarmType.Alarm));
+            internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/1", "Melder Attrium", "", Alarm.AlarmType.Alarm));
+            internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/4", "Melder WC", "", Alarm.AlarmType.Alarm));
+            internAlarmList.Add(new Alarm(0, 10, Alarm.MelderType.Melder, "06/5", "Melder Küche", "", Alarm.AlarmType.Alarm));
         }
     }
 
