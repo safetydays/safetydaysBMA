@@ -54,7 +54,7 @@ public class inputScreen : MonoBehaviour
 
         localAlarmList.Clear();
 
-        if (GlobalSettings.Instance.filePathJSON != null)
+        if (GlobalSettings.Instance.filePathJSON != "")
         {
             addAlarmsFromJSON(GlobalSettings.Instance.filePathJSON);
             currentID = 0;

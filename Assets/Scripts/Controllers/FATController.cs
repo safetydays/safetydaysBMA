@@ -136,6 +136,7 @@ public class FATController : MonoBehaviour
                 Debug.Log("Meldung zur Anzeige übergeben");
                 if (fatList.getAlarmCount() > 0)
                 {
+                    Debug.Log("Alarm");
                     if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
                     {
                         acousticsFlag = true;
