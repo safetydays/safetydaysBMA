@@ -30,7 +30,7 @@ public class ScenarioScroll_Controller : MonoBehaviour
     {
 
         //Pfad auslesen um Datenbankeinträge zu bekommen
-        string[] dirs = Directory.GetFiles(Application.persistentDataPathh, "*.json");
+        string[] dirs = Directory.GetFiles(Application.persistentDataPath, "*.json");
 
         foreach (string path in dirs) {
             this.AddNewEntry(Path.GetFileNameWithoutExtension(path));

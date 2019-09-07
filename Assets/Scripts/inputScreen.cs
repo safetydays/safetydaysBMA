@@ -31,6 +31,9 @@ public class inputScreen : MonoBehaviour
     public Text m_currentScenario;
     public Text m_maxScenario;
 
+    public Button NextButton;
+    public Button PrevButton;
+
     public int alarmid;
     public int alarmid_max;
 
@@ -54,6 +57,7 @@ public class inputScreen : MonoBehaviour
         m_infotext.text = "Brandalarm";
 
         localAlarmList.Clear();
+        PrevButton.interactable = false;
 
         if (GlobalSettings.Instance.filePathJSON != "")
         {
@@ -126,6 +130,7 @@ public class inputScreen : MonoBehaviour
 
     public void addAlarmToLocalQueue()
     {
+        PrevButton.interactable = true;
         infoText.text = "";
         //check if neccessary fields are filled
         if (m_meldernummer.text == "" || m_meldergruppe.text == "" || m_meldertext.text == "" || m_infotext.text == "")
@@ -212,9 +217,10 @@ public class inputScreen : MonoBehaviour
             switch (EventSystem.current.currentSelectedGameObject.name)
             {
                 case "NextScenario_Btn":
+                    PrevButton.interactable = true;
                     if (localAlarmList.Count == currentID + 1)
                     {
-                        currentID = 0;
+                        NextButton.interactable = false;
                     }
                     else
                     {
@@ -222,9 +228,10 @@ public class inputScreen : MonoBehaviour
                     }
                     break;
                 case "PrevScenario_Btn":
+                    NextButton.interactable = true;
                     if (currentID == 0)
                     {
-                        currentID = localAlarmList.Count - 1;
+                        PrevButton.interactable = false;
                     }
                     else
                     {
@@ -305,7 +312,7 @@ public class inputScreen : MonoBehaviour
         foreach(Alarm alarm in scenarioList.alarms)
         {    
             localAlarmList.Add(alarm);
-
+            PrevButton.interactable = true;
         }
     }
 }

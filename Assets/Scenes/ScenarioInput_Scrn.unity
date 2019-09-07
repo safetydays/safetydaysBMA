@@ -4327,6 +4327,8 @@ MonoBehaviour:
   infoText: {fileID: 255072977}
   m_currentScenario: {fileID: 105069373}
   m_maxScenario: {fileID: 370661668}
+  NextButton: {fileID: 755068908}
+  PrevButton: {fileID: 723982701}
   alarmid: 0
   alarmid_max: 0
   firstRun: 0
@@ -6409,7 +6411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b7f3d4004c4424b94fe3ce0a7b6e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExistingDbScript: {fileID: 0}
 --- !u!4 &970510959
 Transform:
   m_ObjectHideFlags: 0
