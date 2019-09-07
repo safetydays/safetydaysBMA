@@ -21,9 +21,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Simulation_Scrn.unity
     guid: 093016b6b7bb0ce459937a80a45f6d9d
   - enabled: 1
+    path: Assets/Scenes/Load_Create_Scrn.unity
+    guid: ecc39935fed68c144804c5b1f4f9ea67
+  - enabled: 1
     path: Assets/Scenes/IP_Adress_Scrn.unity
     guid: c34fe0b5c25086e45be505d1eafd30b0
   - enabled: 1
     path: Assets/Scenes/Manual_Scrn.unity
     guid: ed2d2a4f6adff8f4fa989dddd51c08b9
+  - enabled: 1
+    path: Assets/Scenes/ScenarioSelection_Scrn.unity
+    guid: b45669339f4d5fe4c976f00a41596596
   m_configObjects: {}

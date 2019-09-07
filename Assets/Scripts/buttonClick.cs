@@ -72,7 +72,13 @@ public class buttonClick : MonoBehaviour
 
                 //nächsten Screen aufrufen
                 //GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType = GlobalSettings.ClientType.Teacher;
+                SceneManager.LoadScene("Load_Create_Scrn");
+                break;
+            case "NewScenario_Btn":
                 SceneManager.LoadScene("ScenarioInput_Scrn");
+                break;
+            case "LoadScenario_Btn":
+                SceneManager.LoadScene("ScenarioSelection_Scrn");
                 break;
             case "Student_Btn":
                 //Schüler-Rolle speichern

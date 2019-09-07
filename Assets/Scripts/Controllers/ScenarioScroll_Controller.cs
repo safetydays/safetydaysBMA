@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScenarioScroll_Controller : MonoBehaviour
@@ -27,8 +28,6 @@ public class ScenarioScroll_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Szenario 
-        SerializableScenarioList scenarioList;
 
         //Pfad auslesen um Datenbankeinträge zu bekommen
         string[] dirs = Directory.GetFiles(Application.dataPath, "*.json");
@@ -54,7 +53,10 @@ public class ScenarioScroll_Controller : MonoBehaviour
 
     public void ListEntryClicked( string buttonName)
     {
-        
+        //globale Variable füllen
+        string local = Application.dataPath + buttonName + ".json";
+        GlobalSettings.Instance.filePathJSON = Application.dataPath + buttonName + ".json";
+        SceneManager.LoadScene("ScenarioInput_Scrn");
     }
 
 }

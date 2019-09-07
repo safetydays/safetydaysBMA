@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using System;
 
 public class inputScreen : MonoBehaviour
 {
@@ -48,10 +49,15 @@ public class inputScreen : MonoBehaviour
 
         initializeMelderart();
         initializeTimeDelay();
-
         m_hinweistext.text = "Brandalarm";
-
         localAlarmList.Clear();
+
+        if (GlobalSettings.Instance.filePathJSON != null)
+        {
+            addAlarmsFromJSON(GlobalSettings.Instance.filePathJSON);
+            currentID = 0;
+            provideData(currentID);
+        }
     }
 
     // Update is called once per frame
@@ -287,5 +293,18 @@ public class inputScreen : MonoBehaviour
         foreach (Alarm alarm in localAlarmList)
             list.alarms.Add(alarm);
         return JsonUtility.ToJson(list, true);
+    }
+
+    public void addAlarmsFromJSON( string path)
+    {
+        SerializableScenarioList scenarioList;
+
+        scenarioList = JsonUtility.FromJson<SerializableScenarioList>(path);
+        foreach(Alarm alarm in scenarioList.alarms)
+        {
+            
+            localAlarmList.Add(alarm);
+
+        }
     }
 }
