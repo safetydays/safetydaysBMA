@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using System;
+using System.IO;
 
 public class inputScreen : MonoBehaviour
 {
@@ -299,11 +300,10 @@ public class inputScreen : MonoBehaviour
     public void addAlarmsFromJSON( string path)
     {
         SerializableScenarioList scenarioList;
-
-        scenarioList = JsonUtility.FromJson<SerializableScenarioList>(path);
+        string json = File.ReadAllText(path);
+        scenarioList = JsonUtility.FromJson<SerializableScenarioList>(json);
         foreach(Alarm alarm in scenarioList.alarms)
-        {
-            
+        {    
             localAlarmList.Add(alarm);
 
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -79,7 +80,19 @@ public class AlarmList : NetworkBehaviour
     void Update()
     {
         //internAlarmList = new List<Alarm>();
-        if (internAlarmList.Count == 0 && GameObject.FindGameObjectWithTag("GlobalSettings") != null && GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType == GlobalSettings.ClientType.SinglePlayer)
+        if (internAlarmList.Count == 0 && GameObject.FindGameObjectWithTag("GlobalSettings") != null 
+            && GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType == GlobalSettings.ClientType.SinglePlayer
+            && GlobalSettings.Instance.filePathJSON != null && GlobalSettings.Instance.filePathJSON.Length > 0)
+        {
+            SerializableScenarioList scenarioList;
+            string json = File.ReadAllText(GlobalSettings.Instance.filePathJSON);
+            scenarioList = JsonUtility.FromJson<SerializableScenarioList>(json);
+            foreach (Alarm alarm in scenarioList.alarms)
+            {
+                Instance.addAlarm(alarm);
+            }
+        }
+        else if (internAlarmList.Count == 0 && GameObject.FindGameObjectWithTag("GlobalSettings") != null && GameObject.FindGameObjectWithTag("GlobalSettings").GetComponent<GlobalSettings>().clientType == GlobalSettings.ClientType.SinglePlayer)
         {
             internAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "0203/04", "Gaststätte ZWD", "Test", Alarm.AlarmType.Alarm));
             internAlarmList.Add(new Alarm(1, 0, Alarm.MelderType.Melder, "0203/03", "Gaststätte ZWD", "Test2", Alarm.AlarmType.Alarm));
