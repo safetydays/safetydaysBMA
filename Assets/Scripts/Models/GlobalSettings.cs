@@ -8,7 +8,7 @@ public class GlobalSettings : MonoBehaviour
 
     public enum ClientType { Teacher, Student, SinglePlayer, Team};
     public ClientType clientType { get; set; }
-
+    
     public string filePathJSON;
 
     void Awake()

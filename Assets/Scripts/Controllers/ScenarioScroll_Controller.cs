@@ -54,9 +54,12 @@ public class ScenarioScroll_Controller : MonoBehaviour
     public void ListEntryClicked( string buttonName)
     {
         //globale Variable füllen
-        string local = Application.dataPath + buttonName + ".json";
-        GlobalSettings.Instance.filePathJSON = Application.dataPath + buttonName + ".json";
-        SceneManager.LoadScene("ScenarioInput_Scrn");
+        string local = Application.dataPath +"/"+ buttonName + ".json";
+        GlobalSettings.Instance.filePathJSON = Application.dataPath + "/" + buttonName + ".json";
+        if(GlobalSettings.Instance.clientType != GlobalSettings.ClientType.SinglePlayer)
+            SceneManager.LoadScene("ScenarioInput_Scrn");
+        else
+            SceneManager.LoadScene("SampleScene");
     }
 
 }

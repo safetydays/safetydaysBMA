@@ -800,6 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236c19d5331ec3e48b59ef147e9f2f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filePathJSON: 
 --- !u!4 &603810344
 Transform:
   m_ObjectHideFlags: 0
@@ -1000,7 +1001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.024963379}
+  m_AnchoredPosition: {x: 0, y: 0.024902344}
   m_SizeDelta: {x: 0, y: 0.049927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &666821851
@@ -1600,6 +1601,11 @@ PrefabInstance:
     - target: {fileID: 8029115601185740239, guid: 0563a123ac7ccdc4c90202132638171f,
         type: 3}
       propertyPath: showGUI
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029115601185740232, guid: 0563a123ac7ccdc4c90202132638171f,
+        type: 3}
+      propertyPath: m_AutoCreatePlayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
