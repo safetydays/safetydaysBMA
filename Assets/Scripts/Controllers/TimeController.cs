@@ -44,15 +44,15 @@ public class TimeController : MonoBehaviour
         if (alarmList.getAlarmCount() > lastIDUpdatet)
         {
             Alarm nextAlarm = alarmList.getAlarm(lastIDUpdatet);
-            if (nextAlarm.deltatime < Time.time - timeSinceLastUpdate)
-            {
+            //if (nextAlarm.deltatime < Time.time - timeSinceLastUpdate)
+            //{
                 lastIDUpdatet++;
                 timeSinceLastUpdate = Time.time;
                 fatList.addAlarm(nextAlarm);
                 Debug.Log("Element ins FAT übernommen - " + nextAlarm.id);
                 fatController.switchToAlarmanzeige();
                 fatController.updateDisplay();
-            }
+            //}
         }
     }
 }

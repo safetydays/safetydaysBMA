@@ -146,7 +146,7 @@ public class inputScreen : MonoBehaviour
         {
             alarmList.gameObject.SetActive(true);
             alarmList.addAlarm(localAlarmList[currentID]);
-            infoText.text = "Meldung wurde der an die BMA gesendet.";
+            infoText.text = "Meldung wurde an die BMA gesendet.";
         }
         else
         {
