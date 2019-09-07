@@ -381,7 +381,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' BMApp V2.0 '
+  m_Text: ' BMApp V2.1'
 --- !u!222 &421719369
 CanvasRenderer:
   m_ObjectHideFlags: 0
