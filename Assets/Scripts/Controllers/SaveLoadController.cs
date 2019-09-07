@@ -46,7 +46,7 @@ public class SaveLoadController : MonoBehaviour
     /// <param name="filepath">Dateipfad mit Dateiname</param>
     public void SaveFile(string filename)
     {
-        string filePath = Application.dataPath + "/" + filename + ".json";
+        string filePath = Application.persistentDataPath + "/" + filename + ".json";
         string json = InputScreen.toJSON();
         File.WriteAllText(filePath, json);
         Debug.Log("Szenario gespeichert!");

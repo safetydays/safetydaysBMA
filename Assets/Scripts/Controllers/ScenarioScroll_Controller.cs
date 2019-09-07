@@ -30,7 +30,7 @@ public class ScenarioScroll_Controller : MonoBehaviour
     {
 
         //Pfad auslesen um Datenbankeinträge zu bekommen
-        string[] dirs = Directory.GetFiles(Application.dataPath, "*.json");
+        string[] dirs = Directory.GetFiles(Application.persistentDataPathh, "*.json");
 
         foreach (string path in dirs) {
             this.AddNewEntry(Path.GetFileNameWithoutExtension(path));
@@ -54,8 +54,8 @@ public class ScenarioScroll_Controller : MonoBehaviour
     public void ListEntryClicked( string buttonName)
     {
         //globale Variable füllen
-        string local = Application.dataPath +"/"+ buttonName + ".json";
-        GlobalSettings.Instance.filePathJSON = Application.dataPath + "/" + buttonName + ".json";
+        string local = Application.persistentDataPath + "/"+ buttonName + ".json";
+        GlobalSettings.Instance.filePathJSON = Application.persistentDataPath + "/" + buttonName + ".json";
         if(GlobalSettings.Instance.clientType != GlobalSettings.ClientType.SinglePlayer)
             SceneManager.LoadScene("ScenarioInput_Scrn");
         else
