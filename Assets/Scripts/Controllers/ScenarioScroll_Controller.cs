@@ -32,6 +32,8 @@ public class ScenarioScroll_Controller : MonoBehaviour
     {
         Transform newEntry = (Transform)Instantiate(entryPrefab);
         newEntry.gameObject.GetComponentInChildren<Text>().text = "Button vom Programm";
+        //newEntry.gameObject.GetComponentInChildren<Button>().onClick.AddListener(delegate
+        //   {buttonClick(buttonClick);});
         newEntry.SetParent(listParent);
         entries.Push(newEntry);
     }
