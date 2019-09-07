@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +25,7 @@ public class RightLEDView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void switchLEDUEExecutedOn()
@@ -55,9 +54,10 @@ public class RightLEDView : MonoBehaviour
         imageBMZReset.color = Color.grey;
     }
 
-    public bool brandfallLEDOn() { 
-    
-       return imageBrandFallControlAb.color == Color.yellow;
+    public bool brandfallLEDOn()
+    {
+
+        return imageBrandFallControlAb.color == Color.yellow;
 
     }
 }

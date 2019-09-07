@@ -1777,7 +1777,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1837710248}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.323097
+  m_Size: 0.907674
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2636,7 +2636,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fwControlPanelRightLEDView
       value: 
-      objectReference: {fileID: 1968156829}
+      objectReference: {fileID: 0}
     - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
         type: 3}
       propertyPath: fwControlPanelLeftButtonView
