@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 17943457}
   - component: {fileID: 17943459}
   m_Layer: 0
-  m_Name: Freitext_Pnl
+  m_Name: Meldertext_Pnl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2408,7 +2408,7 @@ GameObject:
   - component: {fileID: 334409818}
   - component: {fileID: 334409817}
   m_Layer: 0
-  m_Name: Freitext_Inp
+  m_Name: Meldertext_Inp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4321,8 +4321,8 @@ MonoBehaviour:
   m_fehlalarm: {fileID: 1281993578}
   m_meldergruppe: {fileID: 269759921}
   m_meldernummer: {fileID: 1940341506}
-  m_hinweistext: {fileID: 1712609133}
-  m_freitext: {fileID: 334409817}
+  m_infotext: {fileID: 1712609133}
+  m_meldertext: {fileID: 334409817}
   timedelayLbl: {fileID: 1406769763}
   infoText: {fileID: 255072977}
   m_currentScenario: {fileID: 105069373}
@@ -4900,7 +4900,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 666821855}
         m_MethodName: jumpScenario
         m_Mode: 1
         m_Arguments:
@@ -8707,7 +8707,7 @@ GameObject:
   - component: {fileID: 1712609134}
   - component: {fileID: 1712609133}
   m_Layer: 0
-  m_Name: Hinweis_Inp
+  m_Name: Infotext_Inp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9369,7 +9369,7 @@ GameObject:
   - component: {fileID: 1890228986}
   - component: {fileID: 1890228988}
   m_Layer: 0
-  m_Name: Hinweis_Pnl
+  m_Name: Infotext_Pnl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

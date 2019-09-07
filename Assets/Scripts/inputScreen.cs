@@ -49,13 +49,9 @@ public class inputScreen : MonoBehaviour
 
         initializeMelderart();
         initializeTimeDelay();
-<<<<<<< HEAD
-        m_hinweistext.text = "Brandalarm";
-=======
 
         m_infotext.text = "Brandalarm";
 
->>>>>>> c7bbe0d3da4eda7dffa19dceb9b3e637d5c848da
         localAlarmList.Clear();
 
         if (GlobalSettings.Instance.filePathJSON != null)
@@ -248,9 +244,8 @@ public class inputScreen : MonoBehaviour
         string[] l_melderinfo = localAlarmList[currentID].melderGruppeNummer.Split('/');
         m_meldergruppe.text = l_melderinfo[0];
         m_meldernummer.text = l_melderinfo[1];
-
+        m_infotext.text = localAlarmList[currentID].infotext;
         m_meldertext.text = localAlarmList[currentID].meldertext;
-        m_infotext.text = "Brandalarm";
 
         if (localAlarmList[currentID].alarmTyp == Alarm.AlarmType.FalseAlarm)
         {
@@ -279,15 +274,15 @@ public class inputScreen : MonoBehaviour
     public void callSample()
     {
         localAlarmList.Clear();
-        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "0203/04", "Gaststätte ZWD", "", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(1, 0, Alarm.MelderType.Melder, "0203/03", "Gaststätte ZWD", "", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(2, 0, Alarm.MelderType.Melder, "0201/01", "Gaststätte U-E.12", "", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(3, 0, Alarm.MelderType.Melder, "0203/02", "Gaststätte ZWD", "", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(4, 0, Alarm.MelderType.Melder, "0203/01", "Gaststätte ZWD", "", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(5, 0, Alarm.MelderType.Melder, "0202/01", "Gaststätte U-E.12", "", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(6, 0, Alarm.MelderType.Melder, "0202/04", "Gaststätte U-E.12", "", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(7, 0, Alarm.MelderType.Melder, "0202/03", "Gaststätte U-E.12", "", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(8, 0, Alarm.MelderType.Melder, "0202/02", "Gaststätte U-E.12", "", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "0203/04", "Gaststätte ZWD", "Test", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(1, 0, Alarm.MelderType.Melder, "0203/03", "Gaststätte ZWD", "Test2", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(2, 0, Alarm.MelderType.Melder, "0201/01", "Gaststätte U-E.12", "Test3", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(3, 0, Alarm.MelderType.Melder, "0203/02", "Gaststätte ZWD", "Test4", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(4, 0, Alarm.MelderType.Melder, "0203/01", "Gaststätte ZWD", "Test5", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(5, 0, Alarm.MelderType.Melder, "0202/01", "Gaststätte U-E.12", "Test6", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(6, 0, Alarm.MelderType.Melder, "0202/04", "Gaststätte U-E.12", "Test7", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(7, 0, Alarm.MelderType.Melder, "0202/03", "Gaststätte U-E.12", "Test8", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(8, 0, Alarm.MelderType.Melder, "0202/02", "Gaststätte U-E.12", "Test9", Alarm.AlarmType.Alarm));
         currentID = 0;
         provideData(currentID);
         alarmid_max = 2;
