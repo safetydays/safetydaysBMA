@@ -4332,6 +4332,7 @@ MonoBehaviour:
   firstRun: 0
   currentID: 0
   alarmList: {fileID: 48623065}
+  localAlarmList: []
 --- !u!114 &666821856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6408,7 +6409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b7f3d4004c4424b94fe3ce0a7b6e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExistingDbScript: {fileID: 1114673926}
+  ExistingDbScript: {fileID: 0}
 --- !u!4 &970510959
 Transform:
   m_ObjectHideFlags: 0
@@ -6925,7 +6926,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1114673925}
   - component: {fileID: 1114673924}
-  - component: {fileID: 1114673926}
   m_Layer: 0
   m_Name: SaveLoadController
   m_TagString: Untagged
@@ -6945,7 +6945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b3188df31eedb41ae93cbfa0ce7bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExistingDbScript: {fileID: 1114673926}
+  InputScreen: {fileID: 666821855}
   SaveView: {fileID: 911767741}
 --- !u!4 &1114673925
 Transform:
@@ -6961,18 +6961,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1114673926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114673923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e4d224bbe529f74a9fb5d10e6d32751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1126640124
 GameObject:
   m_ObjectHideFlags: 0
@@ -8969,8 +8957,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114673923}
-        m_MethodName: 
+      - m_Target: {fileID: 666821855}
+        m_MethodName: addAlarmToLocalQueue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
