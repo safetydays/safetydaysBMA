@@ -14,7 +14,7 @@ public class ScenarioScroll_Controller : MonoBehaviour
 
     public void Awake()
     {
-        if (listParent  == null)
+        if (listParent == null)
         {
             Debug.LogWarning("ListParent muss assigned sein", this);
         }
@@ -28,20 +28,14 @@ public class ScenarioScroll_Controller : MonoBehaviour
     void Start()
     {
         //Szenario 
-        
+        SerializableScenarioList scenarioList;
 
         //Pfad auslesen um Datenbankeinträge zu bekommen
         string[] dirs = Directory.GetFiles(Application.dataPath, "*.json");
 
-        /*foreach (string path in dirs) { }
-        myObject = JsonUtility.FromJson<MyClass>(path); }
-
-        myObject = JsonUtility.FromJson<MyClass>(json);*/
-        //Button hinzufügen
-        AddNewEntry("Szenario1");
-        AddNewEntry("Szenario2");
-        AddNewEntry("Szenario3");
-        AddNewEntry("Szenario4");
+        foreach (string path in dirs) {
+            this.AddNewEntry(Path.GetFileNameWithoutExtension(path));
+        }
     }
 
     public void AddNewEntry( string scenarioName)
