@@ -68,7 +68,13 @@ public class FATController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(fatState != State.Test && Time.time - lastInputTime > ResetTimeInSeconds)
+        // Alarmliste aktivieren, wenn diese durch einen anderen Modus deaktiviert wurde
+        if (GlobalSettings.Instance.clientType == GlobalSettings.ClientType.SinglePlayer
+            && AlarmList.Instance.gameObject.activeSelf == false)
+            AlarmList.Instance.gameObject.SetActive(true);
+
+
+        if (fatState != State.Test && Time.time - lastInputTime > ResetTimeInSeconds)
         {
             cursorPosition = 0;
             fatState = State.Alarmanzeige;
