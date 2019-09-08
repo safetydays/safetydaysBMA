@@ -41,6 +41,7 @@ public class FATController : MonoBehaviour
 
     private bool offFlag;       // Flag für die Abschalten-Anzeige
     private bool acousticsFlag = false; // Flag für das Abspielen von Sounds
+    private bool buzzerFlag;
     
     private static float ResetTimeInSeconds = 17;
     private float lastInputTime;
@@ -80,22 +81,36 @@ public class FATController : MonoBehaviour
             fatState = State.Alarmanzeige;
             updateDisplay();
         }
-      
+
+        // AcousticsFlag setzen, abhängig von der LED
+        if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
+        {
+            acousticsFlag = true;
+        }
+        else
+        {
+            acousticsFlag = false;
+        }
+
+        // Hausalarm ein-/ausschalten
         if (acousticsFlag)
         {
             hausalarmSound.PlaySecondClick();
-            if (lastBuzzerMessage < fatList.getAlarmCount() - 1)
-            {
-                buzzerSound.PlaySecondClick();
-            }
-            else
-            {
-                buzzerSound.StopSecondClick();
-            }
         }
         else
         {
             hausalarmSound.StopSecondClick();
+        }
+
+        // Buzzer ein-/ausschalten (schaltet sich aut. wieder ein)
+        if (lastBuzzerMessage < fatList.getAlarmCount() - 1)
+        {
+            buzzerSound.PlaySecondClick();
+            buzzerFlag = false;
+        }
+        if (buzzerFlag)
+        {
+            buzzerSound.StopSecondClick();
         }
 
         if (testLightMode)
@@ -143,14 +158,6 @@ public class FATController : MonoBehaviour
                 if (fatList.getAlarmCount() > 0)
                 {
                     Debug.Log("Alarm");
-                    if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
-                    {
-                        acousticsFlag = true;
-                    }
-                    else
-                    {
-                        acousticsFlag = false;
-                    }
                 
                     // Aktuelles Element an der Cursorposition (obere Anzeige)
                     messageView.updateText1(fatList.getAlarm(cursorPosition).melderGruppeNummer, fatList.getAlarm(cursorPosition).meldertext);
@@ -290,7 +297,7 @@ public class FATController : MonoBehaviour
         lastInputTime = Time.time;
     }
 
-    public void switchOnAcousticSignalLED()
+    public void switchAcousticSignalLED()
     {
         if(fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
         {
@@ -342,6 +349,7 @@ public class FATController : MonoBehaviour
     public void shutDownBuzzer()
     {
         lastBuzzerMessage = fatList.getAlarmCount()-1;
+        buzzerFlag = false;
     }
     public void resetBMZ()
     {
@@ -349,7 +357,7 @@ public class FATController : MonoBehaviour
         fwControlPanelLeftLEDView.switchLEDExtinguishOff();
         fwControlPanelRightLEDView.switchBMZResetOff();
         fatList.removeAllFalseAlarmsFromList();
-        acousticsFlag = false; //ton ausmachen, kann aber wieder angehen
+        acousticsFlag = false; //Hausalarm ausmachen, kann aber wieder angehen
         messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
         messageView.updateText2(bereitMessage1Line1, "");
     }
