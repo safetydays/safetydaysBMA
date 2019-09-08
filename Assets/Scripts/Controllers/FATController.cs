@@ -158,19 +158,7 @@ public class FATController : MonoBehaviour
                 if (fatList.getAlarmCount() > 0)
                 {
                     Debug.Log("Alarm");
-<<<<<<< HEAD
-                    if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
-                    {
-                        acousticsFlag = true;
-                    }
-                    else
-                    {
-                        acousticsFlag = false;
-                    }
 
-=======
-                
->>>>>>> ba65d1e045636a4a8168bf37e67dd694a42fe99b
                     // Aktuelles Element an der Cursorposition (obere Anzeige)
                     //messageView.updateText1(fatList.getAlarm(cursorPosition).melderGruppeNummer, fatList.getAlarm(cursorPosition).meldertext);
                     messageView.updateText1(fatList.getAlarm(cursorPosition).melderGruppeNummer + " " + fatList.getAlarm(cursorPosition).infotext, fatList.getAlarm(cursorPosition).meldertext);
