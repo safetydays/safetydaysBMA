@@ -96,9 +96,9 @@ public class LEDView : MonoBehaviour
     /// </summary>
     public void triggerAlarmBlinking()
     {
-        imageAlarm.color = new Color(255, 0, 0, 1);
-        StopCoroutine("BlinkAlarm");
-        StartCoroutine("BlinkAlarm");
+        imageAlarm.color = Color.red;
+        //StopCoroutine("BlinkAlarm");
+        //StartCoroutine("BlinkAlarm");
     }
     /// <summary>
     /// Stop blinking, red light on
@@ -106,7 +106,7 @@ public class LEDView : MonoBehaviour
     public void stopAlarmBlinking()
     {
         StopCoroutine("BlinkAlarm");
-        imageAlarm.color = Color.red;
+        imageAlarm.color = Color.grey;
     }
     /// <summary>
     /// Disables the alarm LED,  color to grey

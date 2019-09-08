@@ -129,7 +129,12 @@ public class FATController : MonoBehaviour
     {
         if (fatList.getAlarmCount() > 0)
         {
-           
+            if (fatList.getAlarmCount() > cursorPosition + 2)
+            {
+                // Previous-LED aktivieren
+                buttonMessageUp.turnOn();
+            }
+
             // States wechseln - Strörungsmeldung
             if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
             {
@@ -215,7 +220,7 @@ public class FATController : MonoBehaviour
         // Weitere LEDs setzen
         if (fatList.getAlarmCount() > 0)
         {
-            ledView.stopAlarmBlinking();
+            ledView.triggerAlarmBlinking();
             fwControlPanelRightLEDView.switchImageBMZResetOn();
 
         }
@@ -245,8 +250,7 @@ public class FATController : MonoBehaviour
             buttonMessageUp.turnOn();
         }
         updateDisplay();
-
-        ledView.stopAlarmBlinking();
+        
         fwControlPanelRightLEDView.switchImageBMZResetOn();
 
         // Next-LED-Anzeige aktualisieren
@@ -271,8 +275,7 @@ public class FATController : MonoBehaviour
             buttonMessageDown.turnOn();
         }
         updateDisplay();
-
-        ledView.stopAlarmBlinking();
+        
 
         if (cursorPosition > 0)
             buttonMessageUp.turnOn();
