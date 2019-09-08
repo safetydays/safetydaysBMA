@@ -134,7 +134,6 @@ public class inputScreen : MonoBehaviour
 
         // hinweistext meldertype are not passed
         localAlarmList.Add(new Alarm(alarmid, timedelay, meldertyp, l_melderinfo, m_infotext.text, m_meldertext.text, alarmtyp));
-
     }
 
     public void addAlarmToLocalQueue()
@@ -160,6 +159,7 @@ public class inputScreen : MonoBehaviour
         if (localAlarmList.Count > 0)
         {
             alarmList.gameObject.SetActive(true);
+            updateLocalQueue(currentID);
             alarmList.addAlarm(localAlarmList[currentID]);
             infoText.text = "Meldung wurde an die BMA gesendet.";
         }
@@ -173,54 +173,6 @@ public class inputScreen : MonoBehaviour
             }
         }
     }
-
-   /* public void setOnlyOneToggleActive()
-    {
-        if (firstRun >= 2)
-        {
-            switch (EventSystem.current.currentSelectedGameObject.name)
-            {
-                case "Automatisch_Tgl":
-                    if (m_automatisch.isOn == false)
-                    {
-                        m_automatisch.isOn = true;
-                    }
-                    else
-                    {
-                        m_handmelder.isOn = false;
-                        m_loeschanlage.isOn = false;
-                    }
-                    break;
-                case "Loeschanlage_Tgl":
-                    if (m_loeschanlage.isOn == false)
-                    {
-                        m_loeschanlage.isOn = true;
-                    }
-                    else
-                    {
-                        m_handmelder.isOn = false;
-                        m_automatisch.isOn = false;
-                    }
-                    break;
-                case "Handmelder_Tgl":
-                    if (m_handmelder.isOn == false)
-                    {
-                        m_handmelder.isOn = true;
-                    }
-                    else
-                    {
-                        m_loeschanlage.isOn = false;
-                        m_automatisch.isOn = false;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        firstRun++;
-    }
-    */
 
     public void jumpScenario()
     {
@@ -286,21 +238,23 @@ public class inputScreen : MonoBehaviour
             m_automatisch.isOn = true;
         }
 
-        //get all options available within this dropdown menu
-        List<Dropdown.OptionData> menuOptions = m_Dropdown_TimeDelay.options;
+        //Zeit übernehmen
 
         /*int index_ddwn;
         foreach (Dropdown.OptionData option in menuOptions)
         {
             index_ddwn++;
 
+            int optionvalue = option.;
+
             if ( option.text = localAlarmList[currentID].deltatime)
             {
                 m_Dropdown_TimeDelay.SetValueWithoutNotify(index_ddwn);
             }
-        }
-        */
-        m_Dropdown_TimeDelay.value = localAlarmList[currentID].deltatime;
+        }*/
+        //m_Dropdown_TimeDelay.SetValueWithoutNotify(index_ddwn);
+
+        //m_Dropdown_TimeDelay.value = localAlarmList[currentID].deltatime;
 
         alarmid = localAlarmList[currentID].id;
     }
@@ -340,5 +294,55 @@ public class inputScreen : MonoBehaviour
             localAlarmList.Add(alarm);
             PrevButton.interactable = true;
         }
+    }
+
+    public void updateLocalQueue(int update_id)
+    {
+        Alarm alarm = localAlarmList[update_id];
+
+        //extract meldertyp from checkboxes
+        if (m_handmelder.isOn)
+        {
+            //for alarm reasons only "Melder" exists
+            alarm.melderTyp = Alarm.MelderType.Melder;
+        }
+        if (m_loeschanlage.isOn)
+        {
+            alarm.melderTyp = Alarm.MelderType.Loeschanlage;
+        }
+        if (m_automatisch.isOn)
+        {
+            alarm.melderTyp = Alarm.MelderType.Melder;
+        }
+
+        //check if fehlalarm is active
+        if (m_fehlalarm.isOn)
+        {
+            alarm.alarmTyp = Alarm.AlarmType.FalseAlarm;
+        }
+
+        //convert timedelay from string of dropdown to int
+        int timedelay;
+
+        int menuIndex = m_Dropdown_TimeDelay.value;
+
+        //get all options available within this dropdown menu
+        List<Dropdown.OptionData> menuOptions = m_Dropdown_TimeDelay.options;
+
+        //get the string value of the selected index
+        string value = menuOptions[menuIndex].text;
+
+        int.TryParse(value, out timedelay);
+
+        alarm.deltatime = timedelay;
+
+        alarm.infotext = m_infotext.text;
+        alarm.meldertext = m_meldertext.text;
+
+        //concatenate group and number
+        alarm.melderGruppeNummer = m_meldergruppe.text + "/" + m_meldernummer.text;
+
+        localAlarmList.RemoveAt(update_id);
+        localAlarmList.Insert(update_id, alarm);
     }
 }
