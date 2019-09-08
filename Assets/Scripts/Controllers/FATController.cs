@@ -140,7 +140,9 @@ public class FATController : MonoBehaviour
             {
                 faultFlag = true;
                 ledView.triggerAlarmBlinking();
-              
+                switchOnUECheckSignalLED();
+
+
             }
             // States wechseln - Abschalten
             if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Off)
@@ -222,7 +224,7 @@ public class FATController : MonoBehaviour
         {
             ledView.triggerAlarmBlinking();
             fwControlPanelRightLEDView.switchImageBMZResetOn();
-
+            switchOnUECheckSignalLED();
         }
         if (fatList.getAlarmCount() > cursorPosition + 2)
             buttonMessageDown.turnOn();
@@ -324,7 +326,10 @@ public class FATController : MonoBehaviour
 
     public void switchOffUeCheckSignalLED()
     {
-        fwControlPanelRightLEDView.switchLEDUEExecutedOff();
+        if (fatList.getAlarmCount() >= 0)
+        {
+            fwControlPanelRightLEDView.switchLEDUEExecutedOff();
+        }
     }
 
     public void switchOnUeAbLED()
