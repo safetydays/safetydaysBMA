@@ -88,12 +88,13 @@ public class buttonClick : MonoBehaviour
                 SceneManager.LoadScene("IP_Adress_Scrn");
                 break;
             case "SaveIP_Btn":
-                //wenn Trainer
-                //SceneManager.LoadScene("ScenarioInput_Scrn");
                 //wenn Schüler
                 bmaNetworkController = GameObject.FindGameObjectWithTag("NetworkController").GetComponent<BMANetworkController>();
+
                 bmaNetworkController.connectWithIPField(ownIPField, ipField);
-                SceneManager.LoadScene("SampleScene");  
+                
+                SceneManager.LoadScene("SampleScene");
+
                 break;
             case "Home_Btn":
                 switch (SceneManager.GetActiveScene().name){

@@ -54,6 +54,9 @@ public class AlarmList : NetworkBehaviour
     public class SyncAlarmList : SyncListStruct<Alarm> { }
     SyncAlarmList internAlarmList = new SyncAlarmList();
 
+    //[SyncVar]
+    //public bool isActive;
+
     void Awake()
     {
         if (Instance != null)

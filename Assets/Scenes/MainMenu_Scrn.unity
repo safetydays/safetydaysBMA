@@ -381,7 +381,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' BMApp V2.6'
+  m_Text: ' BMApp V2.7'
 --- !u!222 &421719369
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1538,6 +1538,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: NetworkController
       objectReference: {fileID: 0}
+    - target: {fileID: 8029115601185740239, guid: 0563a123ac7ccdc4c90202132638171f,
+        type: 3}
+      propertyPath: offsetX
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029115601185740239, guid: 0563a123ac7ccdc4c90202132638171f,
+        type: 3}
+      propertyPath: showGUI
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8029115601185740233, guid: 0563a123ac7ccdc4c90202132638171f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1591,16 +1601,6 @@ PrefabInstance:
     - target: {fileID: 8029115601185740233, guid: 0563a123ac7ccdc4c90202132638171f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8029115601185740239, guid: 0563a123ac7ccdc4c90202132638171f,
-        type: 3}
-      propertyPath: offsetX
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 8029115601185740239, guid: 0563a123ac7ccdc4c90202132638171f,
-        type: 3}
-      propertyPath: showGUI
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8029115601185740232, guid: 0563a123ac7ccdc4c90202132638171f,
