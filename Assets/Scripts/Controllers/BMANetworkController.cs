@@ -90,6 +90,12 @@ public class BMANetworkController : MonoBehaviour
         networkManager.StartClient();
     }
 
+    public void disconnect()
+    {
+        networkManager.StopClient();
+
+    }
+
     public void restartHost()
     {
         StartCoroutine("yieldRestartHost");

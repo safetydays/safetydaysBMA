@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FATController : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class FATController : MonoBehaviour
     private float lastInputTime;
     private int lastBuzzerMessage;
 
-
+    private float startTime;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,7 @@ public class FATController : MonoBehaviour
             GameObject.FindGameObjectWithTag("NetworkController").GetComponent<BMANetworkController>().restartHost();
         }
         lastBuzzerMessage = -1;
+        startTime = Time.time;
     }
 
     /// <summary>
@@ -70,6 +72,14 @@ public class FATController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if (Time.time - startTime > 2 && GlobalSettings.Instance.clientType == GlobalSettings.ClientType.Student
+            && AlarmList.Instance.gameObject.activeSelf == false)
+        {
+            BMANetworkController bmaNetworkController = GameObject.FindGameObjectWithTag("NetworkController").GetComponent<BMANetworkController>();
+            bmaNetworkController.disconnect();
+            SceneManager.LoadScene("IP_Adress_Scrn");
+        }
+
         // Alarmliste aktivieren, wenn diese durch einen anderen Modus deaktiviert wurde
         if (GlobalSettings.Instance.clientType == GlobalSettings.ClientType.SinglePlayer
             && AlarmList.Instance.gameObject.activeSelf == false)
