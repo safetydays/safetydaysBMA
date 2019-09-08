@@ -13,6 +13,9 @@ public class RightLEDView : MonoBehaviour
     private Image imageBrandFallControlAb;
     private Image imageBMZReset;
 
+    private Color imageUEExecutedBeforeTest;
+    private Color imageBrandFallControlAbTest;
+    private Color imageBMZResetTest;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,24 @@ public class RightLEDView : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void switchTestOn()
+    {
+        imageUEExecutedBeforeTest = imageUEExecuted.color;
+        imageBrandFallControlAbTest = imageBrandFallControlAb.color;
+        imageBMZResetTest = imageBMZReset.color;
+
+        imageUEExecuted.color = Color.red;
+        imageBrandFallControlAb.color = Color.yellow;
+        imageBMZReset.color = Color.red;
+    }
+
+    public void switchTestOff()
+    {
+        imageUEExecuted.color = imageUEExecutedBeforeTest;
+        imageBrandFallControlAb.color = imageBrandFallControlAbTest;
+        imageBMZReset.color = imageBMZResetTest;
     }
 
     public void switchLEDUEExecutedOn()

@@ -220,7 +220,7 @@ public class FATController : MonoBehaviour
             fwControlPanelRightLEDView.switchImageBMZResetOn();
             switchOnUECheckSignalLED();
         }
-        if (fatList.getAlarmCount() >  3 && fatList.getAlarmCount() > cursorPosition + 2)
+        if (fatList.getAlarmCount() >=  3 && fatList.getAlarmCount() > cursorPosition + 2)
             buttonMessageDown.turnOn();
     }
 
@@ -364,12 +364,18 @@ public class FATController : MonoBehaviour
     }
 
     public void activateTestMode()
-    { 
+    {
+        fwControlPanelRightLEDView.switchTestOn();
+        fwControlPanelLeftLEDView.switchTestOn();
+
         testLightMode = true;
         fatState = State.Test;
         ledView.stopAlarmBlinking();
         ledView.stopErrorBlinking();
         ledView.stopOffModeBlinking();
+
+        buttonMessageUp.switchTestOn();
+        buttonMessageDown.switchTestOn();
 
         ledView.triggerAlarmBlinking();
         switchOnUECheckSignalLED();
@@ -391,6 +397,12 @@ public class FATController : MonoBehaviour
         Debug.Log("Waiting for 5 seconds until test mode shutdown ");
         yield return new WaitUntil(() => lightningTimer >= timeForLightingUpAllLights);
         Debug.Log("Wait time is over, returning to mormal");
+
+        fwControlPanelRightLEDView.switchTestOff();
+        fwControlPanelLeftLEDView.switchTestOff();
+
+        buttonMessageUp.switchTestOff();
+        buttonMessageDown.switchTestOff();
 
         lightningTimer = 0;
         testLightMode = false;

@@ -7,6 +7,7 @@ public class ButtonMessageUpDown : MonoBehaviour
 {
     public FATController fatController;
     private bool ledOn;
+    private bool testON;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,23 @@ public class ButtonMessageUpDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(testON)
+        {
+            Image img = this.GetComponent<Image>();
+            img.color = Color.yellow;
+        }
+    }
+
+    public void switchTestOn()
+    {
+        testON = true;
+    }
+
+    public void switchTestOff()
+    {
+        testON = false;
+        Image img = this.GetComponent<Image>();
+        img.color = Color.white;
     }
 
     public void displayNextMessageInHistory()
