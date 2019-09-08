@@ -220,7 +220,7 @@ public class FATController : MonoBehaviour
             fwControlPanelRightLEDView.switchImageBMZResetOn();
             switchOnUECheckSignalLED();
         }
-        if (fatList.getAlarmCount() >  3 && fatList.getAlarmCount() > cursorPosition + 2)
+        if (fatList.getAlarmCount() >=  3 && fatList.getAlarmCount() > cursorPosition + 2)
             buttonMessageDown.turnOn();
     }
 
