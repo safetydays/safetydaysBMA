@@ -95,11 +95,6 @@ public class BMANetworkController : MonoBehaviour
         StartCoroutine("yieldRestartHost");
     }
 
-    public bool checkConnection()
-    {
-        return true;
-    }
-
     IEnumerator yieldRestartHost()
     {
         networkManager.StopHost();

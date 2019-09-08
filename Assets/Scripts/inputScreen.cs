@@ -240,18 +240,25 @@ public class inputScreen : MonoBehaviour
 
         //Zeit übernehmen
 
-        /*int index_ddwn;
+        int index_ddwn = 0;
+
+        //get all options available within this dropdown menu
+        List<Dropdown.OptionData> menuOptions = m_Dropdown_TimeDelay.options;
+
         foreach (Dropdown.OptionData option in menuOptions)
         {
             index_ddwn++;
 
-            int optionvalue = option.;
+            int option_time = 0;
 
-            if ( option.text = localAlarmList[currentID].deltatime)
+            Int32.TryParse(option.text, out option_time);
+
+            if ( option_time == localAlarmList[currentID].deltatime)
             {
                 m_Dropdown_TimeDelay.SetValueWithoutNotify(index_ddwn);
             }
-        }*/
+        }
+
         //m_Dropdown_TimeDelay.SetValueWithoutNotify(index_ddwn);
 
         //m_Dropdown_TimeDelay.value = localAlarmList[currentID].deltatime;
