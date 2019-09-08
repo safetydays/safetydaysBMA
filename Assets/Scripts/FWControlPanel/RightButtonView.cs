@@ -26,7 +26,10 @@ public class RightButtonView : MonoBehaviour
     public void switchOnBrandFallLED()
     {
         Image img = btnBrandfallAb.GetComponent<Image>();
-        img.color = Color.yellow;
+        if(img.color == Color.yellow)
+            img.color = Color.white;
+        else
+            img.color = Color.yellow;
 
         fatController.switchonBrandFallLED();
         //LED and Button light
