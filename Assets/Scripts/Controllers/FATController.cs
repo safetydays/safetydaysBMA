@@ -145,13 +145,15 @@ public class FATController : MonoBehaviour
                     {
                         acousticsFlag = false;
                     }
-                
+
                     // Aktuelles Element an der Cursorposition (obere Anzeige)
-                    messageView.updateText1(fatList.getAlarm(cursorPosition).melderGruppeNummer, fatList.getAlarm(cursorPosition).meldertext);
+                    //messageView.updateText1(fatList.getAlarm(cursorPosition).melderGruppeNummer, fatList.getAlarm(cursorPosition).meldertext);
+                    messageView.updateText1(fatList.getAlarm(cursorPosition).melderGruppeNummer + " " + fatList.getAlarm(cursorPosition).infotext, fatList.getAlarm(cursorPosition).meldertext);
                     //if(fatList.getAlarmCount() > cursorPosition+1)
 
                     // Letztes Element
-                    messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).melderGruppeNummer, fatList.getAlarm(fatList.getAlarmCount() - 1).meldertext);
+                    //messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).melderGruppeNummer, fatList.getAlarm(fatList.getAlarmCount() - 1).meldertext);
+                    messageView.updateText2(fatList.getAlarm(fatList.getAlarmCount() - 1).melderGruppeNummer + " " + fatList.getAlarm(fatList.getAlarmCount() - 1).infotext, fatList.getAlarm(fatList.getAlarmCount() - 1).meldertext);
                 }
                 else
                 {
