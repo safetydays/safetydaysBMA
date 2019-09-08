@@ -22,7 +22,10 @@ public class LeftLEDView : MonoBehaviour
 
     private Image ImageLEDAcoustigSignal;
 
-
+    private Color imageLEDRunningBeforeTest;
+    private Color imageLEDExtinguishBeforeTest;
+    private Color imageLEDAcoustigSignalBeforeTest;
+    private Color imageLEDUEAbBeforeTest;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,28 @@ public class LeftLEDView : MonoBehaviour
     {
         
     }
+
+    public void switchTestOn()
+    {
+        imageLEDRunningBeforeTest = imageLEDRunning.color;
+        imageLEDExtinguishBeforeTest = imageLEDExtinguish.color;
+        imageLEDAcoustigSignalBeforeTest = ImageLEDAcoustigSignal.color;
+        imageLEDUEAbBeforeTest = imageLEDUEAb.color;
+
+        imageLEDRunning.color = Color.green;
+        imageLEDExtinguish.color = Color.red;
+        ImageLEDAcoustigSignal.color = Color.yellow;
+        imageLEDUEAb.color = Color.yellow;
+    }
+
+    public void switchTestOff()
+    {
+        imageLEDRunning.color = imageLEDRunningBeforeTest;
+        imageLEDExtinguish.color = imageLEDExtinguishBeforeTest;
+        ImageLEDAcoustigSignal.color = imageLEDAcoustigSignalBeforeTest;
+        imageLEDUEAb.color = imageLEDUEAbBeforeTest;
+    }
+
     public bool acousticSignalLEDIsOn()
     {
         return ImageLEDAcoustigSignal.color == Color.yellow;
