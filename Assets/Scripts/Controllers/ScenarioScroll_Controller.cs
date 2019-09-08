@@ -35,31 +35,42 @@ public class ScenarioScroll_Controller : MonoBehaviour
         foreach (string path in dirs) {
             this.AddNewEntry(Path.GetFileNameWithoutExtension(path));
         }
+        
+        if (dirs.Length == 0)
+        {
+            this.AddNewEntry("Neu anlegen");
+        }
     }
 
     public void AddNewEntry( string scenarioName)
     {
-
         Transform newEntry = (Transform)Instantiate(entryPrefab);
         newEntry.gameObject.GetComponentInChildren<Text>().text = scenarioName;
 
-        string buttonName = "Szenario1";
 
         newEntry.gameObject.GetComponentInChildren<Button>().onClick.AddListener(delegate
-           {ListEntryClicked(scenarioName);});
+            { ListEntryClicked(scenarioName); });
+        
         newEntry.SetParent(listParent);
         entries.Push(newEntry);
     }
 
     public void ListEntryClicked( string buttonName)
     {
-        //globale Variable füllen
-        string local = Application.persistentDataPath + "/"+ buttonName + ".json";
-        GlobalSettings.Instance.filePathJSON = Application.persistentDataPath + "/" + buttonName + ".json";
-        if(GlobalSettings.Instance.clientType != GlobalSettings.ClientType.SinglePlayer)
+        if (buttonName == "Neu anlegen")
+        {
             SceneManager.LoadScene("ScenarioInput_Scrn");
+        }
         else
-            SceneManager.LoadScene("SampleScene");
+        {
+            //globale Variable füllen
+            string local = Application.persistentDataPath + "/" + buttonName + ".json";
+            GlobalSettings.Instance.filePathJSON = Application.persistentDataPath + "/" + buttonName + ".json";
+            if (GlobalSettings.Instance.clientType != GlobalSettings.ClientType.SinglePlayer)
+                SceneManager.LoadScene("ScenarioInput_Scrn");
+            else
+                SceneManager.LoadScene("SampleScene");
+        }
     }
 
 }

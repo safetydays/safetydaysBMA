@@ -247,7 +247,6 @@ public class inputScreen : MonoBehaviour
 
         foreach (Dropdown.OptionData option in menuOptions)
         {
-            index_ddwn++;
 
             int option_time = 0;
 
@@ -257,6 +256,8 @@ public class inputScreen : MonoBehaviour
             {
                 m_Dropdown_TimeDelay.SetValueWithoutNotify(index_ddwn);
             }
+
+            index_ddwn++;
         }
 
         //m_Dropdown_TimeDelay.SetValueWithoutNotify(index_ddwn);
@@ -270,8 +271,8 @@ public class inputScreen : MonoBehaviour
     {
         localAlarmList.Clear();
         localAlarmList.Add(new Alarm(0, 0, Alarm.MelderType.Melder, "0203/04", "Gaststätte ZWD", "Test", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(1, 0, Alarm.MelderType.Melder, "0203/03", "Gaststätte ZWD", "Test2", Alarm.AlarmType.Alarm));
-        localAlarmList.Add(new Alarm(2, 0, Alarm.MelderType.Melder, "0201/01", "Gaststätte U-E.12", "Test3", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(1, 30, Alarm.MelderType.Melder, "0203/03", "Gaststätte ZWD", "Test2", Alarm.AlarmType.Alarm));
+        localAlarmList.Add(new Alarm(2, 60, Alarm.MelderType.Melder, "0201/01", "Gaststätte U-E.12", "Test3", Alarm.AlarmType.Alarm));
         localAlarmList.Add(new Alarm(3, 0, Alarm.MelderType.Melder, "0203/02", "Gaststätte ZWD", "Test4", Alarm.AlarmType.Alarm));
         localAlarmList.Add(new Alarm(4, 0, Alarm.MelderType.Melder, "0203/01", "Gaststätte ZWD", "Test5", Alarm.AlarmType.Alarm));
         localAlarmList.Add(new Alarm(5, 0, Alarm.MelderType.Melder, "0202/01", "Gaststätte U-E.12", "Test6", Alarm.AlarmType.Alarm));
