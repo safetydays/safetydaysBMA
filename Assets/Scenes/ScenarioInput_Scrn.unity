@@ -1934,6 +1934,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8029115601185740239, guid: 0563a123ac7ccdc4c90202132638171f,
+        type: 3}
+      propertyPath: showGUI
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4449995729673899510, guid: 0563a123ac7ccdc4c90202132638171f,
         type: 3}
       propertyPath: m_Name
@@ -4323,7 +4328,6 @@ MonoBehaviour:
   m_meldernummer: {fileID: 1940341506}
   m_infotext: {fileID: 1712609133}
   m_meldertext: {fileID: 334409817}
-  timedelayLbl: {fileID: 1406769763}
   infoText: {fileID: 255072977}
   m_currentScenario: {fileID: 105069373}
   m_maxScenario: {fileID: 370661668}
@@ -5224,7 +5228,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1688400474}
   m_HandleRect: {fileID: 1688400473}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

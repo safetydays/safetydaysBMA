@@ -31,6 +31,7 @@ public class ButtonMultipleSoundsView : MonoBehaviour, IPointerClickHandler
 
     public void StopSecondClick()
     {
+        AudioSource.loop = false;
         AudioSource.Stop();
     }
 }

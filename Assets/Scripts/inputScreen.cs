@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using System;
 using System.IO;
+using static TMPro.TMP_Dropdown;
 
 public class inputScreen : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class inputScreen : MonoBehaviour
     public InputField m_infotext;
     public InputField m_meldertext;
 
-    public Text timedelayLbl;
     public Text infoText;
     public Text m_currentScenario;
     public Text m_maxScenario;
@@ -118,7 +118,16 @@ public class inputScreen : MonoBehaviour
 
         //convert timedelay from string of dropdown to int
         int timedelay;
-        int.TryParse(timedelayLbl.text, out timedelay);
+
+        int menuIndex = m_Dropdown_TimeDelay.value;
+
+        //get all options available within this dropdown menu
+        List<Dropdown.OptionData> menuOptions = m_Dropdown_TimeDelay.options;
+
+        //get the string value of the selected index
+        string value = menuOptions[menuIndex].text;
+
+        int.TryParse(value, out timedelay);
 
         //concatenate group and number
         string l_melderinfo = m_meldergruppe.text + "/" + m_meldernummer.text;
@@ -157,8 +166,11 @@ public class inputScreen : MonoBehaviour
         else
         {
             addAlarmToLocalQueue();
-            manualAlarm();
-            alarmid_max = alarmid;
+            if (alarmid > 0)
+            {
+                manualAlarm();
+                alarmid_max = alarmid;
+            }
         }
     }
 
@@ -274,6 +286,20 @@ public class inputScreen : MonoBehaviour
             m_automatisch.isOn = true;
         }
 
+        //get all options available within this dropdown menu
+        List<Dropdown.OptionData> menuOptions = m_Dropdown_TimeDelay.options;
+
+        /*int index_ddwn;
+        foreach (Dropdown.OptionData option in menuOptions)
+        {
+            index_ddwn++;
+
+            if ( option.text = localAlarmList[currentID].deltatime)
+            {
+                m_Dropdown_TimeDelay.SetValueWithoutNotify(index_ddwn);
+            }
+        }
+        */
         m_Dropdown_TimeDelay.value = localAlarmList[currentID].deltatime;
 
         alarmid = localAlarmList[currentID].id;

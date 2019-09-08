@@ -26,7 +26,7 @@ public class LeftButtonView : MonoBehaviour
     {
         Image img = btnAcousticSignal.GetComponent<Image>();
         img.color = Color.yellow;
-        fatController.switchOnAcousticSignalLED();
+        fatController.switchAcousticSignalLED();
 
     }
     public void switchOffAcoustigSignalButton()
@@ -46,8 +46,6 @@ public class LeftButtonView : MonoBehaviour
         Image img = btnUeAb.GetComponent<Image>();
         img.color = Color.yellow;
         fatController.switchOnUeAbLED();
-        //Funktionslos, Lampe an und Knop leuchtet
-        //TODO
     }
 
 
