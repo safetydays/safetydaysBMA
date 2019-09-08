@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ButtonMessageUpDown : MonoBehaviour
 {
     public FATController fatController;
+    private bool ledOn;
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +33,13 @@ public class ButtonMessageUpDown : MonoBehaviour
     public void turnOn()
     {
         //always on
-        Image img = this.GetComponent<Image>();
-        img.color = Color.yellow;
-        StopCoroutine("BlinkAlarm");
-        StartCoroutine("BlinkAlarm");
+        if (!ledOn)
+        {
+            Image img = this.GetComponent<Image>();
+            img.color = Color.yellow;
+            StartCoroutine("BlinkAlarm");
+            ledOn = true;
+        }
     }
 
     public void turnOff()
@@ -43,6 +47,7 @@ public class ButtonMessageUpDown : MonoBehaviour
         StopCoroutine("BlinkAlarm");
         Image img = this.GetComponent<Image>();
         img.color = Color.white;
+        ledOn = false;
     }
 
     IEnumerator BlinkAlarm()

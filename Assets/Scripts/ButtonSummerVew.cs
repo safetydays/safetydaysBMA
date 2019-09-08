@@ -6,7 +6,6 @@ public class ButtonSummerVew : MonoBehaviour
 {
     public FATController fatController;
     public float timeToHoldUntilTest = 5.0f;
-    private bool testLightMode;
     private float testTimer = 0f;
     private  bool mouseDown;
  
@@ -24,7 +23,12 @@ public class ButtonSummerVew : MonoBehaviour
         {
             testTimer += Time.deltaTime;
         }
-   
+
+        if (mouseDown && testTimer >= timeToHoldUntilTest && fatController.isTestLightMode() == false)
+        {
+            Debug.Log("Initiating test after five seconds");
+            fatController.activateTestMode();
+        }
     }
 
     public void shutDownBuzzer()
@@ -36,17 +40,16 @@ public class ButtonSummerVew : MonoBehaviour
         mouseDown = true;
         shutDownBuzzer();
         testTimer = 0;
+
+        
     }
 
     public void onRelease()
     {
         mouseDown = false;
-   
-        if (testTimer >= timeToHoldUntilTest)
-        {
-            Debug.Log("Initiating test after five seconds");
-            fatController.activateTestMode();
-        }
+
+        if (fatController.isTestLightMode())
+            StartCoroutine(fatController.waitForTestModeFinishing());
        
     }
 }

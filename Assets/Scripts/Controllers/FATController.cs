@@ -129,12 +129,6 @@ public class FATController : MonoBehaviour
     {
         if (fatList.getAlarmCount() > 0)
         {
-            if (fatList.getAlarmCount() > cursorPosition + 2)
-            {
-                // Previous-LED aktivieren
-                buttonMessageUp.turnOn();
-            }
-
             // States wechseln - Strörungsmeldung
             if (fatList.getAlarm(fatList.getAlarmCount() - 1).alarmTyp == Alarm.AlarmType.Fault)
             {
@@ -226,7 +220,7 @@ public class FATController : MonoBehaviour
             fwControlPanelRightLEDView.switchImageBMZResetOn();
             switchOnUECheckSignalLED();
         }
-        if (fatList.getAlarmCount() > cursorPosition + 2)
+        if (fatList.getAlarmCount() >  3 && fatList.getAlarmCount() > cursorPosition + 2)
             buttonMessageDown.turnOn();
     }
 
@@ -256,9 +250,7 @@ public class FATController : MonoBehaviour
         fwControlPanelRightLEDView.switchImageBMZResetOn();
 
         // Next-LED-Anzeige aktualisieren
-        if (fatList.getAlarmCount() > cursorPosition + 2)
-            buttonMessageDown.turnOn();
-        else
+        if (fatList.getAlarmCount() <= cursorPosition + 2)
             buttonMessageDown.turnOff();
 
         lastInputTime = Time.time;
@@ -279,9 +271,7 @@ public class FATController : MonoBehaviour
         updateDisplay();
         
 
-        if (cursorPosition > 0)
-            buttonMessageUp.turnOn();
-        else
+        if (cursorPosition <= 0)
             buttonMessageUp.turnOff();
 
         lastInputTime = Time.time;
@@ -381,14 +371,23 @@ public class FATController : MonoBehaviour
         ledView.stopErrorBlinking();
         ledView.stopOffModeBlinking();
 
+        ledView.triggerAlarmBlinking();
+        switchOnUECheckSignalLED();
+
         acousticsFlag = true; 
     
-        StartCoroutine(waitForTestModeFinishing());
+        
 
     }
 
-    IEnumerator waitForTestModeFinishing()
+    public bool isTestLightMode()
     {
+        return this.testLightMode;
+    }
+
+    public IEnumerator waitForTestModeFinishing()
+    {
+        lightningTimer = 0;
         Debug.Log("Waiting for 5 seconds until test mode shutdown ");
         yield return new WaitUntil(() => lightningTimer >= timeForLightingUpAllLights);
         Debug.Log("Wait time is over, returning to mormal");
