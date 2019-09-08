@@ -62,6 +62,7 @@ public class FATController : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("NetworkController").GetComponent<BMANetworkController>().restartHost();
         }
+        lastBuzzerMessage = -1;
     }
 
     /// <summary>
@@ -83,7 +84,7 @@ public class FATController : MonoBehaviour
         }
 
         // AcousticsFlag setzen, abhängig von der LED
-        if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn())
+        if (!fwControlPanelLeftLEDView.acousticSignalLEDIsOn() && fatList.getAlarmCount() > 0)
         {
             acousticsFlag = true;
         }
