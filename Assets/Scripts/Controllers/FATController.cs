@@ -369,8 +369,10 @@ public class FATController : MonoBehaviour
         fwControlPanelRightLEDView.switchBMZResetOff();
         fatList.removeAllFalseAlarmsFromList();
         acousticsFlag = false; //Hausalarm ausmachen, kann aber wieder angehen
-        messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
-        messageView.updateText2(bereitMessage1Line1, "");
+
+        buttonMessageDown.turnOff();
+        displayPreviousMessageInHistory();
+        displayPreviousMessageInHistory();
     }
 
     public void activateTestMode()
