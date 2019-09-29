@@ -39,8 +39,8 @@ public class buttonClick : MonoBehaviour
                 //EditorUtility.DisplayDialog("Button Name", "Simulation", "OKAY");
                 SceneManager.LoadScene("Simulation_Scrn");
                 break;
-            case "Learn_Btn":
-                //EditorUtility.DisplayDialog("Button Name", "Lernen", "OKAY");
+            case "Tutorial_Btn":
+                SceneManager.LoadScene("Tutorial_Scrn");
                 break;
             case "Evaluate_Btn":
                 //EditorUtility.DisplayDialog("Button Name", "Evaluation", "OKAY");

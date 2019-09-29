@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScenarioSelection_Scrn.unity
     guid: b45669339f4d5fe4c976f00a41596596
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Scrn.unity
+    guid: 9a9685e0e4c0f1d459815095b55c5343
   m_configObjects: {}
