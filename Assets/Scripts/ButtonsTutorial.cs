@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class ButtonsTutorial : MonoBehaviour
 {
 
-    public GameObject info;
+    public GameObject info; // transparentes Panel mit dem Infotext
 
-    public MessageView messageView;
+    public MessageView messageView; //Display der BMA
 
-    public Text InfoText;
+    public Text InfoText; // Text auf dem transparenten Panel
 
     // Start is called before the first frame update
     void Start()
     {
+        //grundsätzlich soll das Info-Panel ausgeblendet sein
         info.SetActive(false);
     }
 
