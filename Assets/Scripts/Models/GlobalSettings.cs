@@ -13,12 +13,7 @@ public class GlobalSettings : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null)
-        {
-            GameObject.Destroy(Instance.gameObject);
-            Debug.Log("Alarm-List-Objekt schon vorhanden!");
-        }
-        else
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(this);
