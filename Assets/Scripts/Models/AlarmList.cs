@@ -124,6 +124,11 @@ public class AlarmList : NetworkBehaviour
         this.internAlarmList.Add(alarm);
     }
 
+    public void clearList()
+    {
+        this.internAlarmList.Clear();
+    }
+
     public string toJSON()
     {
         SerializableScenarioList list = new SerializableScenarioList();

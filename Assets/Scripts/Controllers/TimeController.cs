@@ -7,7 +7,6 @@ using UnityEngine;
 /// </summary>
 public class TimeController : MonoBehaviour
 {
-    private AlarmList alarmList;
     public FATList fatList;
     public FATController fatController;
 
@@ -31,19 +30,15 @@ public class TimeController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(alarmList == null && GameObject.FindGameObjectWithTag("AlarmList") != null)
+        if(AlarmList.Instance == null)
         {
-            alarmList = GameObject.FindGameObjectWithTag("AlarmList").GetComponent<AlarmList>();
-            alarmList.gameObject.SetActive(true);
-        }
-        else if(alarmList == null)
-        {
+            Debug.LogError("Alarmliste nicht vorhanden!");
             return;
         }
 
-        if (alarmList.getAlarmCount() > lastIDUpdatet)
+        if (AlarmList.Instance.getAlarmCount() > lastIDUpdatet)
         {
-            Alarm nextAlarm = alarmList.getAlarm(lastIDUpdatet);
+            Alarm nextAlarm = AlarmList.Instance.getAlarm(lastIDUpdatet);
             if (nextAlarm.deltatime < Time.time - timeSinceLastUpdate)
             {
                 lastIDUpdatet++;

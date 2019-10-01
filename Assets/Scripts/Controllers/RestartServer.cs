@@ -9,6 +9,7 @@ public class RestartServer : MonoBehaviour
     void Start()
     {
         GameObject.FindGameObjectWithTag("NetworkController").GetComponent<BMANetworkController>().restartHost();
+        AlarmList.Instance.clearList();
     }
 
     // Update is called once per frame

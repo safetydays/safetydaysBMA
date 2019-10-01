@@ -93,7 +93,7 @@ public class BMANetworkController : MonoBehaviour
     public void disconnect()
     {
         networkManager.StopClient();
-
+        AlarmList.Instance.clearList();
     }
 
     public void restartHost()
