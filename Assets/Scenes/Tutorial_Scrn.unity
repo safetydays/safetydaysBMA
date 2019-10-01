@@ -1381,7 +1381,8 @@ MonoBehaviour:
   abschaltungMessage: '** Abschaltung **'
   bereitMessage0Line1: ' * BMA App Tutorialmodus * '
   bereitMessage0Line2: safety days 2019
-  bereitMessage1Line1: "Universit\xE4t Paderborn"
+  bereitMessage1Line1: Tippe auf die BMA,
+  bereitMessage1Line2: "um sie Dir erkl\xE4ren zu lassen!"
   timeForLightingUpAllLights: 5
 --- !u!4 &446849073
 Transform:

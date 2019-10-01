@@ -72,7 +72,7 @@ public class ButtonsTutorial : MonoBehaviour
                         "\n" + "\n" +
                         "Durch Betätigen dieses Stellteiles wird der akustische Signalgeber des FAT abgestellt." +
                         "Mit dem Akustiksignal wird signalisiert, dass ein Brandmeldezustand vom FAT empfangen und noch nicht quittiert wurde. " +
-                        "Die akustische Anzeige muss bei der Alarmmeldung aus einer weiteren Meldergruppe wiederkehren. +" +
+                        "Die akustische Anzeige muss bei der Alarmmeldung aus einer weiteren Meldergruppe wiederkehren." +
                         "\n \n \n" +
                         "<b>Summer Ab / Test</b>" +
                         "\n \n" +
@@ -166,7 +166,7 @@ public class ButtonsTutorial : MonoBehaviour
                         "Die Anzeige leuchtet nach dem Einschalten mindestens 15 Minuten unbeeinflussbar vom Betreiber. " +
                         "Sie erlischt nach dieser Zeit, wenn BMZ und ÜE wieder zurückgestellt wurden. Sie erlischt vor dieser Zeit, mit Betätigung des Knopfes." +
                         "\n" +
-                        "Mit dieser Betätigung wird die BMA vom Brandmeldezustand in den betriebszustand zurückgestellt." +
+                        "Mit dieser Betätigung wird die BMA vom Brandmeldezustand in den Betriebszustand zurückgestellt." +
                         "\n";
         info.SetActive(true);
     }

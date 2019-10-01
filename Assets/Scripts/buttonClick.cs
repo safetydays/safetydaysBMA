@@ -110,6 +110,12 @@ public class buttonClick : MonoBehaviour
                     case "Simulation_Scrn":
                         SceneManager.LoadScene("MainMenu_Scrn");
                         break;
+                    case "Load_Create_Scrn":
+                        SceneManager.LoadScene("Teacher_Student_Scrn");
+                        break;
+                    case "ScenarioSelection_Scrn":
+                        SceneManager.LoadScene("Load_Create_Scrn");
+                        break;
                     default:
                         SceneManager.LoadScene("MainMenu_Scrn");
                         break;

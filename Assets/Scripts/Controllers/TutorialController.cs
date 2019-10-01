@@ -27,7 +27,8 @@ public class TutorialController : MonoBehaviour
     public string abschaltungMessage = "** Abschaltung **";
     public string bereitMessage0Line1 = " * BMA App Tutorialmodus * ";
     public String bereitMessage0Line2 = "safety days 2019";
-    public String bereitMessage1Line1 = "Universität Paderborn";
+    public String bereitMessage1Line1 = "Tippe auf die BMA,";
+    public String bereitMessage1Line2 = "um sie Dir erklären zu lassen!";
 
     public float timeForLightingUpAllLights = 5.0f;
     private float lightningTimer;
@@ -53,7 +54,7 @@ public class TutorialController : MonoBehaviour
     void Start()
     {
         messageView.updateText1(bereitMessage0Line1, bereitMessage0Line2);
-        messageView.updateText2(bereitMessage1Line1, "");
+        messageView.updateText2(bereitMessage1Line1, bereitMessage1Line2);
         cursorPosition = 0;
         fatState = State.Alarmanzeige;
     }

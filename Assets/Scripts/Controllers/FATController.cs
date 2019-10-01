@@ -88,7 +88,7 @@ public class FATController : MonoBehaviour
 
         if (fatState != State.Test && Time.time - lastInputTime > ResetTimeInSeconds)
         {
-            cursorPosition = 0;
+            //cursorPosition = 0;
             fatState = State.Alarmanzeige;
             updateDisplay();
         }

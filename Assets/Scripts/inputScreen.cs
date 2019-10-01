@@ -11,8 +11,11 @@ using static TMPro.TMP_Dropdown;
 
 public class inputScreen : MonoBehaviour
 {
-    List<string> melderart_list = new List<string> { "Brand", "Rauch", "CO" };
-    List<string> timedelay_list = new List<string> { "0", "30", "60", "90" };
+    List<string> melderart_list = new List<string> { "Handfeuermelder", "Rauchmelder", "Wärmemelder", "Flammenmelder", "CO-Melder",
+                                                     "Mehrfachsensor-Brandmelder", "Ansaugrauchmelder", "Linienförmiger Rauchmelder","Rauchmelderlüftungsleitung",
+                                                     "Linienförmiger Wärmemelder", "Löschanlage" };
+
+    List<string> timedelay_list = new List<string> { "0", "10", "15", "20", "30", "60", "90" };
 
     public Dropdown m_Dropdown_Melderart;
     public Dropdown m_Dropdown_TimeDelay;
