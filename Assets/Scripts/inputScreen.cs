@@ -60,6 +60,7 @@ public class inputScreen : MonoBehaviour
         m_infotext.text = "Brandalarm";
 
         localAlarmList.Clear();
+        AlarmList.Instance.clearList();
         PrevButton.interactable = false;
 
         if (GlobalSettings.Instance.filePathJSON != "")

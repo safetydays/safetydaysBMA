@@ -19,6 +19,9 @@ public class BMA_Back : MonoBehaviour
 
     public void backClicked()
     {
-        SceneManager.LoadScene("MainMenu_Scrn");
+        if (GlobalSettings.Instance.clientType == GlobalSettings.ClientType.Student)
+            SceneManager.LoadScene("ScenarioSelection_Scrn");
+        else
+            SceneManager.LoadScene("Teacher_Student_Scrn");
     }
 }

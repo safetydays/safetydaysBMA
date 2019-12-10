@@ -75,6 +75,7 @@ public class buttonClick : MonoBehaviour
                 SceneManager.LoadScene("Load_Create_Scrn");
                 break;
             case "NewScenario_Btn":
+                GlobalSettings.Instance.filePathJSON = "";
                 SceneManager.LoadScene("ScenarioInput_Scrn");
                 break;
             case "LoadScenario_Btn":
@@ -99,7 +100,7 @@ public class buttonClick : MonoBehaviour
             case "Home_Btn":
                 switch (SceneManager.GetActiveScene().name){
                     case "ScenarioInput_Scrn":
-                        SceneManager.LoadScene("Teacher_Student_Scrn");
+                        SceneManager.LoadScene("Load_Create_Scrn");
                         break;
                     case "IP_Adress_Scrn":
                         SceneManager.LoadScene("Teacher_Student_Scrn");
@@ -114,7 +115,10 @@ public class buttonClick : MonoBehaviour
                         SceneManager.LoadScene("Teacher_Student_Scrn");
                         break;
                     case "ScenarioSelection_Scrn":
-                        SceneManager.LoadScene("Load_Create_Scrn");
+                        if(GlobalSettings.Instance.clientType == GlobalSettings.ClientType.Student)
+                            SceneManager.LoadScene("Teacher_Student_Scrn");
+                        else
+                            SceneManager.LoadScene("Load_Create_Scrn");
                         break;
                     default:
                         SceneManager.LoadScene("MainMenu_Scrn");
