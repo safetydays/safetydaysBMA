@@ -8,6 +8,8 @@ public class RightButtonView : MonoBehaviour
     public FATController fatController;
     public Button btnBMZReset;
     public Button btnBrandfallAb;
+
+    private Color previousTestModeColor;
         
    // Start is called before the first frame update
     void Start()
@@ -46,5 +48,18 @@ public class RightButtonView : MonoBehaviour
         fatController.resetBMZ();
 
     }
+
+    public void testModeOn()
+    {
+        
+        Image img = btnBrandfallAb.GetComponent<Image>();
+        previousTestModeColor = img.color;
+        img.color = Color.yellow;
+    }
    
+    public void testModeOff()
+    {
+        Image img = btnBrandfallAb.GetComponent<Image>();
+        img.color = previousTestModeColor;
+    }
 }

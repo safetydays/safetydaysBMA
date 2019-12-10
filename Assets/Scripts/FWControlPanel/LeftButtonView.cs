@@ -9,7 +9,10 @@ public class LeftButtonView : MonoBehaviour
     public FATController fatController;
     public Button btnAcousticSignal;
     public Button btnUeAb;
-    
+
+    private Color previousButtonColorAcousticSignal;
+    private Color previousButtonColorUeAb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +52,26 @@ public class LeftButtonView : MonoBehaviour
     }
 
 
+    public void testModeOn()
+    {
 
+        Image img = btnAcousticSignal.GetComponent<Image>();
+        previousButtonColorAcousticSignal = img.color;
+        img.color = Color.yellow;
+
+        Image img2 = btnUeAb.GetComponent<Image>();
+        previousButtonColorUeAb = img2.color;
+        img2.color = Color.yellow;
+    }
+
+    public void testModeOff()
+    {
+        Image img = btnAcousticSignal.GetComponent<Image>();
+        img.color = previousButtonColorAcousticSignal;
+
+        Image img2 = btnUeAb.GetComponent<Image>();
+        img2.color = previousButtonColorUeAb;
+    }
 }
 
     

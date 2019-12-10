@@ -13,7 +13,7 @@ public class FATController : MonoBehaviour
     public LeftLEDView fwControlPanelLeftLEDView;
     public RightLEDView fwControlPanelRightLEDView;
     public LeftButtonView fwControlPanelLeftButtonView;
-    
+    public RightButtonView fwControlPanelRightButtonView;
 
     public ButtonMessageUpDown buttonMessageUp;
     public ButtonMessageUpDown buttonMessageDown;
@@ -391,6 +391,10 @@ public class FATController : MonoBehaviour
 
         ledView.triggerAlarmBlinking();
         switchOnUECheckSignalLED();
+        fwControlPanelLeftLEDView.switchLEDUEAbOn();
+
+        fwControlPanelRightButtonView.testModeOn();
+        fwControlPanelLeftButtonView.testModeOn();
 
         acousticsFlag = true; 
     
@@ -407,11 +411,12 @@ public class FATController : MonoBehaviour
     {
         lightningTimer = 0;
         Debug.Log("Waiting for 5 seconds until test mode shutdown ");
-        yield return new WaitUntil(() => lightningTimer >= timeForLightingUpAllLights);
+        //yield return new WaitUntil(() => lightningTimer >= timeForLightingUpAllLights);
         Debug.Log("Wait time is over, returning to mormal");
 
         fwControlPanelRightLEDView.switchTestOff();
         fwControlPanelLeftLEDView.switchTestOff();
+        fwControlPanelLeftLEDView.switchLEDUEAbOff();
 
         buttonMessageUp.switchTestOff();
         buttonMessageDown.switchTestOff();
@@ -422,5 +427,11 @@ public class FATController : MonoBehaviour
         ledView.disableErrorLED();
         ledView.disableOffModeLED();
         fatState = State.Alarmanzeige;
+
+        switchOffUeCheckSignalLED();
+        fwControlPanelRightButtonView.testModeOff();
+        fwControlPanelLeftButtonView.testModeOff();
+
+        yield return null;
     }
 }

@@ -1776,8 +1776,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1837710249}
   m_HandleRect: {fileID: 1837710248}
   m_Direction: 2
-  m_Value: 0.9999996
-  m_Size: 0.79563427
+  m_Value: 1
+  m_Size: 0.907674
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2642,6 +2642,11 @@ PrefabInstance:
       propertyPath: fwControlPanelLeftButtonView
       value: 
       objectReference: {fileID: 248006240}
+    - target: {fileID: 7194070040882345561, guid: c9101a83d979c8a47bacc2f429d5d31d,
+        type: 3}
+      propertyPath: fwControlPanelRightButtonView
+      value: 
+      objectReference: {fileID: 1584133449}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9101a83d979c8a47bacc2f429d5d31d, type: 3}
 --- !u!1 &1359520847
