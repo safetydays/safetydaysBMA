@@ -1,4 +1,4 @@
-# safetydaysBMA
+# safetydaysBMA ![Build project apk](https://github.com/safetydays/safetydaysBMA/workflows/Build%20project%20apk/badge.svg)
 
 Virtuelle Brandmeldeanlage nach DIN Norm als App.
 Entwickelt bei den [safety days 2019](www.safetydays.de) in Zusammenarbeit mit dem [Idf-NRW](https://www.idf.nrw.de/)
