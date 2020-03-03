@@ -184,6 +184,15 @@ public class inputScreen : MonoBehaviour
         {
             switch (EventSystem.current.currentSelectedGameObject.name)
             {
+                case "Delete_Btn":
+                    if(localAlarmList.Count > 1)
+                        localAlarmList.RemoveAt(currentID);
+                    if (localAlarmList.Count == currentID + 1)
+                    {
+                        NextButton.interactable = false;
+                        currentID--;
+                    }
+                    break;
                 case "NextScenario_Btn":
                     PrevButton.interactable = true;
                     if (localAlarmList.Count == currentID + 1)
