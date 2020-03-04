@@ -373,6 +373,7 @@ public class FATController : MonoBehaviour
         buttonMessageDown.turnOff();
         displayPreviousMessageInHistory();
         displayPreviousMessageInHistory();
+        switchOffUeCheckSignalLED();
     }
 
     public void activateTestMode()
